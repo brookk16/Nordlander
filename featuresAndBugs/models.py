@@ -22,5 +22,6 @@ class FeaturesAndBugs(models.Model):
     type = models.CharField(choices=TYPES, max_length=20)
     upvotes = models.IntegerField() 
     group = models.CharField(max_length=20)
+    
     def __str__(self):
         return self.name

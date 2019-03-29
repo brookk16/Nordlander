@@ -18,6 +18,8 @@ from django.contrib import admin
 from accounts import urls as urls_accounts
 from featuresAndBugs import urls as urls_featuresAndBugs
 from featuresAndBugs.views import all_features_and_bugs
+from cart import urls as urls_cart
+from search import urls as urls_search
 from django.views import static
 from .settings import MEDIA_ROOT
 
@@ -27,5 +29,7 @@ urlpatterns = [
     url(r'^$', all_features_and_bugs, name='index'),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^featuresAndBugs/', include(urls_featuresAndBugs)),
+    url(r'^cart/', include(urls_cart)),
+    url(r'^search/', include(urls_search)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
