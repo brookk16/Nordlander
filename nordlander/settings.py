@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'featuresAndBugs',
     'cart',
+    'checkout',
     'django_forms_bootstrap',
 ]
 
@@ -130,7 +131,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"))
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
