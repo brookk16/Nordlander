@@ -11,6 +11,14 @@ footer {
     color: #A9A9A9;
 }
 
+/* Base */
+
+#main-nav {
+    background-image: -webkit-linear-gradient(#3e4142, #000000 60%, #3e4142);
+    border: 1px solid #3e4142;
+}
+
+
 .icon-bar {
     background-color: #fff;
 }
