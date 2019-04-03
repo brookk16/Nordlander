@@ -27,12 +27,6 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">Nordlander</a>
-                <li>
-                    <form action="{% url 'search' %}" method="get">
-                        <input type="text" name="search">
-                        <button type="search">Search</button>
-                    </form>
-                </li>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -43,6 +37,7 @@
                     <li><a href="{% url 'register' %}">Register</a></li>
                     <li><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
+                    <li><a href="{% url 'featuresAndBugs' %}">features and Bugs</a></li>
                     <li>
                         <a href="{% url 'view_cart' %}">
                             <i class="fa fa-shipping-cart"></i>Cart
@@ -64,14 +59,19 @@
         </div>
     </div>
     {% endif %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             {% block content %} {% endblock %}
         </div>
     </div>
+
     <footer>
         <div class="container">
             <p>Made by Code Institute bootcampers</p>
+            <i class="fa fa-github"></i>
+            <i class="fa fa-facebook-f"></i>
+            <i class="fa fa-twitter-square"></i>
+            <i class="fa fa-youtube"></i>
         </div>
     </footer>
 </body>

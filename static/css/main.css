@@ -1,14 +1,23 @@
-body {
-    font-family: Arial;
-    padding-top: 100px;
+@font-face {
+    font-family: "Norse";
+    src: url("../fonts/Norse.otf");
 }
 
-footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-top: 1px solid #ededed;
-    color: #A9A9A9;
+@font-face {
+    font-family: "NorseBold";
+    src: url("../fonts/Norse-Bold.otf");
+}
+
+body {
+    font-family: Arial;
+    padding-top: 55px;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+h2 {
+    margin: 0px;
 }
 
 /* Base */
@@ -16,8 +25,95 @@ footer {
 #main-nav {
     background-image: -webkit-linear-gradient(#3e4142, #000000 60%, #3e4142);
     border: 1px solid #3e4142;
+    min-height: 55px;
+
 }
 
+.navbar-brand {
+    font-family: 'NorseBold', sans-serif;
+    font-size: 30px;
+    text-shadow: 3px 4px #691212;
+    line-height: 25px;
+}
+
+/* Home */
+
+.home-background-image {
+    background: url('../img/green_landscape.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 800px;
+}
+
+.welcome-to {
+    font-family: 'NorseBold', sans-serif;
+    text-shadow: 2px 3px #691212;
+    color: white;
+    font-size: 60px;
+    margin: 0px 0px 0px 500px;
+    padding: 40px 0px;
+}
+
+.nordlander-welcome {
+    font-size: 105px;
+    text-shadow: 4px 5px #691212;
+    color: white;
+    font-family: 'NorseBold', sans-serif;
+    margin: 0px 0px 0px 548px;
+    padding: 40px 0px;
+
+}
+
+.home-info-titles {
+    padding: 40px 10px;
+}
+
+.game-overview {
+    min-height: 500px;
+    background-color: #2b2525;
+    text-align: center;
+    margin: 0px;
+    display: inline-block;
+    width: 100%;
+}
+
+.overview-text {
+    font-size: 25px;
+}
+
+.game-features {
+    min-height: 500px;
+    background-color: blue;
+    text-align: center;
+    margin: 0px;
+    display: inline-block;
+    width: 100%;
+}
+
+.game-download {
+    min-height: 500px;
+    background-color: yellow;
+    text-align: center;
+    margin: 0px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* footer */
+
+footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #ededed;
+    color: #A9A9A9;
+    background-color: black;
+}
+
+.fa {
+    font-size: 25px;
+}
 
 .icon-bar {
     background-color: #fff;

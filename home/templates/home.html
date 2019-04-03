@@ -1,5 +1,44 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static from staticfiles %} {% block content %}
+<div class="home-background-image">
 
-{% block content %}
-<h1>HELLO</h1>
+
+    <h1 class="welcome-to">Welcome to</h1>
+    <h1 class="nordlander-welcome">Nordlander</h1>
+
+</div>
+
+<div class="game-overview">
+    <h2 class="home-info-titles">Nordlander is an open world action rpg where you shape the world's future!</h2>
+    <p class="overview-text">The base game includes the base world of "Grim", a dark fantasy world based off brutal norse mythology, where players can:</p>
+    <ul>
+        <li>Fight using an array of weapons, from swords and bows to guns and spells</li>
+        <li>Fully customisable characters</li>
+        <li>Hours of quests and dungeons</li>
+    </ul>
+    
+    <p class="overview-text">But this is just the beginning!<br>
+    You can shape the world and your playstyle by purchasing additional "features" that can drastically change how you can play!</p>
+
+</div>
+
+<div class="game-features">
+    <h2 class="home-info-titles">There are 3 main types of features you can add to your game</h2>
+    <ul>
+        <li>New worlds</li>
+        <li>New character abilities/weapons/items</li>
+        <li>New global quests</li>
+    </ul>
+</div>
+
+<div class="game-download">
+    <h2 class="home-info-titles">Download the Nordlander base game below!</h2>
+    <p>Click on the correct download icon for your machine, click on the downloaded file and following installation instructions to install.</p>
+    <span>Windows 10</span>
+    <span>Mac OS X</span>
+    <span>Linux</span>
+
+    <p>Console development in progress, check back soon!</p>
+
+</div>
+
 {% endblock %}
