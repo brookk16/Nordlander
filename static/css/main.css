@@ -52,8 +52,7 @@ h2 {
     text-shadow: 2px 3px #691212;
     color: white;
     font-size: 60px;
-    margin: 0px 0px 0px 500px;
-    padding: 40px 0px;
+    
 }
 
 .nordlander-welcome {
@@ -61,9 +60,7 @@ h2 {
     text-shadow: 4px 5px #691212;
     color: white;
     font-family: 'NorseBold', sans-serif;
-    margin: 0px 0px 0px 548px;
-    padding: 40px 0px;
-
+    
 }
 
 .home-info-titles {
@@ -71,7 +68,7 @@ h2 {
 }
 
 .game-overview {
-    min-height: 500px;
+    min-height: 860px;
     background-color: #2b2525;
     text-align: center;
     margin: 0px;
@@ -79,9 +76,37 @@ h2 {
     width: 100%;
 }
 
+.carousel-inner>.item>img {
+    height: 500px;
+    display: unset;
+}
+
+.carousel {
+    height: 400px;
+}
+
+.left,
+.right {
+    height: 500px;
+}
+
+.carousel-control.right {
+    right: 41px;
+}
+
+.carousel-control.left {
+    left: 41px;
+}
+
 .overview-text {
     font-size: 25px;
 }
+
+.overview-text-bottom {
+    font-size: 25px;
+    margin: 132px 0px 27px 0px;
+}
+
 
 .game-features {
     min-height: 500px;
@@ -113,6 +138,7 @@ footer {
 
 .fa {
     font-size: 25px;
+    padding: 5px;
 }
 
 .icon-bar {
