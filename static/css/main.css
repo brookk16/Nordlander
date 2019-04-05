@@ -8,12 +8,20 @@
     src: url("../fonts/Norse-Bold.otf");
 }
 
+@font-face {
+    font-family: "Stempel";
+    src: url("../fonts/StempelGaramondLTStd Bold.otf");
+}
+
+
+
 body {
     font-family: Arial;
     padding-top: 55px;
     height: 100%;
     width: 100%;
     overflow-x: hidden;
+    font-family: "Stempel", sans-serif;
 }
 
 h2 {
@@ -29,11 +37,16 @@ h2 {
 
 }
 
+.navbar-default .navbar-brand {
+    color: #f5f5f5;
+}
+
 .navbar-brand {
     font-family: 'NorseBold', sans-serif;
     font-size: 30px;
     text-shadow: 3px 4px #691212;
     line-height: 25px;
+
 }
 
 /* Home */
@@ -50,21 +63,22 @@ h2 {
 .welcome-to {
     font-family: 'NorseBold', sans-serif;
     text-shadow: 2px 3px #691212;
-    color: white;
+    color: #f5f5f5;
     font-size: 60px;
-    
+
 }
 
 .nordlander-welcome {
     font-size: 105px;
     text-shadow: 4px 5px #691212;
-    color: white;
+    color: #f5f5f5;
     font-family: 'NorseBold', sans-serif;
-    
+
 }
 
 .home-info-titles {
     padding: 40px 10px;
+
 }
 
 .game-overview {
@@ -74,15 +88,22 @@ h2 {
     margin: 0px;
     display: inline-block;
     width: 100%;
+    color: #f5f5f5
 }
 
 .carousel-inner>.item>img {
     height: 500px;
-    display: unset;
+    width: 98%;
 }
 
 .carousel {
     height: 400px;
+}
+
+.carousel-caption {
+    font-size: 2.5em;
+    color: #e2e21d;
+    text-shadow: 1px 1px black;
 }
 
 .left,
@@ -91,11 +112,11 @@ h2 {
 }
 
 .carousel-control.right {
-    right: 41px;
+    right: 38px;
 }
 
 .carousel-control.left {
-    left: 41px;
+    left: 15px;
 }
 
 .overview-text {
