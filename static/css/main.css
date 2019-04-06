@@ -28,6 +28,14 @@ h2 {
     margin: 0px;
 }
 
+a {
+    color: #f5f5f5;
+}
+
+a:hover {
+    color: #691212;
+}
+
 /* Base */
 
 #main-nav {
@@ -37,17 +45,27 @@ h2 {
 
 }
 
-.navbar-default .navbar-brand {
-    color: #f5f5f5;
-}
-
 .navbar-brand {
     font-family: 'NorseBold', sans-serif;
     font-size: 30px;
     text-shadow: 3px 4px #691212;
     line-height: 25px;
+    color: #f5f5f5;
+}
+
+.navbar-brand:hover {
+    text-shadow: 3px 4px #f5f5f5;
+    color: #691212;
+    background-color: transparent;
 
 }
+
+.nav>li>a:hover {
+    color: #691212;
+    background-color: yellow;
+
+}
+
 
 /* Home */
 
@@ -77,13 +95,14 @@ h2 {
 }
 
 .home-info-titles {
+    color: #ffff52e3;
     padding: 40px 10px;
+    font-size: 45px;
 
 }
 
 .game-overview {
-    min-height: 860px;
-    background-color: #2b2525;
+    background-image: -webkit-linear-gradient(#2b2525, #000000 60%, #2b2525);
     text-align: center;
     margin: 0px;
     display: inline-block;
@@ -97,13 +116,14 @@ h2 {
 }
 
 .carousel {
-    height: 400px;
+    height: 500px;
+    margin: 50px 0px;
 }
 
 .carousel-caption {
     font-size: 2.5em;
-    color: #e2e21d;
-    text-shadow: 1px 1px black;
+    color: #f5f5f5;
+    text-shadow: 2px 2px black;
 }
 
 .left,
@@ -112,7 +132,7 @@ h2 {
 }
 
 .carousel-control.right {
-    right: 38px;
+    right: 29px;
 }
 
 .carousel-control.left {
@@ -123,28 +143,65 @@ h2 {
     font-size: 25px;
 }
 
-.overview-text-bottom {
-    font-size: 25px;
-    margin: 132px 0px 27px 0px;
-}
 
 
 .game-features {
+    background-image: url('../img/features-home-background.jpg');
     min-height: 500px;
-    background-color: blue;
     text-align: center;
     margin: 0px;
-    display: inline-block;
-    width: 100%;
+    
+}
+
+.game-features-title {
+    color: #ffff52e3;
+    padding: 40px 10px;
+    font-size: 45px;
+}
+
+.game-features-text {
+    color: #f5f5f5;
+    font-size: 25px
+}
+
+.panel-default {
+    margin: 11px 25px 0px 0px;
+}
+
+.thumbnail {
+    max-height: 397px;
+}
+
+.thumbnail>img {
+    max-height: 238px;
+    min-height: 238px;
+}
+
+.thumbnail>h3 {
+    padding: 7px 0px;
 }
 
 .game-download {
+    background-image: -webkit-linear-gradient(#2b2525, #000000 60%, #2b2525);
     min-height: 500px;
     background-color: yellow;
     text-align: center;
     margin: 0px;
-    display: inline-block;
+    color: #f5f5f5;
     width: 100%;
+}
+
+.download-links {
+    height: 200px;
+    margin: 50px;
+
+
+}
+
+.download-link {
+    text-decoration: none;
+    font-size: 35px;
+
 }
 
 /* footer */
