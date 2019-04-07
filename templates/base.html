@@ -32,12 +32,18 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}">Profile</a></li>
+                    
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    
                     {% else %}
+                    
                     <li><a href="{% url 'register' %}">Register</a></li>
+                    
                     <li><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
-                    <li><a href="{% url 'featuresAndBugs' %}">features and Bugs</a></li>
+                    
+                    <li class=""><a href="{% url 'featuresAndBugs' %}">features and Bugs</a></li>
+                    
                     <li>
                         <a href="{% url 'view_cart' %}">
                             <i class="fa fa-shipping-cart"></i>Cart

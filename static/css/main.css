@@ -13,8 +13,6 @@
     src: url("../fonts/StempelGaramondLTStd Bold.otf");
 }
 
-
-
 body {
     font-family: Arial;
     padding-top: 55px;
@@ -51,21 +49,30 @@ a:hover {
     text-shadow: 3px 4px #691212;
     line-height: 25px;
     color: #f5f5f5;
+    -webkit-transition: color 0.5s, font-size 0.5s ease-in-out;
+    transition: color 0.5s, font-size 0.5s ease-in-out;
 }
 
 .navbar-brand:hover {
     text-shadow: 3px 4px #f5f5f5;
     color: #691212;
     background-color: transparent;
+    font-size: 40px;
 
+}
+
+.nav>li>a {
+    -webkit-transition: top 0.5s, font-size 0.5s ease-in-out;
+    transition: top 0.5s, font-size 0.5s ease-in-out;
 }
 
 .nav>li>a:hover {
-    color: #691212;
-    background-color: yellow;
-
+    top: 19px;
+    background-color: transparent;
+    font-size: 25px;
+    color: #f5f5f5;
+    text-shadow: 2px 2px #691212;
 }
-
 
 /* Home */
 
@@ -107,7 +114,8 @@ a:hover {
     margin: 0px;
     display: inline-block;
     width: 100%;
-    color: #f5f5f5
+    color: #f5f5f5;
+    height: 800px;
 }
 
 .carousel-inner>.item>img {
@@ -147,10 +155,16 @@ a:hover {
 
 .game-features {
     background-image: url('../img/features-home-background.jpg');
-    min-height: 500px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 800px;
     text-align: center;
     margin: 0px;
-    
+
+
 }
 
 .game-features-title {
@@ -169,16 +183,31 @@ a:hover {
 }
 
 .thumbnail {
-    max-height: 397px;
+    min-height: 416px;
+    max-height: 416px;
+    background: url('../img/fantasy-borders.jpeg') no-repeat center;
+    border: 1px black solid;
 }
 
+
 .thumbnail>img {
-    max-height: 238px;
-    min-height: 238px;
+    min-width: 323px;
+    padding: 26px 5px 0px 5px;
+    min-height: 274px;
+    max-width: 323px;
 }
 
 .thumbnail>h3 {
     padding: 7px 0px;
+}
+
+.thumbnail .caption {
+    padding: 9px;
+    color: #f5f5f5;
+}
+
+.caption h3 {
+    padding-bottom: 27px
 }
 
 .game-download {
@@ -193,7 +222,7 @@ a:hover {
 
 .download-links {
     height: 200px;
-    margin: 50px;
+    margin: 50px 0px;
 
 
 }
