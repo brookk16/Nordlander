@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from featuresAndBugs.models import FeaturesAndBugs
+from features.models import Features
 
 
 def cart_contents(request):
@@ -14,7 +14,7 @@ def cart_contents(request):
     product_count = 0
     
     for id, quantity in cart.items():
-        product = get_object_or_404(FeaturesAndBugs, pk=id)
+        product = get_object_or_404(Features, pk=id)
         total += quantity * product.price
         product_count += quantity
         cart_items.append({'id': id, 'quantity': quantity, 'product': product})

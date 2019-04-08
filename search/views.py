@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from featuresAndBugs.models import FeaturesAndBugs
+from features.models import Features
 
 # Create your views here.
 def do_search(request):
-    featuresAndBugs = FeaturesAndBugs.objects.filter(name__icontains=request.GET['search'])
-    return render(request, "featuresAndBugs.html", {"featuresAndBugs": featuresAndBugs})
+    features = Features.objects.filter(name__icontains=request.GET['search'])
+    return render(request, "features.html", {"features": features})
