@@ -16,6 +16,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from accounts import urls as urls_accounts
 from features import urls as urls_features
+from bugs import urls as urls_bugs
 from home.views import homeMessage
 from cart import urls as urls_cart
 from search import urls as urls_search
@@ -29,6 +30,7 @@ urlpatterns = [
     url(r'^$', homeMessage, name='index'),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^features/', include(urls_features)),
+     url(r'^bugs/', include(urls_bugs)),
     url(r'^cart/', include(urls_cart)),
     url(r'^search/', include(urls_search)),
     url(r'^checkout/', include(urls_checkout)),
