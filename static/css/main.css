@@ -185,8 +185,10 @@ a:hover {
 
 .thumbnail {
     min-height: 416px;
+    min-width: 367px;
+    max-width: 367px;
     max-height: 416px;
-    background: url('../img/fantasy-borders.jpeg') no-repeat center;
+    background: url(../img/fantasy-borders.jpeg) no-repeat center;
     border: 1px black solid;
 }
 
