@@ -34,6 +34,10 @@ a:hover {
     color: #691212;
 }
 
+.fa {
+    font-size: 25px;
+}
+
 /* Base */
 
 #main-nav {
@@ -49,8 +53,8 @@ a:hover {
     text-shadow: 3px 4px #691212;
     line-height: 25px;
     color: #f5f5f5;
-    -webkit-transition: color 0.5s, font-size 0.5s ease-in-out;
-    transition: color 0.5s, font-size 0.5s ease-in-out;
+    -webkit-transition: color 0.3s, font-size 0.3s ease-in-out;
+    transition: color 0.3s, font-size 0.3s ease-in-out;
 }
 
 .navbar-brand:hover {
@@ -62,8 +66,8 @@ a:hover {
 }
 
 .nav>li>a {
-    -webkit-transition: font-size 0.5s ease-in-out;
-    transition: font-size 0.5s ease-in-out;
+    -webkit-transition: font-size 0.3s ease-in-out;
+    transition: font-size 0.3s ease-in-out;
 }
 
 .nav>li>a:hover {
@@ -71,6 +75,11 @@ a:hover {
     font-size: 25px;
     color: #f5f5f5;
     text-shadow: 2px 2px #691212;
+}
+
+.fa {
+    margin: -4px 0px 0px 0px;
+    padding: 0px;
 }
 
 /* Home */
@@ -90,7 +99,7 @@ a:hover {
     text-shadow: 2px 3px #691212;
     color: #f5f5f5;
     font-size: 60px;
-    margin-top: 100px;
+    margin-top: 66px;
 
 }
 
@@ -126,7 +135,7 @@ a:hover {
 
 .carousel {
     height: 500px;
-    margin: 50px 0px;
+    margin: 50px 0px 50px 50px;
 }
 
 .carousel-caption {
@@ -177,6 +186,10 @@ a:hover {
 .game-features-text {
     color: #f5f5f5;
     font-size: 25px
+}
+
+#home-feature-cards-spacing {
+    margin: 0px 15px;
 }
 
 .panel-default {
@@ -246,14 +259,24 @@ footer {
     background-color: black;
 }
 
-.fa {
-    font-size: 25px;
-    padding: 5px;
+
+/* Features */
+
+.features-message {
+    height: 650px;
+    background: url('../img/features-background.jpg') no-repeat center center fixed;
+
 }
 
-.icon-bar {
-    background-color: #fff;
+.jumbotron {
+    background-color: #eeeeee8f;
+    margin: 50px;
+    text-align: center;
 }
+
+
+
+
 
 .accountform {
     padding-top: 20px;
@@ -301,6 +324,3 @@ caption p {
     border: 1px solid #ddd;
 }
 
-.product-description {
-    min-height: 40px;
-}
