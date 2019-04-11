@@ -36,6 +36,8 @@ a:hover {
 
 .fa {
     font-size: 25px;
+    padding: 0px 10px;
+    margin: -4px 0px 0px 0px;
 }
 
 /* Base */
@@ -77,10 +79,6 @@ a:hover {
     text-shadow: 2px 2px #691212;
 }
 
-.fa {
-    margin: -4px 0px 0px 0px;
-    padding: 0px;
-}
 
 /* Home */
 
@@ -263,7 +261,7 @@ footer {
 /* Features */
 
 .features-message {
-    height: 650px;
+    height: 500px;
     background: url('../img/features-background.jpg') no-repeat center center fixed;
 
 }
@@ -272,9 +270,13 @@ footer {
     background-color: #eeeeee8f;
     margin: 50px;
     text-align: center;
+    font-family: 'NorseBold', sans-serif;
+    
 }
 
-
+#features-small-text {
+    font-size: 12px;
+}
 
 
 

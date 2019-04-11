@@ -5,3 +5,5 @@ from features.models import Features
 def do_search(request):
     features = Features.objects.filter(name__icontains=request.GET['search'])
     return render(request, "features.html", {"features": features})
+    
+    
