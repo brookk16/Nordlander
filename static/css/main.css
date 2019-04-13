@@ -261,14 +261,14 @@ footer {
 /* Features */
 
 .features-message {
-    height: 500px;
+    height: 400px;
     background: url('../img/features-background.jpg') no-repeat center center fixed;
 
 }
 
 .jumbotron {
     background-color: #eeeeee8f;
-    margin: 50px;
+    margin: 30px;
     text-align: center;
     font-family: 'NorseBold', sans-serif;
     
