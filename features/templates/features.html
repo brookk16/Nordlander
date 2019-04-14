@@ -9,13 +9,13 @@
     </div>
 </div>
 
-<div class="col-lg-12">
+<div class="col-lg-12 search-bar">
     <form action="{% url 'search' %}" method="get">
         <label for="search">Search by name</label>
         <input type="text" name="search" id="search">
 
-        <label for="search-select">Search by type</label>
-        <select id="search-select" name="search-select">
+        <label for="search-select-types">Search by type</label>
+        <select id="search-select-types" name="search-select-types">
             <option value="" disabled>Search by type</option>
             <option value="" default></option>
             <option value="ITEM">Items</option>
@@ -23,11 +23,20 @@
             <option value="SKILLS">Skills</option>
             <option value="QUESTS">Quests</option>
         </select>
+        
+        <label for="search-select-status">Search by status</label>
+        <select id="search-select-status" name="search-select-status">
+            <option value="" disabled>Search by status</option>
+            <option value="" default></option>
+            <option value="TODO">To do</option>
+            <option value="DOING">Doing</option>
+            <option value="AVAILABLE">Available now</option>
+        </select>
+        
+        <input type="hidden" name="Features" id="Features" value="Features">
 
         <button type="submit">Search</button>
     </form>
-
-
 </div>
 
 

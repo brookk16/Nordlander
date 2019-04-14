@@ -13,7 +13,7 @@ class Features(models.Model):
     STATUSES = {
         ("TODO", "To do"),
         ("DOING", "Doing"),
-        ("AVAILABLE", "Available now!"),
+        ("AVAILABLE", "Available"),
     }
     
     name = models.CharField(max_length=254, default='')
