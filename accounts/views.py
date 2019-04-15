@@ -14,8 +14,10 @@ def index(request):
 
 def logout(request):
     """A view that logs the user out and redirects back to the index page"""
+    
+    user = request.user
     auth.logout(request)
-    messages.success(request, 'You have successfully logged out')
+    messages.success(request, 'You have successfully logged out, goodbye {0}'.format(user))
     return redirect(reverse('index'))
 
 
@@ -29,7 +31,7 @@ def login(request):
 
             if user:
                 auth.login(request, user)
-                messages.error(request, "You have successfully logged in")
+                messages.error(request, "You have successfully logged in, welcome {0}".format(user))
 
                 if request.GET and request.GET['next'] !='':
                     next = request.GET['next']
@@ -63,7 +65,7 @@ def register(request):
 
             if user:
                 auth.login(request, user)
-                messages.success(request, "You have successfully registered")
+                messages.success(request, "You have successfully registered, welcome to Nordlander {0}".format(user))
                 return redirect(reverse('index'))
 
             else:

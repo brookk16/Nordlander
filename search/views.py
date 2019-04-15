@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from features.models import Features
+from django.contrib import messages
 
 # Create your views here.
 def do_search(request):
@@ -12,18 +13,34 @@ def do_search(request):
     
     db_features = request.GET.get('Features', None)
     
-    db_bugs = request.GET.get('bugs', None)
+    db_bugs = request.GET.get('Bugs', None)
     
-    if db_features != None and db_bugs == None:
+    """ 
+    Checks that at least one search criteria is input before submission, and sets the correct database to search (features or bugs). If not an error message is displayed and the user is redirected back to viewing all features or bugs.
+    """
+    
+    if search_name == "" and search_type == "" and search_status == "":
         
-        search_db = Features
-    
-    elif db_features == None and db_bugs != None: 
+        features = Features.objects.all()
+        messages.error(request, "You need to input at least one search criteria!")
+        render(request, "features.html", {"features": features})
         
-        search_db = Bugs
+    
+    else:
+        
+        if db_features != None and db_bugs == None:
+        
+            search_db = Features
+    
+        elif db_features == None and db_bugs != None: 
+        
+            search_db = Bugs
     
     
     
+    """
+    Searches features/bugs db for criteria input in search bar. Users can search using either name, type or status. Or a combination of all three or 2. 
+    """
     if request.method == 'GET':
         
         
@@ -63,5 +80,5 @@ def do_search(request):
 
     return render(request, "features.html", {"features": features})
     
-    request.GET.get('search-select-status', None)
+ 
     
