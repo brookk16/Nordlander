@@ -21,6 +21,10 @@ class Features(models.Model):
     type = models.CharField(choices=FEATURE_TYPES, max_length=6, default="ITEM")
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='images')
+    image_carousel1 = models.ImageField(upload_to='images', default="Photo not available")
+    image_carousel2 = models.ImageField(upload_to='images', default="Photo not available")
+    image_carousel3 = models.ImageField(upload_to='images', default="Photo not available")
+    
     likes =  models.IntegerField(default=0)
     status = models.CharField(choices=STATUSES, default="TODO", max_length=14)
 

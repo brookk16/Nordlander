@@ -44,12 +44,24 @@ a:hover {
     margin-bottom: 0px
 }
 
+.custom-button {
+    color: #f5f5f5;
+    background-color: grey;
+}
+
+.custom-button:hover {
+    color: #691212;
+    background-color: #f5f5f5;
+    border-color: #691212;
+}
+
 /* Base */
 
 #main-nav {
     background-image: -webkit-linear-gradient(#3e4142, #000000 60%, #3e4142);
     border: 1px solid #3e4142;
     min-height: 55px;
+    max-height: 55px;
 
 }
 
@@ -85,8 +97,8 @@ a:hover {
 
 .fa-shopping-cart:hover {
     font-size: 30px;
-    
-    
+
+
 }
 
 /* Home */
@@ -122,6 +134,7 @@ a:hover {
     color: #ffff52e3;
     padding: 40px 10px;
     font-size: 45px;
+    margin: 84px 0px;
 
 }
 
@@ -142,7 +155,7 @@ a:hover {
 
 .carousel {
     height: 500px;
-    margin: 50px 0px 50px 50px;
+    margin: 116px 0px 50px 50px;
 }
 
 .carousel-caption {
@@ -156,13 +169,7 @@ a:hover {
     height: 500px;
 }
 
-.carousel-control.right {
-    right: 29px;
-}
 
-.carousel-control.left {
-    left: 15px;
-}
 
 .overview-text {
     font-size: 25px;
@@ -280,12 +287,109 @@ footer {
     margin: 30px;
     text-align: center;
     font-family: 'NorseBold', sans-serif;
-    
+
 }
 
 #features-small-text {
     font-size: 12px;
 }
+
+.row-for-features {
+    height: 2000px;
+}
+
+.panel-default {
+    margin: 10px 20px;
+    border: 2px solid black;
+}
+
+.panel-body {
+   padding: 0px;
+   background-color: black;
+   
+    
+}
+
+.feature-image {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 200px;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.feature-image:hover {
+    cursor: pointer;
+}
+
+.feature-info {
+    color: #f5f5f5;
+}
+
+.like-button {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    letter-spacing: 10px;
+    margin: 20px 5px 10px 0px;
+    overflow: hidden;
+}
+
+.like-button:focus {
+    outline: none;
+}
+
+.fa-thumbs-up:hover {
+    color: #22da22;
+    text-shadow: 1px 1px white;
+}
+
+.add-button {
+    width: 25%;
+}
+
+.feature-name {
+    margin-left: 10px;
+    color: #ffff52e3;
+}
+
+.feature-status {
+    margin: 20px 0px 0px 10px;
+}
+
+.feature-price {
+    margin: 10px;
+    font-size: 20px;
+    
+}
+
+.add-button-spacing {
+    margin: 10px 0px 10px 15px;
+}
+
+.well {
+    background-color: white;
+    color: black;
+}
+
+.modal-body {
+    position: relative;
+    padding: 15px;
+    overflow: hidden;
+    height: 100%;
+    margin: -81px 24px 0px -9px;
+    
+}
+
+.modal-content {
+    background-color: black;
+    border: 1px #f5f5f5 solid;
+    
+}
+
+
+    
 
 
 /* Search bar */
@@ -304,21 +408,11 @@ select {
     font-size: 17px;
 }
 
-.search-bar input#search, input#select {
+.search-bar input#search,
+input#select {
     color: black;
 }
 
-.search-submit {
-    color: #f5f5f5;
-    background-color: grey;
-    
-}
-
-.search-submit:hover {
-    color: #691212;
-    background-color: #f5f5f5;
-    border-color: #691212;
-}
 
 .search-selector {
     margin: 0px 15px;
@@ -346,14 +440,7 @@ select {
     background-color: #c67605;
 }
 
-.product {
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
-}
+
 
 caption p {
     word-wrap: break-word;
@@ -364,14 +451,3 @@ caption p {
     flex-wrap: wrap;
     margin-top: 30px;
 }
-
-.panel-default {
-    border-color: transparent;
-    padding: 0 10px;
-}
-
-.panel-body {
-    height: 100%;
-    border: 1px solid #ddd;
-}
-
