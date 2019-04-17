@@ -1,0 +1,84 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="col-lg-2 columns"></div>
+
+<div class="col-lg-8 feature-info-container">
+
+    <h1>{{ feature.name.capitalize }}</h1>
+
+    <div class="col-lg-10 col-lg-offset-1">
+        <div id="carousel-features{{forloop.counter}}" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-features{{forloop.counter}}" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-features{{forloop.counter}}" data-slide-to="1"></li>
+                <li data-target="#carousel-features{{forloop.counter}}" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="{{ MEDIA_URL }}{{ feature.image }}" alt="first feature image">
+
+                </div>
+                <div class="item">
+                    <img src="{{ MEDIA_URL }}{{ feature.image_carousel2 }}" alt="Second feature image">
+
+                </div>
+
+                <div class="item">
+                    <img src="{{ MEDIA_URL }}{{ feature.image_carousel3 }}" alt="Third feature image">
+
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-features{{forloop.counter}}" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-features{{forloop.counter}}" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="feature-info-information col-lg-10 col-lg-offset-1">
+
+        <p class="features-info-description">{{feature.description}}</p>
+        <div class="row">
+            <p class="col-lg-5">Type: {{feature.type}}</p>
+            <p class="col-lg-5">£ {{feature.price}}</p>
+            
+            <form method="post" action="{% url 'like_feature' feature.id %}">
+                {% csrf_token %}
+                <button class="like-button col-lg-5" type="submit"><i class="fa fa-thumbs-up"></i>{{ feature.likes }}</button>
+            </form>
+            
+            <p class="col-lg-5">Status: {{feature.status}}</p>
+        </div>
+
+        {% if feature.status == "Available" %}
+        <form method="post" action="{% url 'add_to_cart' feature.id %}" class="add-button col-lg-4 pull-right">
+            {% csrf_token %}
+            <div class="input-group">
+                <button class="btn custom-button add-button-spacing" type="submit">Add to cart</button>
+            </div>
+        </form>
+
+        {% else %}
+        <form method="post" action="{% url 'add_to_cart' feature.id %}" class="add-button col-lg-4 pull-right">
+            {% csrf_token %}
+            <div class="input-group">
+                <button class="btn custom-button add-button-spacing" type="submit" disabled>Add to cart</button>
+            </div>
+        </form>
+
+        {% endif %}
+    </div>
+</div>
+<div class="col-lg-2 columns"></div>
+
+{% endblock %}

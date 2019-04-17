@@ -23,10 +23,10 @@
             <select id="search-select-types" name="search-select-types">
                 <option value="" disabled>Search by type</option>
                 <option value=""></option>
-                <option value="ITEM">Items</option>
-                <option value="WORLD">Worlds</option>
-                <option value="SKILLS">Skills</option>
-                <option value="QUESTS">Quests</option>
+                <option value="Item">Items</option>
+                <option value="World">Worlds</option>
+                <option value="Skills">Skills</option>
+                <option value="Quests">Quests</option>
             </select>
         </span>
 
@@ -35,9 +35,9 @@
             <select id="search-select-status" name="search-select-status">
                 <option value="" disabled>Search by status</option>
                 <option value=""></option>
-                <option value="TODO">To do</option>
-                <option value="DOING">Doing</option>
-                <option value="AVAILABLE">Available now</option>
+                <option value="To do">To do</option>
+                <option value="Doing">Doing</option>
+                <option value="Available">Available now</option>
             </select>
         </span>
         <input type="hidden" name="Features" id="Features" value="Features">
@@ -71,7 +71,7 @@
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner" role="listbox">
                                     <div class="item active">
-                                        <img src="{{ MEDIA_URL }}{{ feature.image_carousel1 }}" alt="first feature image">
+                                        <img src="{{ MEDIA_URL }}{{ feature.image }}" alt="first feature image">
 
                                     </div>
                                     <div class="item">
@@ -104,36 +104,23 @@
 
                 <div class="row">
 
-                    <h3 class="feature-name">{{ feature.name }}</h3>
+                    <h3 class="feature-name col-lg-12">{{ feature.name.capitalize }}</h3>
 
-                    <button class="btn custom-button col-lg-12" type="button" data-toggle="collapse" data-target="#description{{forloop.counter}}" aria-expanded="false" aria-controls="description{{forloop.counter}}">
-                        Description
-                    </button>
+                    <span class="feature-status col-lg-8">Status: {{ feature.status }}</span>
 
-                    <div class="collapse" id="description{{forloop.counter}}">
-                        <div class="well">
-                            {{ feature.description }}
-                        </div>
-                    </div>
+                    
 
+                    <p class="col-lg-5 feature-price">£{{ feature.price }}</p>
 
-                    <span class="feature-status col-lg-4">{{ feature.status }}</span>
+                    <a href="{% url 'feature_info' feature.id  %}" class="btn custom-button col-lg-5" role="button">See more</a>
 
-                    <button class="like-button col-lg-6"><i class="fa fa-thumbs-up"></i>{{ feature.likes }}</button>
-
-                    <p class="col-lg-6 feature-price">£{{ feature.price }}</p>
-
-                    <form method="post" action="{% url 'add_to_cart' feature.id %}" class="add-button col-lg-4">
-                        {% csrf_token %}
-                        <div class="input-group">
-                            <button class="btn custom-button add-button-spacing" type="submit">Add</button>
-                        </div>
-                    </form>
 
                 </div>
 
             </div>
         </div>
     </div>
-    {% endfor %} {% endblock %}
+
+    {% endfor %}
 </div>
+{% endblock %}

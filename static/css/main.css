@@ -20,6 +20,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     font-family: "Stempel", sans-serif;
+
 }
 
 h2 {
@@ -155,7 +156,7 @@ a:hover {
 
 .carousel {
     height: 500px;
-    margin: 116px 0px 50px 50px;
+    margin: 42px 50px;
 }
 
 .carousel-caption {
@@ -279,7 +280,6 @@ footer {
 .features-message {
     height: 400px;
     background: url('../img/features-background.jpg') no-repeat center center fixed;
-
 }
 
 .jumbotron {
@@ -301,20 +301,21 @@ footer {
 .panel-default {
     margin: 10px 20px;
     border: 2px solid black;
+    min-height: 282px;
+    max-height: 282px;
+    background-color: black;
 }
 
 .panel-body {
-   padding: 0px;
-   background-color: black;
-   
-    
+    padding: 0px;
 }
+
 
 .feature-image {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    height: 200px;
+    height: 278px;
     margin: 0 auto;
     padding: 0px;
 }
@@ -345,27 +346,20 @@ footer {
     text-shadow: 1px 1px white;
 }
 
-.add-button {
-    width: 25%;
-}
 
 .feature-name {
     margin-left: 10px;
     color: #ffff52e3;
+    min-height: 125px;
 }
 
 .feature-status {
-    margin: 20px 0px 0px 10px;
+    margin: 20px 0px;
 }
 
 .feature-price {
     margin: 10px;
     font-size: 20px;
-    
-}
-
-.add-button-spacing {
-    margin: 10px 0px 10px 15px;
 }
 
 .well {
@@ -379,18 +373,59 @@ footer {
     overflow: hidden;
     height: 100%;
     margin: -81px 24px 0px -9px;
-    
+
 }
 
 .modal-content {
     background-color: black;
     border: 1px #f5f5f5 solid;
-    
+
 }
 
 
-    
+/* Feature Info */
 
+.columns {
+    background: url(../img/column.png) no-repeat center border-box;
+    height: 1208px;
+    padding: 0px;
+    background-color: black;
+
+}
+
+.feature-info-container {
+    background-color: black;
+    height: 1208px;
+    text-align: center;
+    color: #f5f5f5;
+}
+
+.feature-info-container>h1 {
+    margin: 32px 10px;
+    color: #ffff52e3;
+}
+
+.feature-info-information {
+    height: 464px;
+    background: url(../img/fantasy-border2.png) no-repeat center border-box;
+    border: 1px solid black;
+    padding: 25px 79px;
+    font-size: 20px;
+    
+}
+
+.features-info-description {
+    font-size: 16px;
+    margin: 10px;
+    min-height: 254px;
+    padding: 0px 45px;
+}
+
+
+
+.add-button-spacing {
+    margin: -14px 0px 10px 15px;
+}
 
 /* Search bar */
 
