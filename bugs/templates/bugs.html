@@ -1,17 +1,17 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="col-lg-12 bugs-message">
     <div class="jumbotron">
         <h1>Bugs</h1>
         <p>
-            Adding new features takes time, but to let our users experience our latest features as soon as possible we release them as soon as we can.
-            To help users who experience any bugs we've set up our bug tracker. 
-            
-            
+            Adding new features takes time, but to let our users experience our latest features as soon as possible we release them as soon as we can. To help users who experience any bugs we've set up our bug tracker. <br> Here you can:<br> -Browse bugs
+            below to see what current issues are affecting the game <br> -Add you own bugs, so our team can deal with them as soon as possible
         </p>
 
-        
+        <p id="small-bugs-text">
+            To see how efficient we are at fixing bugs, please see our <a>Performance</a> page.
+        </p>
+
+
     </div>
 </div>
 
@@ -51,38 +51,40 @@
     </form>
 </div>
 
-<div class="row row-for-features">
+<div class="row row-for-bugs">
+
+    <div class="col-lg-2 columns"></div>
     {% for bug in bugs %}
-    <div class="col-xs-10 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xl-offset-1 display panel panel-default">
+    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 panel panel-bugs">
         <div class="panel-body row">
+            <div class="row">
 
+                <h3 class="feature-name col-lg-9 col-lg-offset-1">{{ bug.name.capitalize }}</h3>
 
-            <div class="col-lg-6 feature-info">
+                <p class="col-lg-2">{{ bug.created_date }}</p>
+            </div>
 
-                <div class="row">
+            <div class="row">
 
-                    <h3 class="feature-name col-lg-12">{{ bug.name.capitalize }}</h3>
+                <p class="col-lg-2">Type: {{ bug.type }}</p>
 
-                    <span class="feature-status col-lg-8">Status: {{ bug.status }}</span>
+                <p class="col-lg-2">Status: {{ bug.status }}</p>
 
-                   
+                <p class="col-lg-2"><i class="fa fa-eye"></i>: {{ bug.views }}</p>
 
-                    
-                    <a href="{% url 'bug_info' bug.id  %}" class="btn custom-button col-lg-5" role="button">See more</a>
-                    
-
-
-                </div>
+                <a href="{% url 'bug_info' bug.id  %}" class="btn custom-button col-lg-2" role="button">See more</a>
 
             </div>
         </div>
     </div>
-    
+
     {% empty %}
 
     <h2 class="col-lg-8 col-lg-offset-2">There are no Bugs that match your search</h2>
-    
+
     {% endfor %}
+
+    <div class="col-lg-2 columns right-column-styling"></div>
 
 </div>
 

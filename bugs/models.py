@@ -21,7 +21,7 @@ class Bugs(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField()
     created_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
-    upvotes = models.IntegerField(default=0)
+    views = models.IntegerField(default=0)
     status = models.CharField(choices=STATUSES, default="TODO", max_length=6)
     type = models.CharField(choices=BUG_TYPES, max_length=10, default="Base game")
     
