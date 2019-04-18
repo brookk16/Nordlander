@@ -290,12 +290,20 @@ footer {
 
 }
 
+
+
 #features-small-text {
     font-size: 12px;
 }
 
 .row-for-features {
-    height: 2000px;
+    min-height: 1000px;
+    background-color: #f5f5f5;
+
+}
+
+.row-for-features>h2 {
+    margin-top: 50px;
 }
 
 .panel-default {
@@ -304,6 +312,9 @@ footer {
     min-height: 282px;
     max-height: 282px;
     background-color: black;
+    -webkit-box-shadow: 7px 7px 18px 4px rgba(0, 0, 0, 0.71);
+    -moz-box-shadow: 7px 7px 18px 4px rgba(0, 0, 0, 0.71);
+    box-shadow: 7px 7px 18px 4px rgba(0, 0, 0, 0.71);
 }
 
 .panel-body {
@@ -411,7 +422,7 @@ footer {
     border: 1px solid black;
     padding: 25px 79px;
     font-size: 20px;
-    
+
 }
 
 .features-info-description {

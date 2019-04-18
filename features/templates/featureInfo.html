@@ -52,9 +52,9 @@
             <p class="col-lg-5">Type: {{feature.type}}</p>
             <p class="col-lg-5">£ {{feature.price}}</p>
             
-            <form method="post" action="{% url 'like_feature' feature.id %}">
+            <form method="get" action="{% url 'feature_info' feature.id %}">
                 {% csrf_token %}
-                <button class="like-button col-lg-5" type="submit"><i class="fa fa-thumbs-up"></i>{{ feature.likes }}</button>
+                <button class="like-button col-lg-5" type="submit" value="like" name="like"><i class="fa fa-thumbs-up"></i>{{ feature.likes }}</button>
             </form>
             
             <p class="col-lg-5">Status: {{feature.status}}</p>

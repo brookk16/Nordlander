@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Features
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 def all_features(request):
@@ -9,6 +11,8 @@ def all_features(request):
     features = Features.objects.all()
     return render(request, "features.html", {"features": features})
 
+
+@login_required
 def feature_info(request, pk):
     """
     Returns a single selected feature based on the post ID (pk) and
@@ -17,13 +21,23 @@ def feature_info(request, pk):
     """
     feature = get_object_or_404(Features, pk=pk)
     
+    current_liked = feature.user_liked
+    user = request.user
+    
+    """current_people_that_liked = feature.user_liked"""
+    
+    
+    if request.GET.get('like') == 'like':
+        
+        if user not in current_liked.all():
+        
+            feature.likes += 1
+            current_liked.add(user)
+            feature.save()
+        
+        else:
+            messages.success(request, 'You have already liked this')
+            
+    
     return render(request, "featureInfo.html", {'feature': feature}) 
 
-def like_feature(request, pk):
-    
-    feature = get_object_or_404(Features, pk=pk)
-    
-    feature.likes += 1
-    feature.save()
-    
-    return render(request, "featureInfo.html", {'feature': feature}) 
