@@ -59,24 +59,26 @@
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 center-block bugs-box">
     {% for bug in bugs %}
 
-    <div class="row panel panel-bugs">
+    <div class="row panel-bugs">
         <div class="panel-body">
             <div class="row">
 
-                <h3 class="feature-name col-lg-9 col-lg-offset-1">{{ bug.name.capitalize }}</h3>
+                <h3 class="bug-name col-lg-9">{{ bug.name.capitalize }}</h3>
 
-                <p class="col-lg-2">{{ bug.created_date }}</p>
+                <p class="col-lg-2 bug-date">{{ bug.created_date|date:'Y-m-d H:i' }}</p>
             </div>
-
+            
+            <hr style="background-color:#ffff52e3;">
+            
             <div class="row">
 
-                <p class="col-lg-2">Type: {{ bug.type }}</p>
+                <p class="col-lg-2 col-lg-offset-1">Type: {{ bug.type }}</p>
 
                 <p class="col-lg-2">Status: {{ bug.status }}</p>
 
                 <p class="col-lg-2"><i class="fa fa-eye"></i>: {{ bug.views }}</p>
 
-                <a href="{% url 'bug_info' bug.id  %}" class="btn custom-button col-lg-2" role="button">See more</a>
+                <a href="{% url 'bug_info' bug.id  %}" class="btn custom-button col-lg-2 col-lg-offset-2 button-spacing" role="button">See more</a>
 
             </div>
         </div>

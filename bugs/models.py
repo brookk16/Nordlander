@@ -11,8 +11,8 @@ class Bugs(models.Model):
     }
     
     BUG_TYPES = {
-        ("Item", "Item"),
-        ("World", "World"),
+        ("Items", "Items"),
+        ("Worlds", "Worlds"),
         ("Skills", "Skills"),
         ("Quests", "Quests"),
         ("Base game", "Base game")
@@ -22,7 +22,7 @@ class Bugs(models.Model):
     description = models.TextField()
     created_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     views = models.IntegerField(default=0)
-    status = models.CharField(choices=STATUSES, default="TODO", max_length=6)
+    status = models.CharField(choices=STATUSES, default="To do", max_length=6)
     type = models.CharField(choices=BUG_TYPES, max_length=10, default="Base game")
     
     """comments = models.ForeignKey(Comment, null=False)"""

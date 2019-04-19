@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Bugs
 from django.contrib.auth.decorators import login_required
 
+from comments.models import Comments
+from django.db.models import Q
+
 # Create your views here.
 @login_required
 def all_bugs(request):
@@ -20,13 +23,18 @@ def bug_info(request, pk):
     render it to the template 'featureInfo.html'.
     Or return a 404 error if the post is not found
     """
+    
+    
     bug = get_object_or_404(Bugs, pk=pk)
     
+    comments = Comments.objects.all()
     
-    user = request.user
+   
+        
     
-    """current_people_that_liked = feature.user_liked"""
+    """comments = Comments.objects.get(bug_id=pk).order_by('created_date').first()"""
     
+   
     
-    return render(request, "bugInfo.html", {'bug': bug}) 
+    return render(request, "bugInfo.html", {'bug': bug}, {'comments': comments}) 
 

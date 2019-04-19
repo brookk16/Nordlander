@@ -12,6 +12,8 @@ def do_search(request):
     
     search_status = request.GET.get('search-select-status', None)
     
+    search_name_value = request.GET['search']
+    
     db_features = request.GET.get('Features', None)
     
     db_bugs = request.GET.get('Bugs', None)
@@ -52,37 +54,44 @@ def do_search(request):
             
             if  search_type == "" and search_status =="":
         
-                search_db = search_db.objects.filter(name__icontains=request.GET['search'])
-                messages.error(request, "Showing results for {0}".format(search_db))
+                search_db = search_db.objects.filter(name__icontains=search_name_value)
+                messages.error(request, "Showing results for '{0}'".format(search_name_value))
         
             elif search_type != "" and search_status =="":
         
-                search_db = search_db.objects.filter(name__icontains=request.GET['search'], type=search_type)
-                messages.error(request, "Showing results for {0}, in {1}".format(search_db, search_type))
+                search_db = search_db.objects.filter(name__icontains=search_name_value, type=search_type)
+                messages.error(request, "Showing results for '{0}', in '{1}'".format(search_name_value, search_type))
             
             elif search_type == "" and search_status !="":
                 
-                search_db = search_db.objects.filter(name__icontains=request.GET['search'], status=search_status)
-                messages.error(request, "Showing results for {0}, in {1}".format(search_db, search_status))
+                search_db = search_db.objects.filter(name__icontains=search_name_value, status=search_status)
+                messages.error(request, "Showing results for '{0}', in '{1}'".format(search_name_value, search_status))
             
             elif search_type != "" and search_status !="":
                 
-                search_db = search_db.objects.filter(name__icontains=request.GET['search'],type=search_type, status=search_status)
-                
+                search_db = search_db.objects.filter(name__icontains=search_name_value,type=search_type, status=search_status)
+                messages.error(request, "Showing results for '{0}', in '{1}' and '{2}'".format(search_name_value, search_type, search_status))
+
 
         elif search_name =="":
             
             if search_type != "" and search_status =="":
                 
                 search_db = search_db.objects.filter(type=search_type)
+                messages.error(request, "Showing all results for type '{0}'".format(search_type))
+
             
             elif search_type == "" and search_status !="":
                 
                 search_db = search_db.objects.filter(status=search_status)
+                messages.error(request, "Showing all results for status '{0}'".format(search_status))
+
             
             elif search_type != "" and search_status !="":
                 
                 search_db = search_db.objects.filter(type=search_type, status=search_status)
+                messages.error(request, "Showing all results for type '{0}' and '{1}'".format(search_type, search_status))
+
 
     """
     Returns users to correct page

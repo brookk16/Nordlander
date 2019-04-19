@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 class Features(models.Model):
     
     FEATURE_TYPES = {
-        ("Item", "Item"),
-        ("World", "World"),
+        ("Items", "Item"),
+        ("Worlds", "World"),
         ("Skills", "Skills"),
         ("Quests", "Quests")
     }
@@ -20,12 +20,12 @@ class Features(models.Model):
     
     name = models.CharField(max_length=254, default='')
     description = models.TextField()
-    type = models.CharField(choices=FEATURE_TYPES, max_length=6, default="Item")
+    type = models.CharField(choices=FEATURE_TYPES, max_length=6, default="Items")
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='images')
     image_carousel2 = models.ImageField(upload_to='images', default="Photo not available")
     image_carousel3 = models.ImageField(upload_to='images', default="Photo not available")
-    likes =  models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
     user_liked = models.ManyToManyField(User)
     status = models.CharField(choices=STATUSES, default="To do", max_length=14)
     

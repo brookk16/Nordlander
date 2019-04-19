@@ -56,6 +56,7 @@ a:hover {
     border-color: #691212;
 }
 
+
 /* Base */
 
 #main-nav {
@@ -64,7 +65,7 @@ a:hover {
     min-height: 55px;
     max-height: 55px;
     font-family: 'NorseBold', sans-serif;
-    
+
 
 }
 
@@ -130,6 +131,10 @@ a:hover {
 
 .dropdown-menu>li>a {
     font-size: 17px;
+}
+
+.alert-success {
+    text-align: center;
 }
 
 /* Home */
@@ -200,13 +205,9 @@ a:hover {
     height: 500px;
 }
 
-
-
 .overview-text {
     font-size: 25px;
 }
-
-
 
 .game-features {
     background-image: url('../img/features-home-background.jpg');
@@ -335,11 +336,9 @@ footer {
     color: #691212;
 }
 
-
 .row-for-features {
     min-height: 1000px;
     background-color: #f5f5f5;
-
 }
 
 .row-for-features>h2 {
@@ -454,7 +453,7 @@ footer {
 }
 
 .feature-info-container>h1 {
-    margin: 32px 10px;
+    margin: 24px 10px;
     color: #ffff52e3;
 }
 
@@ -537,6 +536,8 @@ input#select {
     margin: 30px 59px;
     background-color: black;
     border: 5px white solid;
+    color: #f5f5f5;
+
 }
 
 .row-for-bugs {
@@ -552,13 +553,33 @@ input#select {
 .bugs-box {
     overflow-y: auto;
     height: 1208px;
+    background-color: #f5f5f5;
 }
 
+.bug-name {
+    color: #ffff52e3;
+    min-height: 70px;
+    margin-left: 13px;
+}
 
+.bug-date {
+    margin-top: 25px
+}
 
+.button-spacing {
+    margin-bottom: 10px;
+}
 
+/* Bugs info */
 
+.row-for-bug-info {
+    margin-top: 74px;
+}
 
+.row-for-comments {
+    background-color: #f5f5f5;
+    height: 500px;
+}
 
 
 

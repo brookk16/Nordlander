@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
     'home',
+    'comments',
     'django_forms_bootstrap',
 ]
 

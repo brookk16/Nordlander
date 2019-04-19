@@ -7,23 +7,47 @@
 
     <h1>{{ bug.name.capitalize }}</h1>
 
-    
+    <a href="{% url 'bugs' %}"><i class="fa fa-arrow-left pull-left "></i></a>
 
-    <div class="feature-info-information col-lg-10 col-lg-offset-1">
 
-        <p class="features-info-description">{{bug.description}}</p>
-        <div class="row">
-            <p class="col-lg-5">Type: {{bug.type}}</p>
+    <div clas="row">
+        <div class="feature-info-information col-lg-11">
+
+            <p class="features-info-description">{{bug.description}}</p>
+
+            <div class="row row-for-bug-info">
+
+                <p class="col-lg-5 col-lg-offset-1">Type: {{ bug.type }}</p>
+
+                <p class="col-lg-5">Status: {{ bug.status }}</p>
+
+                <p class="col-lg-5 col-lg-offset-1"><i class="fa fa-eye"></i>: {{ bug.views }}</p>
+
+                <p class="col-lg-5">{{ bug.created_date|date:'Y-m-d H:i' }}</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-lg-10 col-lg-offset-1 row-for-comments">
+
+            {% for comment in comments %}
+
+            <p style="color: red; font-size: 50px;">{{ comment.username }}</p>
             
+            {% empty %}
             
+            <p style="color: red; font-size: 50px;">no</p>
             
+            {% endfor %}
             
-            <p class="col-lg-5">Status: {{bug.status}}</p>
         </div>
 
-        
     </div>
+
 </div>
+
 <div class="col-lg-2 columns"></div>
 
 {% endblock %}
