@@ -64,6 +64,7 @@ a:hover {
     min-height: 55px;
     max-height: 55px;
     font-family: 'NorseBold', sans-serif;
+    
 
 }
 
@@ -436,10 +437,11 @@ footer {
 /* Feature Info */
 
 .columns {
-    background: url(../img/column.png) no-repeat center border-box;
-    height: 1208px;
+    background: url(../img/column.png) repeat center border-box;
+    min-height: 1208px;
     padding: 0px;
     background-color: black;
+    z-index: -10;
 }
 
 
@@ -523,15 +525,12 @@ input#select {
 .jumbotron p a:hover {
     color: #691212;
     cursor: pointer;
+    margin: 0px;
 }
 
 #small-bugs-text {
     margin-top: 30px;
     font-size: 24px;
-}
-
-.right-column-styling {
-    bottom: 266px;
 }
 
 .panel-bugs {
@@ -543,6 +542,23 @@ input#select {
 .row-for-bugs {
     background-color: black;
 }
+
+.no-results-bugs {
+    margin-top: 47px;
+    margin-left: 7%;
+    text-align: center;
+}
+
+.bugs-box {
+    overflow-y: auto;
+    height: 1208px;
+}
+
+
+
+
+
+
 
 
 

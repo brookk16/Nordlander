@@ -53,15 +53,18 @@ def do_search(request):
             if  search_type == "" and search_status =="":
         
                 search_db = search_db.objects.filter(name__icontains=request.GET['search'])
+                messages.error(request, "Showing results for {0}".format(search_db))
         
             elif search_type != "" and search_status =="":
         
                 search_db = search_db.objects.filter(name__icontains=request.GET['search'], type=search_type)
-                
+                messages.error(request, "Showing results for {0}, in {1}".format(search_db, search_type))
+            
             elif search_type == "" and search_status !="":
                 
                 search_db = search_db.objects.filter(name__icontains=request.GET['search'], status=search_status)
-        
+                messages.error(request, "Showing results for {0}, in {1}".format(search_db, search_status))
+            
             elif search_type != "" and search_status !="":
                 
                 search_db = search_db.objects.filter(name__icontains=request.GET['search'],type=search_type, status=search_status)

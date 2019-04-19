@@ -51,12 +51,16 @@
     </form>
 </div>
 
-<div class="row row-for-bugs">
 
-    <div class="col-lg-2 columns"></div>
+
+
+<div class="col-lg-2 col-xl-2 pull-left columns"></div>
+
+<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 center-block bugs-box">
     {% for bug in bugs %}
-    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 panel panel-bugs">
-        <div class="panel-body row">
+
+    <div class="row panel panel-bugs">
+        <div class="panel-body">
             <div class="row">
 
                 <h3 class="feature-name col-lg-9 col-lg-offset-1">{{ bug.name.capitalize }}</h3>
@@ -80,16 +84,14 @@
 
     {% empty %}
 
-    <h2 class="col-lg-8 col-lg-offset-2">There are no Bugs that match your search</h2>
+    <div class="row no-results-bugs">
+        <h2 class="col-lg-8 col-lg-offset-2 col-xl-8 col-xl-offset-2">There are no Bugs that match your search</h2>
+    </div>
 
     {% endfor %}
-
-    <div class="col-lg-2 columns right-column-styling"></div>
-
 </div>
 
-
-
+<div class="col-lg-2 col-xl-2 columns pull-right"></div>
 
 
 
