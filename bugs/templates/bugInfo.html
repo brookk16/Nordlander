@@ -30,18 +30,27 @@
     </div>
     <div class="row">
 
+
         <div class="col-lg-10 col-lg-offset-1 row-for-comments">
+
+
 
             {% for comment in comments %}
 
             <p style="color: red; font-size: 50px;">{{ comment.username }}</p>
-            
+
+            <p>{{ comment.comment }}</p>
+            <p>{{ comment.created_date }}</p>
+            <p>{{ comment.likes }}</p>
+
+
             {% empty %}
-            
+
             <p style="color: red; font-size: 50px;">no</p>
-            
+
             {% endfor %}
-            
+
+
         </div>
 
     </div>

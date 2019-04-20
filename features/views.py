@@ -21,6 +21,8 @@ def feature_info(request, pk):
     """
     feature = get_object_or_404(Features, pk=pk)
     
+   
+    
     current_liked = feature.user_liked
     user = request.user
     

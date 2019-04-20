@@ -4,10 +4,25 @@ from .models import Comments
 
 # Create your views here.
 @login_required
-def view_comments(request):
+def view_comments(request, pk):
     """
-    Returns all the bugs in the database
+    THIS DOESN'T SEEM TO DO ANYTHING
     """
+    bug = get_object_or_404(Bugs, pk=pk)
+    
+    """comments = Comments.objects.all()"""
+    
+    
+    
+   
+        
+    
     comments = Comments.objects.all()
     
-    return render(request, "bugs.html", {"comments": comments})
+    
+    
+   
+    
+    return render(request, "bugInfo.html", {'bug': bug}, {'comments': comments})
+    
+   
