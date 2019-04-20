@@ -10,12 +10,12 @@ from django.contrib.auth.models import User
 class Comments(models.Model):
     
     
-    username = models.CharField(max_length=30,default=User )
+    username = models.CharField(max_length=30,default="Anon" )
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True )
-    bug_id = models.ForeignKey(Bugs, on_delete=models.CASCADE)
+    bug_id = models.ForeignKey(Bugs, on_delete=models.CASCADE, null=True)
     comment = models.TextField()
-    created_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
-    likes = models.IntegerField(default=0)
+    created_date = models.DateTimeField(auto_now_add=True)
+    upvotes = models.IntegerField(default=0)
     
     
     

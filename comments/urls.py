@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from .views import view_comments
+from .views import add_comment
 
 urlpatterns = [
-    url(r'^$', view_comments, name='view_comments')
+    url(r'^(?P<pk>\d+)/$', add_comment, name='add_comment'),
 ]
