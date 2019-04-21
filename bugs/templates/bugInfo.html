@@ -1,6 +1,11 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% block head_js %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('tooltip').tooltip();
+    });
+</script>
+{% endblock head_js %}
 
-<!--Put in a 'back button -->
 <div class="col-lg-2 columns"></div>
 
 <div class="col-lg-8 feature-info-container">
@@ -8,6 +13,7 @@
     <h1>{{ bug.name.capitalize }}</h1>
 
     <a href="{% url 'bugs' %}"><i class="fa fa-arrow-left pull-left "></i></a>
+
 
 
     <div clas="row">
@@ -21,22 +27,31 @@
 
                 <p class="col-lg-5">Status: {{ bug.status }}</p>
 
-                <p class="col-lg-5 col-lg-offset-1"><i class="fa fa-eye"></i>: {{ bug.views }}</p>
+
+
+                <form method="get" action="{% url 'bug_info' bug.id %}" class="col-lg-5 col-lg-offset-1">
+                    {% csrf_token %}
+                    <button class="upvote-button" type="submit" value="upvote" name="upvote" data-toggle="tooltip" data-placement="top" title="How many also experienced this bug">
+                        <i class="fa fa-bug"></i> {{ bug.upvotes }}
+                    </button>
+                </form>
+
+
+
+
 
                 <p class="col-lg-5">{{ bug.created_date|date:'Y-m-d H:i' }}</p>
 
             </div>
         </div>
     </div>
+
     <div class="row">
 
+        <div class="col-lg-12">
+            <h2 class="comments-title">Comments</h2>
 
-        <div class="col-lg-10 col-lg-offset-1 row-for-comments">
-
-
-            <h3 class="comments-title">Comments</h3>
-
-            <a href="#" class="btn custom-button button-spacing pull-right" role="button" data-toggle="modal" data-target="#commentModal">Add comment</a>
+            <a href="#" class="btn custom-button button-spacing " role="button" data-toggle="modal" data-target="#commentModal">Add comment</a>
 
             <!-- Modal -->
             <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -62,6 +77,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+
+        <div class="col-lg-10 col-lg-offset-1 row-for-comments">
+
+
 
             {% for comment in comments %}
 
@@ -70,9 +91,25 @@
                     <div class="row">
 
                         <h5 class="comments-username col-lg-5 pull-left">{{ comment.user_id }}</h5>
-                        
 
-                        <p class="col-lg-2 center-block"><i class="fa fa-bug"></i> {{ comment.upvotes }}</p>
+
+
+                        <span class="col-lg-4 center-block bug-upvotes-display">
+                            
+                           
+                        
+                            <form method="get" action="{% url 'like_comment' comment.id %}">
+                                {% csrf_token %}
+                                <button class="like-button" type="submit" value="like" name="like">
+                                    <i class="fa fa-thumbs-up"></i> {{ comment.upvotes }}
+                                </button>
+                            </form>
+                        
+                        
+                        
+                        
+                        </span>
+
 
                         <p class="col-lg-3 comment-date pull-right">{{ comment.created_date|date:'d-m-Y H:i' }}</p>
                     </div>
@@ -82,9 +119,6 @@
                     <div class="row">
 
                         <p class="col-lg-12 comment-comment">{{ comment.comment }}</p>
-                        
-                        <p>{{ comment.user_id }}</p>
-                        <p>{{ comment.bug_id }}</p>
 
                     </div>
                 </div>

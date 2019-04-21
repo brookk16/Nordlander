@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Bugs(models.Model):
@@ -21,11 +23,11 @@ class Bugs(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField()
     created_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
-    views = models.IntegerField(default=0)
+    upvotes = models.IntegerField(default=0)
     status = models.CharField(choices=STATUSES, default="To do", max_length=6)
     type = models.CharField(choices=BUG_TYPES, max_length=10, default="Base game")
+    user_upvoted = models.ManyToManyField(User)
     
-    """comments = models.ForeignKey(Comment, null=False)"""
     
     
 

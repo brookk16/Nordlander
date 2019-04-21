@@ -25,10 +25,7 @@ def feature_info(request, pk):
     
     current_liked = feature.user_liked
     user = request.user
-    
-    """current_people_that_liked = feature.user_liked"""
-    
-    
+
     if request.GET.get('like') == 'like':
         
         if user not in current_liked.all():

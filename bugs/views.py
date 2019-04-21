@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Bugs
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from comments.models import Comments
 
@@ -34,9 +35,25 @@ def bug_info(request, pk):
     """
     bug = get_object_or_404(Bugs, pk=pk)
     
-    comments = Comments.objects.filter(bug_id=pk)
+    comments = Comments.objects.filter(bug_id=pk).order_by("-created_date")
+    
+    current_upvote = bug.user_upvoted
+    user = request.user
     
     
+    
+    
+    if request.GET.get('upvote') == 'upvote':
+        
+        if user not in current_upvote.all():
+        
+            bug.upvotes += 1
+            current_upvote.add(user)
+            bug.save()
+        
+        else:
+            messages.success(request, 'You have already upvoted this')
+            
     
     return render(request, "bugInfo.html", {'comments': comments, 'bug': bug}) 
 
