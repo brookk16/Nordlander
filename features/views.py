@@ -25,6 +25,8 @@ def feature_info(request, pk):
     
     current_liked = feature.user_liked
     user = request.user
+    
+    
 
     if request.GET.get('like') == 'like':
         

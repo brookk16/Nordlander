@@ -65,7 +65,7 @@
 
                 <h3 class="bug-name col-lg-9">{{ bug.name.capitalize }}</h3>
 
-                <p class="col-lg-2 bug-date">{{ bug.created_date|date:'Y-m-d H:i' }}</p>
+                <p class="col-lg-2 bug-date">{{ bug.created_date|date:'d-m-Y H:i' }}</p>
             </div>
             
             <hr style="background-color:#ffff52e3;">
@@ -76,7 +76,7 @@
 
                 <p class="col-lg-2">Status: {{ bug.status }}</p>
 
-                <p class="col-lg-2"><i class="fa fa-eye"></i>: {{ bug.views }}</p>
+                <p class="col-lg-2"><i class="fa fa-bug"></i>: {{ bug.upvotes }}</p>
 
                 <a href="{% url 'bug_info' bug.id  %}" class="btn custom-button col-lg-2 col-lg-offset-2 button-spacing" role="button">See more</a>
 

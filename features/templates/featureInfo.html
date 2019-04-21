@@ -5,12 +5,12 @@
 <div class="col-lg-8 feature-info-container">
 
     <h1>{{ feature.name.capitalize }}</h1>
-    
-   
-    <a href="{% url 'features' %}"><i class="fa fa-arrow-left pull-left "></i></a>
-    
 
-    <div class="col-lg-10 col-lg-offset-1">
+
+    <a href="{% url 'features' %}"><i class="fa fa-arrow-left pull-left "></i></a>
+
+
+    <div class="col-lg-9 col-lg-offset-1">
         <div id="carousel-features{{forloop.counter}}" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -55,10 +55,13 @@
             <p class="col-lg-5">Type: {{feature.type}}</p>
             <p class="col-lg-5">£ {{feature.price}}</p>
 
+
             <form method="get" action="{% url 'feature_info' feature.id %}">
                 {% csrf_token %}
                 <button class="like-button col-lg-5" type="submit" value="like" name="like"><i class="fa fa-thumbs-up"></i>{{ feature.likes }}</button>
             </form>
+
+
 
             <p class="col-lg-5">Status: {{feature.status}}</p>
         </div>

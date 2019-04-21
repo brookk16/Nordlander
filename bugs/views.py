@@ -15,7 +15,7 @@ def all_bugs(request):
     """
     Returns all the bugs in the database
     """
-    bugs = Bugs.objects.all()
+    bugs = Bugs.objects.all().order_by("-created_date")
     
     
     
@@ -56,4 +56,5 @@ def bug_info(request, pk):
             
     
     return render(request, "bugInfo.html", {'comments': comments, 'bug': bug}) 
+
 

@@ -31,7 +31,7 @@
 
                 <form method="get" action="{% url 'bug_info' bug.id %}" class="col-lg-5 col-lg-offset-1">
                     {% csrf_token %}
-                    <button class="upvote-button" type="submit" value="upvote" name="upvote" data-toggle="tooltip" data-placement="top" title="How many also experienced this bug">
+                    <button class="upvote-button" type="submit" value="upvote" name="upvote" data-toggle="tooltip" sdata-placement="top" title="How many also experienced this bug">
                         <i class="fa fa-bug"></i> {{ bug.upvotes }}
                     </button>
                 </form>
@@ -40,7 +40,7 @@
 
 
 
-                <p class="col-lg-5">{{ bug.created_date|date:'Y-m-d H:i' }}</p>
+                <p class="col-lg-5">{{ bug.created_date|date:'d-m-Y H:i' }}</p>
 
             </div>
         </div>
@@ -57,22 +57,19 @@
             <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Add comment</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" action="{% url 'add_comment' bug.id %}" id="add_comment" name="add_comment">
-                                {% csrf_token %}
 
 
-                                <label for="add_comment">Add comment</label>
-                                <textarea type="text" name="new-comment" id="new-comment"></textarea>
+                        <form method="post" action="{% url 'add_comment' bug.id %}" id="add_comment" name="add_comment">
+                            {% csrf_token %}
 
 
-                                <button type="submit" class="btn btn-info">Save</button>
-                            </form>
-                        </div>
+                            <label for="new_comment" hidden>Add comment</label>
+                            <textarea type="text" name="new-comment" id="new-comment"></textarea>
+
+
+                            <button type="submit" class="btn btn-info">Save</button>
+                        </form>
+
 
                     </div>
                 </div>
@@ -94,21 +91,6 @@
 
 
 
-                        <span class="col-lg-4 center-block bug-upvotes-display">
-                            
-                           
-                        
-                            <form method="get" action="{% url 'like_comment' comment.id %}">
-                                {% csrf_token %}
-                                <button class="like-button" type="submit" value="like" name="like">
-                                    <i class="fa fa-thumbs-up"></i> {{ comment.upvotes }}
-                                </button>
-                            </form>
-                        
-                        
-                        
-                        
-                        </span>
 
 
                         <p class="col-lg-3 comment-date pull-right">{{ comment.created_date|date:'d-m-Y H:i' }}</p>
@@ -127,7 +109,7 @@
 
             {% empty %}
 
-            <p style="color: red; font-size: 50px;">no</p>
+            <p class="no-comments">There are no comments at the momment</p>
 
             {% endfor %}
 

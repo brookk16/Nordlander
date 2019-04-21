@@ -36,6 +36,16 @@
 
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
 
+                    <li class="">
+                        <button class="dropdown-toggle support-dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Support
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li class=""><a href="{% url 'bugs' %}">Bugs</a></li>
+                            <li class=""><a href="#">Performance</a></li>
+                        </ul>
+                    </li>
+
                     {% else %}
 
                     <li><a href="{% url 'register' %}">Register</a></li>
@@ -44,19 +54,6 @@
                     {% endif %}
 
                     <li class=""><a href="{% url 'features' %}">Features</a></li>
-
-                    <li class="">
-                        <button class="dropdown-toggle support-dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            
-                            Support
-                            
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li class=""><a href="{% url 'bugs' %}">Bugs</a></li>
-                            <li class=""><a href="#">Performance</a></li>
-                        </ul>
-                    </li>
-
 
                     <li>
                         <a href="{% url 'view_cart' %}">
@@ -101,9 +98,7 @@
 
 <script>
     $(document).ready(function() {
-        $(document).ready(function() {
-            $(".messages").effect("pulsate", { times: 3 }, 3000);
-        });
+        $(".messages").effect("pulsate", { times: 3 }, 3000);
     });
 </script>
 
