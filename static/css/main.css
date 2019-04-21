@@ -56,6 +56,9 @@ a:hover {
     border-color: #691212;
 }
 
+input {
+    color: black;
+}
 
 /* Base */
 
@@ -316,6 +319,74 @@ footer {
     border-top: 1px solid #ededed;
     background-image: -webkit-linear-gradient(#3e4142, #000000 60%, #3e4142);
     color: #f5f5f5;
+}
+
+/* Login */
+
+.login-styling {
+    background-color: black; 
+    height: 690px;
+}
+
+.login-container {
+    height: 464px;
+    background: url(../img/fantasy-border2.png) no-repeat center border-box;
+    border: 1px solid black;
+    padding: 25px 79px;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+.login-legend {
+    color: #ffff52e3;
+}
+
+.accountform>fieldset {
+    color: #f5f5f5;
+}
+
+/* Reset */
+
+.reset-styling {
+    background-color: black; 
+    height: 690px;
+}
+
+.reset-container {
+    height: 464px;
+    background: url(../img/fantasy-border2.png) no-repeat center border-box;
+    border: 1px solid black;
+    padding: 25px 79px;
+    font-size: 20px;
+    margin-top: 50px;
+    color: #f5f5f5;
+    text-align: center;
+}
+
+.reset-container .center-block {
+    margin-top: 60px;
+}
+.reset-password-button {
+    margin-top: 60px;
+}
+
+#id_new_password2, #id_new_password1 {
+    margin: 20px;
+}
+
+.register-container {
+    height: 464px;
+    background: url(../img/fantasy-border2.png) no-repeat center border-box;
+    border: 1px solid black;
+    padding: 19px 60px 0px 57px;
+    font-size: 12px;
+    margin-top: 50px;
+    color: #f5f5f5;
+    text-align: center;
+}
+
+.register-title {
+    color: #ffff52e3;
 }
 
 
@@ -664,9 +735,6 @@ input#select {
 
 
 
-.accountform {
-    padding-top: 20px;
-}
 
 .badge {
     padding-left: 9px;
@@ -692,4 +760,10 @@ caption p {
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
+}
+
+@media (min-width: 1200px) {
+    .col-lg-5 {
+        float: none;
+    }
 }
