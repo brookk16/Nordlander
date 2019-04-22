@@ -32,17 +32,27 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
-
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
 
                     <li class="">
                         <button class="dropdown-toggle support-dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Support
+                            Profile
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li class=""><a href="{% url 'profile' %}">{{ user.username }}'s profile</a></li>
+                            <li class=""><a href="#">MY Features</a></li>
+                            <li class=""><a href="#">MY upvoted BUGS</a></li>
+                            <hr style="width: 70%">
+                            <li><a href="{% url 'logout' %}">Log Out</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <button class="dropdown-toggle support-dropdown" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Support
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <li class=""><a href="{% url 'bugs' %}">Bugs</a></li>
-                            <li class=""><a href="#">Performance</a></li>
+                            <li class=""><a href="{% url 'show_performance' %}">Performance</a></li>
                         </ul>
                     </li>
 

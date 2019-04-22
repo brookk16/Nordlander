@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'checkout',
     'home',
     'comments',
+    'performance',
     'django_forms_bootstrap',
 ]
 

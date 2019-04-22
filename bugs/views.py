@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from .models import Bugs
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from bugs.forms import AddBugForm
 from comments.models import Comments
 
 
@@ -17,9 +17,9 @@ def all_bugs(request):
     """
     bugs = Bugs.objects.all().order_by("-created_date")
     
+    add_bug_form = AddBugForm()
     
-    
-    return render(request, "bugs.html", {"bugs": bugs})
+    return render(request, "bugs.html", {"bugs": bugs, "add_bug_form": add_bug_form})
     
 
 @login_required
@@ -42,7 +42,6 @@ def bug_info(request, pk):
     
     
     
-    
     if request.GET.get('upvote') == 'upvote':
         
         if user not in current_upvote.all():
@@ -58,3 +57,19 @@ def bug_info(request, pk):
     return render(request, "bugInfo.html", {'comments': comments, 'bug': bug}) 
 
 
+def add_bug(request): 
+    
+    
+    if request.method == 'POST':
+        
+        user_form = AddBugForm(request.POST)
+        
+        if user_form.is_valid():
+            
+            user_form.save()
+            
+        else:
+            
+            user_form = AddBugForm()
+    
+    return redirect(reverse('bugs'))

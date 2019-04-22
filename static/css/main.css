@@ -155,6 +155,10 @@ input {
 
 /* Home */
 
+#remove-float {
+    float: left;
+}
+
 .home-background-image {
     background: url('../img/green_landscape.png') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -728,8 +732,46 @@ input#select {
     margin: 21px;
 }
 
+/* Performance */
 
+.performance-panel1 {
+    height: 700px;
+    background-color: blue;
+}
 
+.performance-panel2 {
+    height: 700px;
+    background-color: green;
+}
+
+.performance-panel3 {
+    height: 700px;
+    background-color: red;
+}
+
+.performance-panel4 {
+    height: 700px;
+    background-color: yellow;
+}
+
+.performance-panel5 {
+    height: 700px;
+    background-color: grey;
+}
+
+.performance-panel6 {
+    height: 700px;
+    background-color: white;
+}
+
+.performance-message {
+    background-image: url('../img/performance-background.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-size: 22px;
+}
 
 
 
@@ -761,9 +803,10 @@ caption p {
     flex-wrap: wrap;
     margin-top: 30px;
 }
-
+/*
 @media (min-width: 1200px) {
     .col-lg-5 {
         float: none;
     }
 }
+*/

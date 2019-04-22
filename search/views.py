@@ -2,6 +2,7 @@ from django.shortcuts import render
 from features.models import Features
 from bugs.models import Bugs
 from django.contrib import messages
+from bugs.forms import AddBugForm
 
 # Create your views here.
 def do_search(request):
@@ -17,6 +18,8 @@ def do_search(request):
     db_features = request.GET.get('Features', None)
     
     db_bugs = request.GET.get('Bugs', None)
+    
+    
     
   
     
@@ -104,8 +107,9 @@ def do_search(request):
     
     elif db_features == None and db_bugs != None: 
             
+        add_bug_form = AddBugForm()
         search_db == Bugs
-        return render(request, "bugs.html", {"bugs": search_db})
+        return render(request, "bugs.html", {"bugs": search_db, "add_bug_form": add_bug_form})
     
     
     
