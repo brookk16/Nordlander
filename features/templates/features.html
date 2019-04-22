@@ -4,8 +4,7 @@
 <div class="col-lg-12 features-message">
     <div class="jumbotron">
         <h1>Features</h1>
-        <p>Here you can browse and purchase our features to customise your game <br> Search for a feature by name, or choose to refine results using the choices below <br>
-        To find out more about a feature, and to purchase, click on the "see more" button.
+        <p>Here you can browse and purchase our features to customise your game <br> Search for a feature by name, or choose to refine results using the choices below <br> To find out more about a feature, and to purchase, click on the "see more" button.
         </p>
 
         <p id="features-small-text">*You will require the base game to start using features, to download click <a href="/">here</a>*</p>
@@ -47,84 +46,90 @@
     </form>
 </div>
 
+<div class="col-lg-12">
+    <div class="row row-for-features">
+        {% for feature in features %}
+        <div class="col-xs-10 col-sm-6 col-md-4 col-lg-5 col-xl-5 display panel panel-default">
+            <div class="panel-body row">
 
-<div class="row row-for-features">
-    {% for feature in features %}
-    <div class="col-xs-10 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xl-offset-1 display panel panel-default">
-        <div class="panel-body row">
+                <div type="button" data-toggle="modal" data-target="#modal{{forloop.counter}}" class="feature-image col-lg-6" style="background-image: url('{{ MEDIA_URL }}{{ feature.image }}')"></div>
 
-            <div type="button" data-toggle="modal" data-target="#modal{{forloop.counter}}" class="feature-image col-lg-6" style="background-image: url('{{ MEDIA_URL }}{{ feature.image }}')"></div>
+                <!-- Modal -->
+                <div class="modal fade" id="modal{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body-features">
 
-            <!-- Modal -->
-            <div class="modal fade" id="modal{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
+                                <div id="carousel-features{{forloop.counter}}" class="carousel slide" data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carousel-features{{forloop.counter}}" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-features{{forloop.counter}}" data-slide-to="1"></li>
+                                        <li data-target="#carousel-features{{forloop.counter}}" data-slide-to="2"></li>
+                                    </ol>
 
-                            <div id="carousel-features{{forloop.counter}}" class="carousel slide" data-ride="carousel">
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-features{{forloop.counter}}" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel-features{{forloop.counter}}" data-slide-to="1"></li>
-                                    <li data-target="#carousel-features{{forloop.counter}}" data-slide-to="2"></li>
-                                </ol>
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <img src="{{ MEDIA_URL }}{{ feature.image }}" alt="first feature image">
 
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="item active">
-                                        <img src="{{ MEDIA_URL }}{{ feature.image }}" alt="first feature image">
+                                        </div>
+                                        <div class="item">
+                                            <img src="{{ MEDIA_URL }}{{ feature.image_carousel2 }}" alt="Second feature image">
 
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="{{ MEDIA_URL }}{{ feature.image_carousel3 }}" alt="Third feature image">
+
+                                        </div>
                                     </div>
-                                    <div class="item">
-                                        <img src="{{ MEDIA_URL }}{{ feature.image_carousel2 }}" alt="Second feature image">
 
-                                    </div>
-
-                                    <div class="item">
-                                        <img src="{{ MEDIA_URL }}{{ feature.image_carousel3 }}" alt="Third feature image">
-
-                                    </div>
-                                </div>
-
-                                <!-- Controls -->
-                                <a class="left carousel-control" href="#carousel-features{{forloop.counter}}" role="button" data-slide="prev">
+                                    <!-- Controls -->
+                                    <a class="left carousel-control" href="#carousel-features{{forloop.counter}}" role="button" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
-                                <a class="right carousel-control" href="#carousel-features{{forloop.counter}}" role="button" data-slide="next">
+                                    <a class="right carousel-control" href="#carousel-features{{forloop.counter}}" role="button" data-slide="next">
                                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-6 feature-info">
+                <div class="col-lg-6 feature-info">
 
-                <div class="row">
+                    <div class="row">
 
-                    <h3 class="feature-name col-lg-12">{{ feature.name.capitalize }}</h3>
+                        <h3 class="feature-name col-lg-12">{{ feature.name.capitalize }}</h3>
+                    </div>
 
-                    <span class="feature-status col-lg-8">Status: {{ feature.status }}</span>
+                    <div class="row">
+                        
+                        <span class="feature-status col-lg-6 pull-left">Status: {{ feature.status }}</span>
 
-                    <p class="col-lg-5 feature-price">£{{ feature.price }}</p>
+                        <p class="col-lg-4 feature-price pull-right">£{{ feature.price }}</p>
 
-                    <a href="{% url 'feature_info' feature.id  %}" class="btn custom-button col-lg-5" role="button">See more</a>
+                        <span class="col-lg-7 pull-left"><i class="fa fa-thumbs-up"></i>{{ feature.likes }}</span>
 
+                        <a href="{% url 'feature_info' feature.id  %}" class="btn custom-button col-lg-4" role="button">See more</a>
+
+
+                    </div>
 
                 </div>
-
             </div>
         </div>
+
+        {% empty %}
+
+        <h2 class="col-lg-8 col-lg-offset-2">There are no features that match your search</h2>
+
+        {% endfor %}
+
     </div>
-    
-    {% empty %}
-
-    <h2 class="col-lg-8 col-lg-offset-2">There are no features that match your search</h2>
-    
-    {% endfor %}
-
 </div>
 {% endblock %}

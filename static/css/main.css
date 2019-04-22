@@ -60,7 +60,15 @@ input {
     color: black;
 }
 
-/* Base */
+.modal-body {
+    position: relative;
+    padding: 15px;
+    overflow: hidden;
+    height: 100%;
+    margin: -81px 24px 0px -9px;
+}
+
+/* ----------------------Base---------------------- */
 
 #main-nav {
     background-image: -webkit-linear-gradient(#3e4142, #000000 60%, #3e4142);
@@ -153,7 +161,7 @@ input {
     color: #691212;
 }
 
-/* Home */
+/* ----------------------Home---------------------- */
 
 #remove-float {
     float: left;
@@ -315,7 +323,7 @@ input {
 
 }
 
-/* footer */
+/* ----------------------footer---------------------- */
 
 footer {
     padding-top: 20px;
@@ -325,10 +333,10 @@ footer {
     color: #f5f5f5;
 }
 
-/* Login */
+/* ----------------------Login---------------------- */
 
 .login-styling {
-    background-color: black; 
+    background-color: black;
     height: 690px;
 }
 
@@ -352,7 +360,7 @@ footer {
 /* Reset */
 
 .reset-styling {
-    background-color: black; 
+    background-color: black;
     height: 690px;
 }
 
@@ -370,11 +378,13 @@ footer {
 .reset-container .center-block {
     margin-top: 60px;
 }
+
 .reset-password-button {
     margin-top: 60px;
 }
 
-#id_new_password2, #id_new_password1 {
+#id_new_password2,
+#id_new_password1 {
     margin: 20px;
 }
 
@@ -394,7 +404,7 @@ footer {
 }
 
 
-/* Features */
+/* ----------------------Features---------------------- */
 
 .features-message {
     height: 100%;
@@ -466,24 +476,6 @@ footer {
     color: #f5f5f5;
 }
 
-.like-button {
-    background-color: transparent;
-    text-decoration: none;
-    border: none;
-    letter-spacing: 10px;
-    margin: 20px 5px 10px 0px;
-    overflow: hidden;
-}
-
-.like-button:focus {
-    outline: none;
-}
-
-.fa-thumbs-up:hover {
-    color: #22da22;
-    text-shadow: 1px 1px white;
-}
-
 
 .feature-name {
     margin-left: 10px;
@@ -496,7 +488,7 @@ footer {
 }
 
 .feature-price {
-    margin: 10px;
+    margin: 17px 0px 0px 0px;
     font-size: 20px;
 }
 
@@ -505,12 +497,12 @@ footer {
     color: black;
 }
 
-.modal-body {
+.modal-body-features {
     position: relative;
     padding: 15px;
     overflow: hidden;
     height: 100%;
-    margin: -81px 24px 0px -9px;
+
 
 }
 
@@ -521,7 +513,7 @@ footer {
 }
 
 
-/* Feature Info */
+/* ----------------------Feature Info---------------------- */
 
 .columns {
     background: url(../img/column.png) repeat center border-box;
@@ -561,6 +553,23 @@ footer {
     padding: 0px 90px;
 }
 
+.like-button {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    letter-spacing: 10px;
+    margin: 20px 5px 10px 0px;
+    overflow: hidden;
+}
+
+.like-button:focus {
+    outline: none;
+}
+
+.fa-thumbs-up:hover {
+    color: #22da22;
+    text-shadow: 1px 1px white;
+}
 
 
 .add-button-spacing {
@@ -594,7 +603,7 @@ input#select {
 }
 
 
-/* Bugs */
+/* ----------------------Bugs---------------------- */
 
 .bugs-message {
     background-image: url('../img/bugs-background.jpg');
@@ -658,7 +667,7 @@ input#select {
     margin-bottom: 10px;
 }
 
-/* Bugs info */
+/* ----------------------Bugs info---------------------- */
 
 .row-for-bug-info {
     margin-top: 74px;
@@ -803,10 +812,3 @@ caption p {
     flex-wrap: wrap;
     margin-top: 30px;
 }
-/*
-@media (min-width: 1200px) {
-    .col-lg-5 {
-        float: none;
-    }
-}
-*/

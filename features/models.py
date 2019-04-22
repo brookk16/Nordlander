@@ -25,7 +25,7 @@ class Features(models.Model):
     image_carousel2 = models.ImageField(upload_to='images', default="Photo not available")
     image_carousel3 = models.ImageField(upload_to='images', default="Photo not available")
     likes = models.IntegerField(default=0)
-    user_liked = models.ManyToManyField(User)
+    user_liked = models.ManyToManyField(User, default=User)
     status = models.CharField(choices=STATUSES, default="To do", max_length=14)
     
     def __str__(self):
