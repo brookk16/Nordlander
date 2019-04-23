@@ -114,9 +114,11 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.CaseInsensitiveAuth',
+    'accounts.backends.EmailAuth',
     
     
 ]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -160,4 +162,5 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
