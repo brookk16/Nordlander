@@ -1,24 +1,25 @@
 from django.shortcuts import render
 from features.models import Features
+from bugs.models import Bugs
 
 # Create your views here.
 def show_performance(request):
-    """A view that displays the index page"""
     
     """
-    NEED TO TEST: should return top 5 features based on likes
+    Returns top 5 features based on likes
     """
-    top_scores = (Features.objects
-                     .order_by('-likes')
-                     .values_list('likes', flat=True)
-                     .distinct())
-    top_records = (myModel.objects
-                      .order_by('-likes')
-                      .filter(score__in=top_scores[:5]))
+    top_scores_features = Features.objects.order_by('-likes').values_list('likes', flat=True).distinct()
+    top_features = Features.objects.order_by('-likes').filter(likes__in=top_scores_features)[:5]
+    
+    """
+    Returns top 5 bugs based on upvotes
+    """
+    top_scores_bugs = Bugs.objects.order_by('-upvotes').values_list('upvotes', flat=True).distinct()
+    top_bugs = Bugs.objects.order_by('-upvotes').filter(upvotes__in=top_scores_bugs)[:5]
     
     
-    print(top_records)
     
     
     
-    return render(request, "performance.html")
+    
+    return render(request, "performance.html", {'top_features': top_features, 'top_bugs': top_bugs})

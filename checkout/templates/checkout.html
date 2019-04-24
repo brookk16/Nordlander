@@ -4,7 +4,7 @@
 
 {% block head_js %}
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript" src="">
+<script type="text/javascript">
     //<![CDATA[
         Stripe.publishableKey = '{{ publishable }}';
     //]]>
@@ -21,9 +21,9 @@
 
                 <div class="caption">
                     <h3>{{ item.product.name }}</h3>
-                    <p class="product-description">{{ item.product.descriptio }}</p>
+                    <p class="product-description">{{ item.product.description }}</p>
                     <p>{{ item.quantity }}</p>
-                    <p>item.product.price</p>
+                    <p>{{ item.product.price }}</p>
                 </div>
             </div>
         </div>

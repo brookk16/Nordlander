@@ -446,8 +446,6 @@ footer {
 .panel-default {
     margin: 10px 20px;
     border: 2px solid black;
-    min-height: 282px;
-    max-height: 282px;
     background-color: black;
     -webkit-box-shadow: 7px 7px 18px 4px rgba(0, 0, 0, 0.71);
     -moz-box-shadow: 7px 7px 18px 4px rgba(0, 0, 0, 0.71);
@@ -475,7 +473,6 @@ footer {
 .feature-info {
     color: #f5f5f5;
 }
-
 
 .feature-name {
     margin-left: 10px;
@@ -512,6 +509,9 @@ footer {
 
 }
 
+.search-selector label {
+    margin: 12px 0px;
+}
 
 /* ----------------------Feature Info---------------------- */
 
@@ -584,6 +584,9 @@ footer {
     padding: 12px;
     font-family: "Stempel", sans-serif;
     font-size: 17px;
+    margin: 0px;
+    border: none;
+    border-radius: 0px;
 }
 
 select {
@@ -812,4 +815,15 @@ caption p {
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
+}
+
+
+
+
+/* ------------Media Queries---------------*/
+
+@media (max-width: 981px) and (min-width: 800px)  {
+  #search-select-types {
+    margin-right: 155px;
+  }
 }

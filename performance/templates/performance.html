@@ -25,7 +25,20 @@
     
     <h1>Top 5 features by user likes</h1>
     
+    {% for feature in top_features %}
     
+    <p style="color: red;">{{ feature }}  {{feature.likes}}</p>
+    
+    {% endfor %}
+    
+    
+    <h1>Top 5 Bugs by user upvotes</h1>
+    
+    {% for bug in top_bugs %}
+    
+    <p style="color: yellow;">{{ bug }} {{bug.upvotes}}</p>
+    
+    {% endfor %}
 
 
 </div>

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<div class="col-lg-12 features-message">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 features-message">
     <div class="jumbotron">
         <h1>Features</h1>
         <p>Here you can browse and purchase our features to customise your game <br> Search for a feature by name, or choose to refine results using the choices below <br> To find out more about a feature, and to purchase, click on the "see more" button.
@@ -11,48 +11,78 @@
     </div>
 </div>
 
-<div class="col-lg-12 search-bar">
-    <form action="{% url 'search' %}" method="get" name="search-form">
-        <span class="search-selector">
-            <label for="search">Search by name</label>
-            <input type="text" name="search" id="search">
-        </span>
 
-        <span class="search-selector">
-            <label for="search-select-types">Search by type</label>
-            <select id="search-select-types" name="search-select-types">
-                <option value="" disabled>Search by type</option>
-                <option value=""></option>
-                <option value="Items">Items</option>
-                <option value="Worlds">Worlds</option>
-                <option value="Skills">Skills</option>
-                <option value="Quests">Quests</option>
-            </select>
-        </span>
 
-        <span class="search-selector">
-            <label for="search-select-status">Search by status</label>
-            <select id="search-select-status" name="search-select-status">
-                <option value="" disabled>Search by status</option>
-                <option value=""></option>
-                <option value="To do">To do</option>
-                <option value="Doing">Doing</option>
-                <option value="Available">Available now</option>
-            </select>
-        </span>
-        <input type="hidden" name="Features" id="Features" value="Features">
 
-        <button type="submit" class="custom-button">Search</button>
-    </form>
-</div>
 
-<div class="col-lg-12">
+<nav class="navbar navbar-default col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 search-bar">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            
+            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+               <i class="fa fa-search"></i>
+            </button>
+      
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <form action="{% url 'search' %}" method="get" name="search-form" class="row">
+
+                <span class="search-selector ">
+                    <label for="search">Search by name</label>
+                    <input type="text" name="search" id="search">
+                </span>
+
+                <span class="search-selector ">
+                    <label for="search-select-types">Search by type</label>
+                    <select id="search-select-types" name="search-select-types">
+                        <option value="" disabled>Search by type</option>
+                        <option value=""></option>
+                        <option value="Items">Items</option>
+                        <option value="Worlds">Worlds</option>
+                        <option value="Skills">Skills</option>
+                        <option value="Quests">Quests</option>
+                    </select>
+                </span>
+
+                <span class="search-selector ">
+                    <label for="search-select-status">Search by status</label>
+                    <select id="search-select-status" name="search-select-status">
+                        <option value="" disabled>Search by status</option>
+                        <option value=""></option>
+                        <option value="To do">To do</option>
+                        <option value="Doing">Doing</option>
+                        <option value="Available">Available now</option>
+                    </select>
+                </span>
+                
+                <input type="hidden" name="Features" id="Features" value="Features">
+                
+                <span class="">
+                    <button type="submit" class="custom-button">Search</button>
+                </span>
+            
+            </form>
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="row row-for-features">
         {% for feature in features %}
-        <div class="col-xs-10 col-sm-6 col-md-4 col-lg-5 col-xl-5 display panel panel-default">
+        <div class="col-xs-11 col-sm-11 col-md-5 col-lg-5 col-xl-5 display panel panel-default">
             <div class="panel-body row">
 
-                <div type="button" data-toggle="modal" data-target="#modal{{forloop.counter}}" class="feature-image col-lg-6" style="background-image: url('{{ MEDIA_URL }}{{ feature.image }}')"></div>
+                <div type="button" data-toggle="modal" data-target="#modal{{forloop.counter}}" class="feature-image col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="background-image: url('{{ MEDIA_URL }}{{ feature.image }}')"></div>
 
                 <!-- Modal -->
                 <div class="modal fade" id="modal{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -100,22 +130,22 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 feature-info">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 feature-info">
 
                     <div class="row">
 
                         <h3 class="feature-name col-lg-12">{{ feature.name.capitalize }}</h3>
                     </div>
 
-                    <div class="row">
-                        
-                        <span class="feature-status col-lg-6 pull-left">Status: {{ feature.status }}</span>
+                    <div class="row" style="margin-bottom: 10px;">
 
-                        <p class="col-lg-4 feature-price pull-right">£{{ feature.price }}</p>
+                        <span class="feature-status col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 pull-left">Status: {{ feature.status }}</span>
 
-                        <span class="col-lg-7 pull-left"><i class="fa fa-thumbs-up"></i>{{ feature.likes }}</span>
+                        <p class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 feature-price">£{{ feature.price }}</p>
 
-                        <a href="{% url 'feature_info' feature.id  %}" class="btn custom-button col-lg-4" role="button">See more</a>
+                        <span class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 pull-left"><i class="fa fa-thumbs-up"></i>{{ feature.likes }}</span>
+
+                        <a href="{% url 'feature_info' feature.id  %}" class="btn custom-button col-xs-4 col-sm-4 col-md-5 col-lg-4 col-xl-4" role="button">See more</a>
 
 
                     </div>
