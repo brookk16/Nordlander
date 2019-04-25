@@ -1,5 +1,5 @@
 {% extends 'base.html' %}{% load bootstrap_tags %} {% block content %}
-<div class="col-lg-12 bugs-message">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bugs-message">
     <div class="jumbotron">
         <h1>Bugs</h1>
         <p>
@@ -15,103 +15,114 @@
     </div>
 </div>
 
-<div class="col-lg-12 search-bar">
-    <form action="{% url 'search' %}" method="get" name="search-form">
-        <span class="search-selector">
-            <label for="search">Search by name</label>
-            <input type="text" name="search" id="search">
-        </span>
+<nav class="navbar navbar-default col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 search-bar">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
 
-        <span class="search-selector">
-            <label for="search-select-types">Search by type</label>
-            <select id="search-select-types" name="search-select-types">
-                <option value="" disabled>Search by type</option>
-                <option value=""></option>
-                <option value="Item">Items</option>
-                <option value="World">Worlds</option>
-                <option value="Skills">Skills</option>
-                <option value="Quests">Quests</option>
-                <option value="Base game">Base game</option>
-            </select>
-        </span>
+            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#search-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-search-plus"></i>
+            </button>
 
-        <span class="search-selector">
-            <label for="search-select-status">Search by status</label>
-            <select id="search-select-status" name="search-select-status">
-                <option value="" disabled>Search by status</option>
-                <option value=""></option>
-                <option value="To do">To do</option>
-                <option value="Doing">Doing</option>
-                <option value="Fixed">Fixed</option>
-            </select>
-        </span>
-        <input type="hidden" name="Bugs" id="Bugs" value="Bugs">
+        </div>
 
-        <button type="submit" class="custom-button">Search</button>
-    </form>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="search-collapse">
 
-    <button class="center-block custom-button" type="button" data-toggle="modal" data-target="#modal-add">Add bug</button>
+            <form action="{% url 'search' %}" method="get" name="search-form">
+                <span class="search-selector">
+                    <label for="search">Search by name</label>
+                    <input type="text" name="search" id="search">
+                </span>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body" style='height: 1000px;'>
-                    
-                    <form method="post" action="{% url 'add_bug' %}" class="">
-                        <fieldset class="form-group">
-                            <legend class="login-legend">Add bug</legend>
-                            {% csrf_token %} {{ add_bug_form | as_bootstrap }}
+                <span class="search-selector">
+                    <label for="search-select-types">Search by type</label>
+                    <select id="search-select-types" name="search-select-types">
+                        <option value="" disabled>Search by type</option>
+                        <option value=""></option>
+                        <option value="Item">Items</option>
+                        <option value="World">Worlds</option>
+                        <option value="Skills">Skills</option>
+                        <option value="Quests">Quests</option>
+                        <option value="Base game">Base game</option>
+                    </select>
+                </span>
 
-                           
+                <span class="search-selector">
+                    <label for="search-select-status">Search by status</label>
+                    <select id="search-select-status" name="search-select-status">
+                        <option value="" disabled>Search by status</option>
+                        <option value=""></option>
+                        <option value="To do">To do</option>
+                        <option value="Doing">Doing</option>
+                        <option value="Fixed">Fixed</option>
+                    </select>
+                </span>
+                <input type="hidden" name="Bugs" id="Bugs" value="Bugs">
 
-                            <button type="submit" class="custom-button">Add bug</button>
-                        </fieldset>
-                    </form>
+                <button type="submit" class="custom-button">Search</button>
+            </form>
 
+            <button class="custom-button pull-right" type="button" data-toggle="modal" data-target="#modal-add">Add bug</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body" style='height: 1000px;'>
+
+                            <form method="post" action="{% url 'add_bug' %}" class="">
+                                <fieldset class="form-group">
+                                    <legend class="login-legend">Add bug</legend>
+                                    {% csrf_token %} {{ add_bug_form | as_bootstrap }}
+
+
+
+                                    <button type="submit" class="custom-button">Add bug</button>
+                                </fieldset>
+                            </form>
+
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
         </div>
+        <!-- /.navbar-collapse -->
     </div>
+    <!-- /.container-fluid -->
+</nav>
 
 
 
 
+<div class="col-md-2 col-lg-2 col-xl-2 hidden-xs hidden-sm columns"></div>
 
-
-
-
-
-</div>
-
-
-
-
-<div class="col-lg-2 col-xl-2 pull-left columns"></div>
-
-<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 center-block bugs-box">
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 center-block bugs-box">
     {% for bug in bugs %}
 
     <div class="row panel-bugs">
         <div class="panel-body">
             <div class="row">
 
-                <h3 class="bug-name col-lg-9">{{ bug.name.capitalize }}</h3>
+                <h3 class="bug-name col-xs-11 col-xs-offset-1 col-sm-8 col-md-8 col-lg-9 col-xl-9">{{ bug.name.capitalize }}</h3>
 
-                <p class="col-lg-2 bug-date">{{ bug.created_date|date:'d-m-Y H:i' }}</p>
+                <p class="col-xs-11 col-xs-offset-1 col-sm-2 col-md-3 col-lg-2 col-xl-2 bug-date">{{ bug.created_date|date:'d-m-Y H:i' }}</p>
             </div>
 
             <hr style="background-color:#ffff52e3;">
 
             <div class="row">
 
-                <p class="col-lg-2 col-lg-offset-1">Type: {{ bug.type }}</p>
+                <p class="col-xs-11 col-xs-offset-1 col-sm-3 col-md-3 col-lg-2 col-lg-offset-1 col-xl-2 col-xl-offset-1">Type: {{ bug.type }}</p>
 
-                <p class="col-lg-2">Status: {{ bug.status }}</p>
+                <p class="col-xs-11 col-xs-offset-1 col-sm-3 col-md-3 col-lg-2 col-xl-2">Status: {{ bug.status }}</p>
 
-                <p class="col-lg-2"><i class="fa fa-bug"></i>: {{ bug.upvotes }}</p>
+                <p class="col-xs-11 col-xs-offset-1 col-sm-3 col-md-3 col-lg-2 col-xl-2"><i class="fa fa-bug"></i>: {{ bug.upvotes }}</p>
 
-                <a href="{% url 'bug_info' bug.id  %}" class="btn custom-button col-lg-2 col-lg-offset-2 button-spacing" role="button">See more</a>
+                <a href="{% url 'bug_info' bug.id  %}" class="btn custom-button col-xs-4 col-xs-offset-1 col-sm-2 col-md-2 col-lg-2 col-lg-offset-2 col-xl-2 col-xl-offset-2 button-spacing" role="button">See more</a>
 
             </div>
         </div>
@@ -126,7 +137,7 @@
     {% endfor %}
 </div>
 
-<div class="col-lg-2 col-xl-2 columns pull-right"></div>
+<div class="col-md-2 col-lg-2 col-xl-2 columns hidden-xs hidden-sm"></div>
 
 
 
