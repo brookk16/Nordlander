@@ -350,7 +350,7 @@ footer {
     border: 1px solid black;
     padding: 25px 79px;
     font-size: 20px;
-    margin-top: 50px;
+
 }
 
 .login-legend {
@@ -374,7 +374,6 @@ footer {
     border: 1px solid black;
     padding: 25px 79px;
     font-size: 20px;
-    margin-top: 50px;
     color: #f5f5f5;
     text-align: center;
 }
@@ -398,7 +397,6 @@ footer {
     border: 1px solid black;
     padding: 19px 60px 0px 57px;
     font-size: 12px;
-    margin-top: 50px;
     color: #f5f5f5;
     text-align: center;
 }
@@ -796,40 +794,30 @@ input#select {
 
 
 
+/*-------------Cart---------------------*/
 
-
-.badge {
-    padding-left: 9px;
-    padding-right: 9px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-    -o-border-radius: 9px;
-    border-radius: 9px;
+.cart-row {
+    background-color: black;
 }
 
-.label-warning[href],
-.badge-warning[href] {
-    background-color: #c67605;
+.cart-total {
+    color: #ffff52e3;
+    margin: 20px;
 }
 
-
-
-caption p {
-    word-wrap: break-word;
+.cart-total-price {
+    font-size: 36px;
+    color: #f5f5f5;
+    margin: 30px;
 }
 
-.row.row-flex {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 30px;
+.btn-success {
+    margin: 30px;
 }
-
-
-
 
 /* ------------Media Queries---------------*/
 
-/* add margin to search type so that both the label and input sit on the same line*/
+/* Add margin to search type so that both the label and input sit on the same line*/
 
 @media (max-width: 981px) and (min-width: 800px) {
     #search-select-types {
@@ -845,11 +833,15 @@ caption p {
     }
 }
 
+/* Removes features description padding for smaller screen sizes */
+
 @media (max-width: 564px) {
     .features-info-description {
         padding: 11px 0px 0px 0px;
     }
 }
+
+/* Changes the position of the Nordlander welcome message */
 
 @media (max-width: 455px) {
     .nordlander-welcome {
@@ -859,7 +851,16 @@ caption p {
     .welcome-to {
         font-size: 40px;
     }
+
+
+    .register-container {
+       
+        padding: 19px 0px 0px 0px;
+        
+    }
 }
+
+/* Add spacing to the feature cards (home.html) for smaller screens */
 
 @media (max-width: 1199px) {
     #home-feature-cards-spacing {
@@ -875,6 +876,8 @@ caption p {
 
 }
 
+/* Removes margin for bugsinfo information on smaller screens */
+
 @media (max-width: 680px) {
     .panel-bugs {
         margin: 0px;
@@ -889,4 +892,20 @@ caption p {
 
 }
 
+/* Removes the padding for the reset-container on smaller screen sizes, for the password reset templates */
 
+@media (max-width: 555px) {
+    .reset-container {
+        padding: 25px 0px;
+    }
+}
+
+/*Makes the input boxes smaller for smaller screen sizes on password_reset_confirm.html */
+
+@media (max-width: 355px) {
+    #id_new_password2,
+    #id_new_password1 {
+        margin: 20px;
+        width: 170px;
+    }
+}

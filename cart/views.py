@@ -8,7 +8,7 @@ def view_cart(request):
 
 
 def add_to_cart(request, id):
-    """Add a specified product to the cart"""
+    """Add a specified product to the cart, always only adds 1"""
    
     quantity = 1
     
@@ -23,18 +23,17 @@ def add_to_cart(request, id):
     return redirect(reverse('features'))
 
 
-def adjust_cart(request, id):
-    """
-    Adjust the quantity of the specified product to the specified
-    amount
-    """
-    quantity = int(request.POST.get('quantity'))
+def delete_cart_item(request, id):
+    
+    quantity = int(request.POST.get('delete_button'))
     cart = request.session.get('cart', {})
-
+    
     if quantity > 0:
         cart[id] = quantity
     else:
         cart.pop(id)
+     
+    
     
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
