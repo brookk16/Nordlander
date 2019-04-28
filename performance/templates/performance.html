@@ -81,16 +81,21 @@
 
     <p>Bugs</p>
 
-    <p>GRAPH THAT SHOWS HOW MANY NEW BUGS WERE ADDED IN THE PAST WEEK AND MONTH</p>
+    <p>GRAPH THAT SHOWS HOW MANY NEW BUGS WERE ADDED IN THE PAST WEEK AND MONTH AND BUG STATUSES</p>
     <div class="row">
 
-        <div class="col-lg-4">
-            <canvas id="numberOfChart" width="400" height="400" style="width: 400px; height: 400px;"></canvas>
+        <div class="col-lg-3 col-xl-3">
+            <canvas id="numberOfChart" width="400" height="400"></canvas>
         </div>
-        <canvas id="maxOfChart" width="400" height="400"></canvas>
 
-        <canvas id="statusOfChart" width="400" height="400"></canvas>
-
+        <div class="col-lg-3 col-xl-3">
+            <canvas id="maxOfChart" width="400" height="400"></canvas>
+        </div>
+        
+        <div class="col-lg-3 col-xl-3">
+            <canvas id="statusOfChart" width="400" height="400"></canvas>
+        </div>
+    
     </div>
 </div>
 
