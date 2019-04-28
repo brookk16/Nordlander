@@ -79,23 +79,21 @@
 
 <div class="col-lg-12 performance-panel2">
 
-    <p>Bugs</p>
+    <h1>Bugs</h1>
 
-    <p>GRAPH THAT SHOWS HOW MANY NEW BUGS WERE ADDED IN THE PAST WEEK AND MONTH AND BUG STATUSES</p>
+
     <div class="row">
 
         <div class="col-lg-3 col-xl-3">
-            <canvas id="numberOfChart" width="400" height="400"></canvas>
+            <canvas class="well" id="bug_per_week" width="400" height="400"></canvas>
         </div>
 
+
+
         <div class="col-lg-3 col-xl-3">
-            <canvas id="maxOfChart" width="400" height="400"></canvas>
+            <canvas class="well" id="status_of_bugs_chart" width="400" height="400"></canvas>
         </div>
-        
-        <div class="col-lg-3 col-xl-3">
-            <canvas id="statusOfChart" width="400" height="400"></canvas>
-        </div>
-    
+
     </div>
 </div>
 
@@ -126,7 +124,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <script>
     var endpoint = "{% url 'graph_data' %}"
-    var default_data = []
     var labels = []
     $.ajax({
         method: "GET",
@@ -134,43 +131,37 @@
         success: function(data) {
             labels1 = data.labels1
             labels2 = data.labels2
-            labels3 = data.labels3
-            max_values_data = data.max_values
-            default_data = data.default
-            bugs_feature_status = data.bugs_and_feature_status
-            setChart()
-            setMaxChart()
-            statusChart()
+            data_for_bugs_week = data.data_for_bugs_week
+            bugs_todo = data.bugs_todo
+            bugs_doing = data.bugs_doing
+            bugs_fixed = data.bugs_fixed
+            bugs_status = data.bugs_status
+            bug_per_week_chart()
+            status_of_bugs_chart()
+
+
         },
         error: function(error_data) {
             console.log(error_data)
         }
     })
 
-    function setChart() {
-        var ctx = document.getElementById("numberOfChart").getContext('2d');
+    function bug_per_week_chart() {
+        var ctx = document.getElementById("bug_per_week").getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'pie',
+            type: 'line',
             data: {
                 labels: labels1,
                 datasets: [{
-                    label: 'Variety',
-                    data: default_data,
+                    label: 'New bugs added today',
+                    data: data_for_bugs_week,
                     backgroundColor: [
                         '#FB5E5E',
-                        '#5EB8FB',
-                        '#FBDE5E',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
+
                     ],
                     borderColor: [
                         'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
+
                     ],
                     borderWidth: 1
                 }]
@@ -187,73 +178,60 @@
         });
     }
 
-    function setMaxChart() {
-        var ctx = document.getElementById("maxOfChart").getContext('2d');
+
+    function status_of_bugs_chart() {
+        var ctx = document.getElementById("status_of_bugs_chart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels2,
-                datasets: [{
-                    label: 'Largest amount of upvotes on a bug/feature',
-                    data: max_values_data,
-                    backgroundColor: [
-                        '#FB5E5E',
-                        '#5EB8FB',
-                        '#FBDE5E',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    }
+                datasets: [
 
-    function statusChart() {
-        var ctx = document.getElementById("statusOfChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'polarArea',
-            data: {
-                labels: labels3,
-                datasets: [{
-                    label: 'Status of a bugs and features',
-                    data: bugs_feature_status,
-                    backgroundColor: [
-                        '#FB5E5E',
-                        '#FBDE5E',
-                        '#5EB8FB',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+                    {
+                        label: 'To do',
+                        data: bugs_todo,
+                        backgroundColor: [
+                            'red',
+                           
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                           
+                        ],
+                        borderWidth: 1
+                    },
+
+                    {
+                        label: 'Doing',
+                        data: bugs_doing,
+                        backgroundColor: [
+                            'orange',
+                           
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            
+                        ],
+                        borderWidth: 1
+                    },
+
+                    {
+                        label: 'Fixed',
+                        data: bugs_fixed,
+                        backgroundColor: [
+                            'green',
+                            
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            
+                        ],
+                        borderWidth: 1
+                    },
+
+                ]
+
+
             },
             options: {
                 scales: {

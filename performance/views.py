@@ -8,7 +8,8 @@ from django.db import connections
 from django.db.models import Count
 from django.http import JsonResponse
 
-from datetime import datetime, timedelta
+from datetime import timedelta, datetime
+
 
 
 # Create your views here.
@@ -36,66 +37,63 @@ def show_performance(request):
 
 def graph_data(request):
     
-    
-    
     """
-    Gets a list of the dates of the days in the past week and month (month as an average of 30 days) and formats them to show day/month/year
+    For bugs_per_week_chart
+    Gets a list of the dates of the days in the past week relative to today and formats them to show day/month/year.
+    Also counts the amount of bugs added that day, and adds the totals for each day to a list
     """
-    seven_days_ago = datetime.today() - timedelta(days=7)
+    seven_days_ago = datetime.now() - timedelta(days=7)
     
-    month_ago = datetime.today() - timedelta(days=30)
-    
-    delta = datetime.today() - seven_days_ago
-    delta2 = datetime.today() - month_ago
+    delta = datetime.now() - seven_days_ago
     
     past_week_dates = []
-    past_months_dates = []
-
-    for i in range(delta.days + 1):
-        day = (seven_days_ago + timedelta(i)).strftime('%d/%m/%y')
-        past_week_dates.append(day)
     
-    for i in range(delta2.days + 1):
-        day = (month_ago + timedelta(i)).strftime('%d/%m/%y')
-        past_months_dates.append(day)
+    bugs_per_day = []
+    
+
+    for i in range(delta.days + 1 ):
+        day = (seven_days_ago + timedelta(i))
+        day_formatted = day.strftime('%d/%m/%Y')
+        past_week_dates.append(day_formatted)
+        bugs = (Bugs.objects.filter(created_date=day).count())
+        bugs_per_day.append(bugs)
         
     
-      
-   
-    
-    
-    
-    
-    
-    #User = get_user_model()
-    
-    #user_count = User.objects.all().count()
+    """
+    For total bugs display
+    Shows how many bugs are currently in the database
+    """
     bug_count = Bugs.objects.all().count()
-    feature_count = Features.objects.all().count()
-    bug_max = Bugs.objects.all().aggregate(Max('upvotes'))
-    feature_max = Features.objects.all().aggregate(Max('likes'))
+    all_bugs = bug_count
     
-    bugs_todo = (Bugs.objects.filter(status="To do").count()) 
-    bugs_doing = (Bugs.objects.filter(status="Doing").count()) 
-    bugs_fixed = (Bugs.objects.filter(status="Fixed").count())
+    
+    """
+    For bugs_status chart
+    Counts all the bugs that have a status of: to do, doing or fixed
+    """
+    bugs_todo = [Bugs.objects.filter(status="To do").count()] 
+    bugs_doing = [Bugs.objects.filter(status="Doing").count()]
+    bugs_fixed = [Bugs.objects.filter(status="Fixed").count()]
     
     
      
-    features_max_upvote = feature_max
-    labels1 = [past_week_dates]
-    labels2 = [past_months_dates]
-    labels3 = ["To do", "Doing", "Fixed"]
-    default = [bug_count, feature_count]
-    max_values = [bug_max["upvotes__max"], feature_max["likes__max"]]
+    
+    labels1 = past_week_dates
+    labels2 = ["To do", "Doing", "Fixed"]
+    data_for_bugs_week = bugs_per_day
     bugs_status = [bugs_todo, bugs_doing, bugs_fixed]
+    
+   
     
     
     data={
         "labels1": labels1,
         "labels2": labels2,
-        "labels3": labels3,
-        "default": default,
-        "max_values": max_values,
-        "bugs_status": bugs_status
-    }
+        "data_for_bugs_week": data_for_bugs_week,
+        "bugs_status": bugs_status,
+        "bugs_todo" : bugs_todo,
+        "bugs_doing" : bugs_doing,
+        "bugs_fixed" : bugs_fixed,
+        }
+    
     return JsonResponse(data, safe=False)
