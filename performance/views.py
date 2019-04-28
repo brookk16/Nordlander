@@ -42,7 +42,7 @@ def graph_data(request):
     Gets a list of the dates of the days in the past week relative to today and formats them to show day/month/year.
     Also counts the amount of bugs added that day, and adds the totals for each day to a list
     """
-    seven_days_ago = datetime.now() - timedelta(days=7)
+    seven_days_ago = datetime.now() - timedelta(days=6)
     
     delta = datetime.now() - seven_days_ago
     
@@ -75,13 +75,35 @@ def graph_data(request):
     bugs_doing = [Bugs.objects.filter(status="Doing").count()]
     bugs_fixed = [Bugs.objects.filter(status="Fixed").count()]
     
+    """
+    For current_feature_types chart
+    Gets a list of all curently used feature types (which come as objects, thus the values need to be extracted), and counts how many features beong to each type
+    """
+    currently_used_feature_types_objects = Features.objects.order_by('type').values('type').distinct()
     
-     
+    currently_used_feature_types = []
+    
+    amount_of_features_per_types = []
+    
+    for feature_type in currently_used_feature_types_objects:
+        currently_used_feature_types.append(feature_type['type'])
+    
+    i = 0
+    
+    while i < len(currently_used_feature_types):
+        feature = (Features.objects.filter(type=currently_used_feature_types[i])).count()
+        amount_of_features_per_types.append(feature)
+        i += 1
+    
+    
     
     labels1 = past_week_dates
     labels2 = ["To do", "Doing", "Fixed"]
+    labels3 = currently_used_feature_types
+    labels4 = currently_used_feature_types
     data_for_bugs_week = bugs_per_day
     bugs_status = [bugs_todo, bugs_doing, bugs_fixed]
+    
     
    
     
@@ -89,11 +111,11 @@ def graph_data(request):
     data={
         "labels1": labels1,
         "labels2": labels2,
+        "labels3": labels3,
+        "labels4": labels4,
         "data_for_bugs_week": data_for_bugs_week,
         "bugs_status": bugs_status,
-        "bugs_todo" : bugs_todo,
-        "bugs_doing" : bugs_doing,
-        "bugs_fixed" : bugs_fixed,
+        "amount_of_features_per_types": amount_of_features_per_types,
         }
     
     return JsonResponse(data, safe=False)

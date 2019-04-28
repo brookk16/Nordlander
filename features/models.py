@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 class Features(models.Model):
     
     FEATURE_TYPES = {
-        ("Items", "Item"),
-        ("Worlds", "World"),
+        ("Items", "Items"),
+        ("Worlds", "Worlds"),
         ("Skills", "Skills"),
         ("Quests", "Quests")
     }

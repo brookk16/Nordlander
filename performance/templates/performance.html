@@ -26,14 +26,14 @@
 <div class="col-lg-12 performance-panel1">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <h1 class="top-5-title-styling">Top 5 features by user likes</h1>
-            <table class="table table-bordered table-styling">
+            <h1 class="performance-title-styling">Top 5 features by user likes</h1>
+            <table class="table table-styling">
 
                 <thead>
                     <tr>
-                        <th scope="col" style="color: #ffff52e3;">#</th>
+                        <th scope="col" style="text-align: center; color: #ffff52e3;">#</th>
                         <th scope="col" style="text-align: center; color: #ffff52e3;">Feature</th>
-                        <th scope="col" style="color: #ffff52e3;">Likes</th>
+                        <th scope="col" style="text-align: center; color: #ffff52e3;">Likes</th>
 
                     </tr>
                 </thead>
@@ -51,14 +51,14 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <h1 class="top-5-title-styling">Top 5 Bugs by user upvotes</h1>
-            <table class="table table-bordered table-styling">
+            <h1 class="performance-title-styling">Top 5 Bugs by user upvotes</h1>
+            <table class="table table-styling">
 
                 <thead>
                     <tr>
-                        <th scope="col" style="color: #ffff52e3;">#</th>
+                        <th scope="col" style="text-align: center; color: #ffff52e3;">#</th>
                         <th scope="col" style="text-align: center; color: #ffff52e3;">Bug</th>
-                        <th scope="col" style="color: #ffff52e3;">Likes</th>
+                        <th scope="col" style="text-align: center; color: #ffff52e3;">Likes</th>
 
                     </tr>
                 </thead>
@@ -79,31 +79,50 @@
 
 <div class="col-lg-12 performance-panel2">
 
-    <h1>Bugs</h1>
+
 
 
     <div class="row">
+        <h1 class="performance-title-styling">Bugs</h1>
 
-        <div class="col-lg-3 col-xl-3">
-            <canvas class="well" id="bug_per_week" width="400" height="400"></canvas>
+
+        <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-1 col-xl-5 col-xl-offset-1">
+            <h3 class="performance-title-styling">New bugs added in the past week</h3>
+            <canvas class="performace-well" id="bug_per_week" width="500" height="500"></canvas>
         </div>
 
 
 
-        <div class="col-lg-3 col-xl-3">
-            <canvas class="well" id="status_of_bugs_chart" width="400" height="400"></canvas>
+        <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-0 col-xl-5 col-xl-offset-0">
+            <h3 class="performance-title-styling">Current bug stauses</h3>
+            <canvas class="performace-well" id="status_of_bugs_chart" width="500" height="500"></canvas>
         </div>
 
     </div>
 </div>
 
+
+
 <div class="col-lg-12 performance-panel3">
 
-    <p>HOW MANY BUGS THERE ARE CURRENTLY</p>
+    <div class="row">
+        <h1 class="performance-title-styling">Features</h1>
 
-    <p> AVERAGE SPEED OF BUG FIX</p>
 
-    <p> HOW OFTEN NEW BUGS ARE ADDED</p>
+        <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-1 col-xl-5 col-xl-offset-1">
+            <h3 class="performance-title-styling">Current feature types</h3>
+            <canvas class="performace-well" id="current_feature_types" width="500" height="500"></canvas>
+        </div>
+
+
+
+        <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-0 col-xl-5 col-xl-offset-0">
+            <h3 class="performance-title-styling">How many bugs each available feature type have</h3>
+            <canvas class="performace-well" id="bugs_per_feature" width="500" height="500"></canvas>
+        </div>
+
+    </div>
+
 
 
 
@@ -111,9 +130,7 @@
 
 <div class="col-lg-12 performance-panel4">
 
-    <p>HOW MANY FEATURES THERE ARE CURRENTLY</p>
 
-    <p>BUGS PER FEATURE GRAPH</p>
 
 </div>
 
@@ -125,19 +142,22 @@
 <script>
     var endpoint = "{% url 'graph_data' %}"
     var labels = []
+    Chart.defaults.global.defaultFontColor = '#f5f5f5';
     $.ajax({
         method: "GET",
         url: endpoint,
         success: function(data) {
             labels1 = data.labels1
             labels2 = data.labels2
+            labels3 = data.labels3
+            labels4 = data.labels4
             data_for_bugs_week = data.data_for_bugs_week
-            bugs_todo = data.bugs_todo
-            bugs_doing = data.bugs_doing
-            bugs_fixed = data.bugs_fixed
             bugs_status = data.bugs_status
+            amount_of_features_per_types = data.amount_of_features_per_types
             bug_per_week_chart()
             status_of_bugs_chart()
+            current_feature_types()
+            bugs_per_feature()
 
 
         },
@@ -145,6 +165,8 @@
             console.log(error_data)
         }
     })
+    
+
 
     function bug_per_week_chart() {
         var ctx = document.getElementById("bug_per_week").getContext('2d');
@@ -156,21 +178,24 @@
                     label: 'New bugs added today',
                     data: data_for_bugs_week,
                     backgroundColor: [
-                        '#FB5E5E',
+                        'transparent',
+
+
 
                     ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-
-                    ],
-                    borderWidth: 1
+                    borderColor: '#EA2B1F',
+                    borderWidth: 1,
+                    pointBackgroundColor: '#EA2B1F',
+                    pointRadius: 5,
                 }]
             },
             options: {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            stepSize: 1,
+
                         }
                     }]
                 }
@@ -188,47 +213,18 @@
                 datasets: [
 
                     {
-                        label: 'To do',
-                        data: bugs_todo,
+                        label: 'Bug stauses',
+                        data: bugs_status,
                         backgroundColor: [
-                            'red',
-                           
+                            '#EA2B1F',
+                            '#F19A3E',
+                            '#8CB369',
+
+
                         ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                           
-                        ],
+
                         borderWidth: 1
                     },
-
-                    {
-                        label: 'Doing',
-                        data: bugs_doing,
-                        backgroundColor: [
-                            'orange',
-                           
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            
-                        ],
-                        borderWidth: 1
-                    },
-
-                    {
-                        label: 'Fixed',
-                        data: bugs_fixed,
-                        backgroundColor: [
-                            'green',
-                            
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            
-                        ],
-                        borderWidth: 1
-                    },
-
                 ]
 
 
@@ -236,8 +232,84 @@
             options: {
                 scales: {
                     yAxes: [{
+
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            stepSize: 1,
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+    /*-------------Features charts--------------------*/
+    
+    function current_feature_types() {
+        var ctx = document.getElementById("current_feature_types").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels3,
+                datasets: [
+
+                    {
+                        label: 'feature types',
+                        data: amount_of_features_per_types,
+                        backgroundColor: [
+                            '#EA2B1F',
+                            '#F19A3E',
+                            '#8CB369',
+
+
+                        ],
+
+                        borderWidth: 1
+                    },
+                ]
+
+
+            },
+            options: {
+                scales: {
+                    
+                }
+            }
+        });
+    }
+
+    function bugs_per_feature() {
+        var ctx = document.getElementById("bugs_per_feature").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'polarArea',
+            data: {
+                labels: labels4,
+                datasets: [
+
+                    {
+                        label: 'Bug stauses',
+                        data: amount_of_features_per_types,
+                        backgroundColor: [
+                            '#EA2B1F',
+                            '#F19A3E',
+                            '#8CB369',
+
+
+                        ],
+
+                        borderWidth: 1
+                    },
+                ]
+
+
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 1,
                         }
                     }]
                 }
