@@ -5,7 +5,7 @@ from bugs.models import Bugs
 from django.contrib.auth import get_user_model
 from django.db.models import Max
 from django.db import connections
-from django.db.models import Count
+from django.db.models import Count, Sum, F
 from django.http import JsonResponse
 
 from datetime import timedelta, datetime
@@ -77,7 +77,7 @@ def graph_data(request):
     
     """
     For current_feature_types chart
-    Gets a list of all curently used feature types (which come as objects, thus the values need to be extracted), and counts how many features beong to each type
+    Gets a list of all curently used feature types (which come as objects, thus the values need to be extracted), and counts how many features beong to each type.
     """
     currently_used_feature_types_objects = Features.objects.order_by('type').values('type').distinct()
     
@@ -95,12 +95,35 @@ def graph_data(request):
         amount_of_features_per_types.append(feature)
         i += 1
     
+     
     
     
+    """
+    For bugs_per_feature chart
+    Gathers all the different bug types, and then counts how many of the total bugs belong in to each type
+    """
+    bugs_by_type = Bugs.objects.order_by('type').values('type').distinct()
+    currently_used_bug_types = []
+    
+    for bug_type in bugs_by_type:
+        currently_used_bug_types.append(bug_type['type'])
+   
+    amount_of_bugs_per_feature_type_dict = Bugs.objects.annotate(type_of=F('type')).values('type').annotate(bug_count=Count('id'))
+    
+    amount_of_bugs_per_feature_type = []
+    
+    l = 0
+    
+    while l < len(amount_of_bugs_per_feature_type_dict):
+        bug_count = amount_of_bugs_per_feature_type_dict[l]['bug_count']
+        amount_of_bugs_per_feature_type.append(bug_count)
+        l += 1
+    
+     
     labels1 = past_week_dates
     labels2 = ["To do", "Doing", "Fixed"]
     labels3 = currently_used_feature_types
-    labels4 = currently_used_feature_types
+    labels4 = currently_used_bug_types
     data_for_bugs_week = bugs_per_day
     bugs_status = [bugs_todo, bugs_doing, bugs_fixed]
     
@@ -116,6 +139,7 @@ def graph_data(request):
         "data_for_bugs_week": data_for_bugs_week,
         "bugs_status": bugs_status,
         "amount_of_features_per_types": amount_of_features_per_types,
+        "amount_of_bugs_per_feature_type": amount_of_bugs_per_feature_type,
         }
     
     return JsonResponse(data, safe=False)

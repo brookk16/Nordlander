@@ -154,6 +154,7 @@
             data_for_bugs_week = data.data_for_bugs_week
             bugs_status = data.bugs_status
             amount_of_features_per_types = data.amount_of_features_per_types
+            amount_of_bugs_per_feature_type = data.amount_of_bugs_per_feature_type
             bug_per_week_chart()
             status_of_bugs_chart()
             current_feature_types()
@@ -260,6 +261,7 @@
                             '#EA2B1F',
                             '#F19A3E',
                             '#8CB369',
+                            'purple',
 
 
                         ],
@@ -288,11 +290,13 @@
 
                     {
                         label: 'Bug stauses',
-                        data: amount_of_features_per_types,
+                        data: amount_of_bugs_per_feature_type,
                         backgroundColor: [
                             '#EA2B1F',
                             '#F19A3E',
                             '#8CB369',
+                            'purple',
+                            'silver',
 
 
                         ],
@@ -304,14 +308,15 @@
 
             },
             options: {
+                tooltips: {
+                    callbacks: {
+                         label: function(tooltipItem, data) {
+                             return "There are " + Number(tooltipItem.yLabel) + " Bugs in: " + data.labels[tooltipItem.index];
+                                }
+                            }
+                        },
                 scales: {
-                    yAxes: [{
-
-                        ticks: {
-                            beginAtZero: true,
-                            stepSize: 1,
-                        }
-                    }]
+                   
                 }
             }
         });
