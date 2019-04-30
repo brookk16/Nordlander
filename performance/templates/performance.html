@@ -12,13 +12,9 @@
         <ul>- Current bugs</ul>
         <ul>- Fixed bugs</ul>
         <ul> -New features</ul>
-
-
-
-
-
-
-
+        
+        <p>We pledge to always spend the more of our time on the highest liked features. Equally, we spend more time on bugs with higher user upvotes. So make sure to like your favourite features and upvote any bugs you have!</p>
+        
     </div>
 </div>
 
@@ -129,14 +125,31 @@
 </div>
 
 <div class="col-lg-12 performance-panel4">
+    
+    <div class="row">
+        <h1 class="performance-title-styling">Users</h1>
+
+
+        <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-1 col-xl-5 col-xl-offset-1">
+            <h3 class="performance-title-styling">New users</h3>
+            <canvas class="performace-well" id="new_users_chart" width="500" height="500"></canvas>
+        </div>
+
+
+
+        <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-0 col-xl-5 col-xl-offset-0" style="margin-bottom: 30px;">
+            <h3 class="performance-title-styling">Feature type popularity</h3>
+            <canvas class="performace-well" id="feature_type_popularity_chart" width="500" height="500"></canvas>
+        </div>
+
+    </div>
+</div>
 
 
 
 </div>
 
-<div class="col-lg-12 performance-panel5">
 
-</div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <script>
@@ -151,14 +164,19 @@
             labels2 = data.labels2
             labels3 = data.labels3
             labels4 = data.labels4
+            labels5 = data.labels5
+            labels6 = data.labels6
             data_for_bugs_week = data.data_for_bugs_week
             bugs_status = data.bugs_status
             amount_of_features_per_types = data.amount_of_features_per_types
             amount_of_bugs_per_feature_type = data.amount_of_bugs_per_feature_type
+            likes_per_feature_type = data.likes_per_feature_type
             bug_per_week_chart()
             status_of_bugs_chart()
             current_feature_types()
             bugs_per_feature()
+            feature_type_popularity_chart()
+            new_users_chart()
 
 
         },
@@ -191,15 +209,29 @@
                 }]
             },
             options: {
+                legend: {
+                    display: false
+                },
                 scales: {
-                    yAxes: [{
+                    xAxes: [ {
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                            }
+                        }],
+                    yAxes: [ {
+                        display: true,
                         ticks: {
-                            beginAtZero: true,
                             stepSize: 1,
-
-                        }
-                    }]
-                }
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Likes'
+                            }
+                        }]
+                    }
+                
             }
         });
     }
@@ -231,15 +263,35 @@
 
             },
             options: {
-                scales: {
-                    yAxes: [{
-
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                         label: function(tooltipItem, data) {
+                             return "There are " + Number(tooltipItem.yLabel) + " Bugss that are currently " + data.labels[tooltipItem.index];
+                                }
+                            }
+                        },
+                 scales: {
+                    xAxes: [ {
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Bug Status'
+                            }
+                        }],
+                    yAxes: [ {
+                        display: true,
                         ticks: {
-                            beginAtZero: true,
                             stepSize: 1,
-                        }
-                    }]
-                }
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Bugs'
+                            }
+                        }]
+                    }
             }
         });
     }
@@ -258,10 +310,41 @@
                         label: 'feature types',
                         data: amount_of_features_per_types,
                         backgroundColor: [
-                            '#EA2B1F',
-                            '#F19A3E',
-                            '#8CB369',
-                            'purple',
+                            '#D33E43',
+                            '#92DCE5',
+                            '#92AFD7',
+                            '#729B79',
+
+
+                        ],
+
+                        borderWidth: 1
+                    },
+                ]
+
+
+            },
+        
+        });
+    }
+
+    function bugs_per_feature() {
+        var ctx = document.getElementById("bugs_per_feature").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels4,
+                datasets: [
+
+                    {
+                        label: 'Bug stauses',
+                        data: amount_of_bugs_per_feature_type,
+                        backgroundColor: [
+                            '#E8E8E8',
+                            '#D33E43',
+                            '#92DCE5',
+                            '#92AFD7',
+                            '#729B79',
 
 
                         ],
@@ -273,23 +356,36 @@
 
             },
             options: {
+               
                 scales: {
-                    
+                   
+
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 1,
+                            
+                        }
+                
                 }
             }
         });
     }
-
-    function bugs_per_feature() {
-        var ctx = document.getElementById("bugs_per_feature").getContext('2d');
+    
+    /*-------------Users charts-------------*/
+    
+    
+    
+    
+    function new_users_chart() {
+        var ctx = document.getElementById("new_users_chart").getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'polarArea',
+            type: 'pie',
             data: {
-                labels: labels4,
+                labels: labels5,
                 datasets: [
 
                     {
-                        label: 'Bug stauses',
+                        label: 'Users',
                         data: amount_of_bugs_per_feature_type,
                         backgroundColor: [
                             '#EA2B1F',
@@ -311,14 +407,69 @@
                 tooltips: {
                     callbacks: {
                          label: function(tooltipItem, data) {
-                             return "There are " + Number(tooltipItem.yLabel) + " Bugs in: " + data.labels[tooltipItem.index];
+                             return "There are " + Number(tooltipItem.yLabel) + " Bugs in " + data.labels[tooltipItem.index];
                                 }
                             }
                         },
-                scales: {
-                   
-                }
+               
             }
+        });
+    }
+    
+    function feature_type_popularity_chart() {
+        var ctx = document.getElementById("feature_type_popularity_chart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels6,
+                datasets: [
+
+                    {
+                        label: 'likes',
+                        data: likes_per_feature_type,
+                        backgroundColor: [
+                            '#EA2B1F',
+                            '#F19A3E',
+                            '#8CB369',
+                            
+
+
+                        ],
+
+                        borderWidth: 1
+                    },
+                ],
+           
+
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                         label: function(tooltipItem, data) {
+                             return Number(tooltipItem.yLabel) + " people liked " + data.labels[tooltipItem.index];
+                                }
+                            }
+                },
+                scales: {
+                    xAxes: [ {
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Feature type'
+                            }
+                        }],
+                    yAxes: [ {
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Likes'
+                            }
+                        }]
+                    }
+                }
         });
     }
 </script>

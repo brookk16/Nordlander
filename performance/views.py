@@ -82,6 +82,7 @@ def graph_data(request):
     currently_used_feature_types_objects = Features.objects.order_by('type').values('type').distinct()
     
     currently_used_feature_types = []
+   
     
     amount_of_features_per_types = []
     
@@ -95,7 +96,7 @@ def graph_data(request):
         amount_of_features_per_types.append(feature)
         i += 1
     
-     
+    
     
     
     """
@@ -103,14 +104,16 @@ def graph_data(request):
     Gathers all the different bug types, and then counts how many of the total bugs belong in to each type
     """
     bugs_by_type = Bugs.objects.order_by('type').values('type').distinct()
+    
     currently_used_bug_types = []
+    amount_of_bugs_per_feature_type = []
     
     for bug_type in bugs_by_type:
         currently_used_bug_types.append(bug_type['type'])
    
     amount_of_bugs_per_feature_type_dict = Bugs.objects.annotate(type_of=F('type')).values('type').annotate(bug_count=Count('id'))
     
-    amount_of_bugs_per_feature_type = []
+    
     
     l = 0
     
@@ -118,14 +121,34 @@ def graph_data(request):
         bug_count = amount_of_bugs_per_feature_type_dict[l]['bug_count']
         amount_of_bugs_per_feature_type.append(bug_count)
         l += 1
+        
+        
+    """
+    Counts the amount of user likes per feature type(shows which types are more popular with users).The number of likes are then extracted from thes dict and passed into a list.
+    """
+    
+    likes_per_feature_type_dict = Features.objects.values('type').annotate(total_likes=Sum('likes')).order_by('type')
+    likes_per_feature_type = []
+    
+    k = 0
+    
+    while k < len(likes_per_feature_type_dict):
+        likes_count = likes_per_feature_type_dict[k]['total_likes']
+        likes_per_feature_type.append(likes_count)
+        k += 1
+    
+    
     
      
     labels1 = past_week_dates
     labels2 = ["To do", "Doing", "Fixed"]
     labels3 = currently_used_feature_types
     labels4 = currently_used_bug_types
+    labels5 = ["Users", "New Users"]
+    labels6 = currently_used_feature_types
     data_for_bugs_week = bugs_per_day
     bugs_status = [bugs_todo, bugs_doing, bugs_fixed]
+    
     
     
    
@@ -136,10 +159,13 @@ def graph_data(request):
         "labels2": labels2,
         "labels3": labels3,
         "labels4": labels4,
+        "labels5": labels5,
+        "labels6": labels6,
         "data_for_bugs_week": data_for_bugs_week,
         "bugs_status": bugs_status,
         "amount_of_features_per_types": amount_of_features_per_types,
         "amount_of_bugs_per_feature_type": amount_of_bugs_per_feature_type,
+        "likes_per_feature_type": likes_per_feature_type,
         }
     
     return JsonResponse(data, safe=False)

@@ -776,12 +776,9 @@ input#select {
 .performance-panel4 {
     min-height: 700px;
     background-image: -webkit-linear-gradient(#DDD8C4, #DDD8C4 5%, #8F9491);
+    
 }
 
-.performance-panel5 {
-    min-height: 700px;
-    background-image: -webkit-linear-gradient(#8F9491, #8F9491 5%, black);
-}
 
 
 .performance-message {
@@ -803,6 +800,8 @@ input#select {
     color: #ffff52e3;
     margin: 35px 0px;
     text-align: center;
+    text-decoration: underline;
+    
 }
 
 .performace-well {
