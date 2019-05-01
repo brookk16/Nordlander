@@ -9,8 +9,9 @@ from django.db.models import Count, Sum, F
 from django.http import JsonResponse
 
 from datetime import timedelta, datetime
+from django.utils import timezone
 
-
+User = get_user_model()
 
 # Create your views here.
 def show_performance(request):
@@ -42,13 +43,14 @@ def graph_data(request):
     Gets a list of the dates of the days in the past week relative to today and formats them to show day/month/year.
     Also counts the amount of bugs added that day, and adds the totals for each day to a list
     """
-    seven_days_ago = datetime.now() - timedelta(days=6)
+    seven_days_ago = datetime.today() - timedelta(days=6)
     
-    delta = datetime.now() - seven_days_ago
+    delta = datetime.today() - seven_days_ago
     
     past_week_dates = []
     
     bugs_per_day = []
+    
     
 
     for i in range(delta.days + 1 ):
@@ -57,7 +59,9 @@ def graph_data(request):
         past_week_dates.append(day_formatted)
         bugs = (Bugs.objects.filter(created_date=day).count())
         bugs_per_day.append(bugs)
+       
         
+    
     
     """
     For total bugs display
@@ -139,15 +143,25 @@ def graph_data(request):
     
     
     
+   
+    """
+    For new_users_chart
+    Counts all users who joined in the past week and counts them. The second variable stores the number of users who joined before last week
+    """
+    users_joined_in_last_week = User.objects.filter(date_joined__gte=timezone.now()-timedelta(days=7)).count()
+    
+    users_joined_older_last_week = User.objects.all().count() - users_joined_in_last_week
+     
      
     labels1 = past_week_dates
     labels2 = ["To do", "Doing", "Fixed"]
     labels3 = currently_used_feature_types
     labels4 = currently_used_bug_types
-    labels5 = ["Users", "New Users"]
+    labels5 = ["New Users", "Existing Users"]
     labels6 = currently_used_feature_types
     data_for_bugs_week = bugs_per_day
     bugs_status = [bugs_todo, bugs_doing, bugs_fixed]
+    new_users_data = [users_joined_in_last_week, users_joined_older_last_week]
     
     
     
@@ -166,6 +180,7 @@ def graph_data(request):
         "amount_of_features_per_types": amount_of_features_per_types,
         "amount_of_bugs_per_feature_type": amount_of_bugs_per_feature_type,
         "likes_per_feature_type": likes_per_feature_type,
+        "new_users_data": new_users_data,
         }
     
     return JsonResponse(data, safe=False)

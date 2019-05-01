@@ -1,5 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
+{% block head_js %}
+
+
+{% endblock head_js%}
+
 
 
 <div class="col-lg-12 performance-message">
@@ -13,7 +18,39 @@
         <ul>- Fixed bugs</ul>
         <ul> -New features</ul>
         
-        <p>We pledge to always spend the more of our time on the highest liked features. Equally, we spend more time on bugs with higher user upvotes. So make sure to like your favourite features and upvote any bugs you have!</p>
+        
+        
+        
+        <button class="custom-button" type="button" data-toggle="modal" data-target="#modal-performance">More info</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal-performance" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body" style='height: 500px;'>
+                            
+                            <h4>User guided</h4>
+                        
+                            <p>We always spend the majority of our time on the highest liked features. Equally, we spend more time on bugs with higher user upvotes. So make sure to like your favourite features and upvote any bugs you have!
+                            </p>
+                            
+                            <h4>User Designed</h4>
+                            
+                            <p>We also watch which types of features our users like more, and try to develop more features of that type.
+                                Please contact us via our social media links at the bottom of the page with your ideas for new features!
+                            </p>
+                            
+                            <h4>User clarity</h4>
+                            
+                            <p> That is why we have this page to show users how the game, features and current bugs are currently doing.
+                                Hover over the "<i class="fa fa-question-circle"></i>" symbol to read more about the chart.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         
     </div>
 </div>
@@ -22,7 +59,7 @@
 <div class="col-lg-12 performance-panel1">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <h1 class="performance-title-styling">Top 5 features by user likes</h1>
+            <h1 class="performance-title-styling">Top 5 features by user likes <i class="fa fa-question-circle tooltips" title="Displays the current top 5 features by the amount of users that liked the feature"></i></h1>
             <table class="table table-styling">
 
                 <thead>
@@ -47,7 +84,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <h1 class="performance-title-styling">Top 5 Bugs by user upvotes</h1>
+            <h1 class="performance-title-styling">Top 5 Bugs by user upvotes <i class="fa fa-question-circle tooltips" title="Displays the current 5 most upvoted bugs by users"></i></h1>
             <table class="table table-styling">
 
                 <thead>
@@ -83,14 +120,14 @@
 
 
         <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-1 col-xl-5 col-xl-offset-1">
-            <h3 class="performance-title-styling">New bugs added in the past week</h3>
+            <h3 class="performance-title-styling">New bugs added in the past week <i class="fa fa-question-circle tooltips" title="Here are the number of bugs added each day over the past week"></i></h3>
             <canvas class="performace-well" id="bug_per_week" width="500" height="500"></canvas>
         </div>
 
 
 
         <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-0 col-xl-5 col-xl-offset-0">
-            <h3 class="performance-title-styling">Current bug stauses</h3>
+            <h3 class="performance-title-styling">Current bug stauses <i class="fa fa-question-circle tooltips" title="Shows the number of bugs thats are currently 'To do', 'Doing' or 'Fixed'."></i></h3>
             <canvas class="performace-well" id="status_of_bugs_chart" width="500" height="500"></canvas>
         </div>
 
@@ -106,14 +143,14 @@
 
 
         <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-1 col-xl-5 col-xl-offset-1">
-            <h3 class="performance-title-styling">Current feature types</h3>
+            <h3 class="performance-title-styling">Current feature types <i class="fa fa-question-circle tooltips" title="Shows the amount of features that belong to each type of feature"></i></h3>
             <canvas class="performace-well" id="current_feature_types" width="500" height="500"></canvas>
         </div>
 
 
 
         <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-0 col-xl-5 col-xl-offset-0">
-            <h3 class="performance-title-styling">How many bugs each available feature type have</h3>
+            <h3 class="performance-title-styling">Amount of bugs per feature type <i class="fa fa-question-circle tooltips" title="Shows the current amount of bugs that all the features in each features type has"></i></h3>
             <canvas class="performace-well" id="bugs_per_feature" width="500" height="500"></canvas>
         </div>
 
@@ -131,14 +168,14 @@
 
 
         <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-1 col-xl-5 col-xl-offset-1">
-            <h3 class="performance-title-styling">New users</h3>
+            <h3 class="performance-title-styling">New users <i class="fa fa-question-circle tooltips" title="Shows the amount users added in the past week and the number of users added before last week"></i></h3>
             <canvas class="performace-well" id="new_users_chart" width="500" height="500"></canvas>
         </div>
 
 
 
         <div class="col-md-9 col-md-offset-1 col-lg-5 col-lg-offset-0 col-xl-5 col-xl-offset-0" style="margin-bottom: 30px;">
-            <h3 class="performance-title-styling">Feature type popularity</h3>
+            <h3 class="performance-title-styling">Feature type popularity <i class="fa fa-question-circle tooltips" title="Shows the amount of likes each type of feature has"></i></h3>
             <canvas class="performace-well" id="feature_type_popularity_chart" width="500" height="500"></canvas>
         </div>
 
@@ -171,22 +208,20 @@
             amount_of_features_per_types = data.amount_of_features_per_types
             amount_of_bugs_per_feature_type = data.amount_of_bugs_per_feature_type
             likes_per_feature_type = data.likes_per_feature_type
+            new_users_data = data.new_users_data
             bug_per_week_chart()
             status_of_bugs_chart()
             current_feature_types()
             bugs_per_feature()
             feature_type_popularity_chart()
             new_users_chart()
-
-
+            
         },
         error: function(error_data) {
             console.log(error_data)
         }
     })
     
-
-
     function bug_per_week_chart() {
         var ctx = document.getElementById("bug_per_week").getContext('2d');
         var myChart = new Chart(ctx, {
@@ -194,13 +229,10 @@
             data: {
                 labels: labels1,
                 datasets: [{
-                    label: 'New bugs added today',
+                    label: 'New bugs added ',
                     data: data_for_bugs_week,
                     backgroundColor: [
                         'transparent',
-
-
-
                     ],
                     borderColor: '#EA2B1F',
                     borderWidth: 1,
@@ -223,7 +255,9 @@
                     yAxes: [ {
                         display: true,
                         ticks: {
+                            beginAtZero: true,
                             stepSize: 1,
+                            
                         },
                         scaleLabel: {
                             display: true,
@@ -231,8 +265,7 @@
                             }
                         }]
                     }
-                
-            }
+                }
         });
     }
 
@@ -244,7 +277,6 @@
             data: {
                 labels: labels2,
                 datasets: [
-
                     {
                         label: 'Bug stauses',
                         data: bugs_status,
@@ -252,17 +284,38 @@
                             '#EA2B1F',
                             '#F19A3E',
                             '#8CB369',
-
-
                         ],
-
                         borderWidth: 1
                     },
                 ]
-
-
             },
             options: {
+                animation: {
+                onComplete: function () {
+                var ctx = this.chart.ctx;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                //ctx.font = Chart.helpers.fontString(self.fontSize, self.fontStyle, self.fontFamily);
+                ctx.font = ctx.font.replace(/\d+px/, "25px");
+                
+
+                this.data.datasets.forEach(function (dataset) {
+                    for (var i = 0; i < dataset.data.length; i++) {
+                        var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
+                            scale_max = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+                        ctx.fillStyle = '#f5f5f5';
+                        ctx.labelFontSize = 2;
+                        var y_pos = model.y - -32;
+                        // Make sure data value does not get overflown and hidden
+                        // when the bar's value is too close to max value of scale
+                        // Note: The y value is reverse, it counts from top down
+                        if ((scale_max - model.y) / scale_max >= 0.93)
+                            y_pos = model.y + 40; 
+                        ctx.fillText(dataset.data[i], model.x, y_pos);
+                    }
+                });               
+            }
+        },
                 legend: {
                     display: false
                 },
@@ -285,6 +338,7 @@
                         display: true,
                         ticks: {
                             stepSize: 1,
+                            beginAtZero: true,
                         },
                         scaleLabel: {
                             display: true,
@@ -305,7 +359,6 @@
             data: {
                 labels: labels3,
                 datasets: [
-
                     {
                         label: 'feature types',
                         data: amount_of_features_per_types,
@@ -314,17 +367,12 @@
                             '#92DCE5',
                             '#92AFD7',
                             '#729B79',
-
-
                         ],
 
                         borderWidth: 1
                     },
                 ]
-
-
             },
-        
         });
     }
 
@@ -335,7 +383,6 @@
             data: {
                 labels: labels4,
                 datasets: [
-
                     {
                         label: 'Bug stauses',
                         data: amount_of_bugs_per_feature_type,
@@ -345,36 +392,25 @@
                             '#92DCE5',
                             '#92AFD7',
                             '#729B79',
-
-
                         ],
 
                         borderWidth: 1
                     },
                 ]
-
-
             },
             options: {
-               
-                scales: {
-                   
-
-                        ticks: {
-                            beginAtZero: true,
-                            stepSize: 1,
+               scales: {
+                   ticks: {
+                        beginAtZero: true,
+                        stepSize: 1,
                             
-                        }
-                
+                    }
                 }
             }
         });
     }
     
     /*-------------Users charts-------------*/
-    
-    
-    
     
     function new_users_chart() {
         var ctx = document.getElementById("new_users_chart").getContext('2d');
@@ -383,36 +419,61 @@
             data: {
                 labels: labels5,
                 datasets: [
-
                     {
                         label: 'Users',
-                        data: amount_of_bugs_per_feature_type,
+                        data: new_users_data,
                         backgroundColor: [
-                            '#EA2B1F',
-                            '#F19A3E',
-                            '#8CB369',
-                            'purple',
-                            'silver',
-
-
+                            '#f5f5f5',
+                            '#691212',
                         ],
 
                         borderWidth: 1
                     },
                 ]
-
-
             },
             options: {
-                tooltips: {
-                    callbacks: {
-                         label: function(tooltipItem, data) {
-                             return "There are " + Number(tooltipItem.yLabel) + " Bugs in " + data.labels[tooltipItem.index];
-                                }
-                            }
-                        },
-               
-            }
+                
+  
+  animation: {
+    duration: 500,
+    easing: "easeOutQuart",
+    onComplete: function () {
+      var ctx = this.chart.ctx;
+      ctx.font = ctx.font.replace(/\d+px/, "25px");
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+
+      this.data.datasets.forEach(function (dataset) {
+
+        for (var i = 0; i < dataset.data.length; i++) {
+          var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
+              total = dataset._meta[Object.keys(dataset._meta)[0]].total,
+              mid_radius = model.innerRadius + (model.outerRadius - model.innerRadius)/2,
+              start_angle = model.startAngle,
+              end_angle = model.endAngle,
+              mid_angle = start_angle + (end_angle - start_angle)/2;
+
+          var x = mid_radius * Math.cos(mid_angle);
+          var y = mid_radius * Math.sin(mid_angle);
+
+          ctx.fillStyle = '#545454';
+          
+
+          var val = dataset.data[i];
+          var percent = String(Math.round(val/total*100)) + "%";
+
+          if(val != 0) {
+            ctx.fillText(dataset.data[i], model.x + x, model.y + y);
+            // Display percent in another line, line break doesn't work for fillText
+            ctx.fillText(percent, model.x + x, model.y + y + 30);
+          }
+        }
+      });               
+    }
+  }
+}
+            
+            
         });
     }
     
@@ -423,26 +484,48 @@
             data: {
                 labels: labels6,
                 datasets: [
-
                     {
                         label: 'likes',
                         data: likes_per_feature_type,
                         backgroundColor: [
-                            '#EA2B1F',
-                            '#F19A3E',
-                            '#8CB369',
-                            
-
-
+                            '#D33E43',
+                            '#92DCE5',
+                            '#92AFD7',
+                            '#729B79',
                         ],
 
                         borderWidth: 1
                     },
                 ],
-           
-
-            },
+           },
             options: {
+                animation: {
+                onComplete: function () {
+                var ctx = this.chart.ctx;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                //ctx.font = Chart.helpers.fontString(self.fontSize, self.fontStyle, self.fontFamily);
+                ctx.font = ctx.font.replace(/\d+px/, "25px");
+                
+
+                this.data.datasets.forEach(function (dataset) {
+                    for (var i = 0; i < dataset.data.length; i++) {
+                        var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
+                            scale_max = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+                        ctx.fillStyle = '#f5f5f5';
+                        ctx.labelFontSize = 2;
+                        var y_pos = model.y - -32;
+                        // Make sure data value does not get overflown and hidden
+                        // when the bar's value is too close to max value of scale
+                        // Note: The y value is reverse, it counts from top down
+                        if ((scale_max - model.y) / scale_max >= 0.93)
+                            y_pos = model.y + 20; 
+                        ctx.fillText(dataset.data[i], model.x, y_pos);
+                    }
+                });               
+            }
+        },
+               
                 legend: {
                     display: false
                 },
@@ -472,6 +555,12 @@
                 }
         });
     }
+</script>
+
+<script>
+  $( function() {
+    $(".tooltips").tooltip();
+  } );
 </script>
 
 {% endblock %}
