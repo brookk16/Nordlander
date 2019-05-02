@@ -39,6 +39,9 @@ class UserRegistrationForm(UserCreationForm):
 
         if password1 != password2:
             raise ValidationError("Passwords do not match")
+        
+        if len(password1) and len(password2) <=6:
+            raise ValidationError("Password must be at least 6 characters long")
 
         return password2
     

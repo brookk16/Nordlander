@@ -2,11 +2,15 @@
 <div class="home-background-image col-xs-12">
 
     <div class="row">
-        <h1 class="welcome-to col-sm-4 col-sm-offset-5 col-md-4 col-md-offset-5 col-lg-4 col-lg-offset-4 col-xl-4 col-xl-offset-4">Welcome to</h1>
+        <h1 id ="anim-pt-1" style="display: none;" class="welcome-to col-sm-4 col-sm-offset-5 col-md-4 col-md-offset-5 col-lg-4 col-lg-offset-4 col-xl-4 col-xl-offset-4">Welcome to</h1>
     </div>
 
     <div class="row">
-        <h1 class="nordlander-welcome col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-5 col-lg-4 col-lg-offset-5 col-xl-4 col-xl-offset-5">Nordlander</h1>
+        <h1 id ="anim-pt-2" style="display: none;" class="nordlander-welcome col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-5 col-lg-4 col-lg-offset-5 col-xl-4 col-xl-offset-5">Nordlander</h1>
+    </div>
+    
+    <div class="row">
+        <h1 class="welcome-to col-sm-8 col-sm-offset-3 col-md-7 col-md-offset-4 col-lg-8 col-lg-offset-4 col-xl-8 col-xl-offset-4" id="home-animation" style="display: none;">Scroll down to download and learn more</h1>
     </div>
 </div>
 
@@ -130,17 +134,17 @@
 
                 <a href="/" class="download-link col-xs-12 col-md-4 col-lg-4 col-xl-4">
                     <span class="col-lg-12">Windows 10</span>
-                    <i class="fa fa-windows col-lg-12"></i>
+                    <i class="fab fa-windows col-lg-12"></i>
                 </a>
 
                 <a href="/" class="download-link col-xs-12 col-md-4 col-lg-4 col-xl-4">
                     <span class="col-lg-12">Mac OS X</span>
-                    <i class="fa fa-apple col-lg-12"></i>
+                    <i class="fab fa-apple col-lg-12"></i>
                 </a>
 
                 <a href="/" class="download-link col-xs-12 col-md-4 col-lg-4 col-xl-4">
                     <span class="col-lg-12">Linux</span> 
-                    <i class="fa fa-linux col-lg-12"></i>
+                    <i class="fab fa-linux col-lg-12"></i>
                 </a>
 
             </div>
@@ -148,5 +152,21 @@
         <p class="col-lg-12">*Console development in progress, check back soon*</p>
     </div>
 </div>
+
+<script>
+
+// Animations to show the welcome message
+$(document).ready(function() {
+    setTimeout(function() {
+        $("#anim-pt-1").show("fade", "slow");
+    }, 1000);
+    setTimeout(function() {
+        $("#anim-pt-2").show("fade", "slow");
+    }, 1500);
+    setTimeout(function() {
+        $("#home-animation").show("fade", "slow");
+    }, 3000);
+});
+</script>
 
 {% endblock %}
