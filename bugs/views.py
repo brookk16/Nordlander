@@ -73,3 +73,4 @@ def add_bug(request):
             user_form = AddBugForm()
     
     return redirect(reverse('bugs'))
+    
