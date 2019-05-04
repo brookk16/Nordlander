@@ -4,26 +4,19 @@ from django.utils import timezone
 from .models import Comments
 from bugs.models import Bugs
 
-
-
-
-
-
-
 # Create your views here.
 
 @login_required
 def add_comment(request, pk):
+    """
+    Creates a new comment for the bug. 'Username' field is not used for the app, but is needed to view in admin panel.
+    """
     
     bug = get_object_or_404(Bugs, pk=pk)
     
     comments = Comments.objects.filter(bug_id=pk).order_by("-created_date")
     
     user = request.user.username
-    
-    """
-    Creates a new comment for the bug. 'Username' field is not used for the app, but is needed to view in admin panel.
-    """
     
     if request.method == "POST":
         
@@ -35,7 +28,6 @@ def add_comment(request, pk):
             )
         
         new_comment.save()
-        
         
     return render(request, 'bugInfo.html', {'bug': bug, 'comments': comments})
     

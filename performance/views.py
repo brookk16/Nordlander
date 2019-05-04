@@ -28,16 +28,10 @@ def show_performance(request):
     top_scores_bugs = Bugs.objects.order_by('-upvotes').values_list('upvotes', flat=True).distinct()
     top_bugs = Bugs.objects.order_by('-upvotes').filter(upvotes__in=top_scores_bugs)[:5]
     
-    
-    
-    
-    
-    
     return render(request, "performance.html", {'top_features': top_features, 'top_bugs': top_bugs})
 
 
 def graph_data(request):
-    
     """
     For bugs_per_week_chart
     Gets a list of the dates of the days in the past week relative to today and formats them to show day/month/year.
@@ -51,8 +45,6 @@ def graph_data(request):
     
     bugs_per_day = []
     
-    
-
     for i in range(delta.days + 1 ):
         day = (seven_days_ago + timedelta(i))
         day_formatted = day.strftime('%d/%m/%Y')
@@ -60,9 +52,6 @@ def graph_data(request):
         bugs = (Bugs.objects.filter(created_date=day).count())
         bugs_per_day.append(bugs)
        
-        
-    
-    
     """
     For total bugs display
     Shows how many bugs are currently in the database
@@ -100,9 +89,6 @@ def graph_data(request):
         amount_of_features_per_types.append(feature)
         i += 1
     
-    
-    
-    
     """
     For bugs_per_feature chart
     Gathers all the different bug types, and then counts how many of the total bugs belong in to each type
@@ -116,7 +102,6 @@ def graph_data(request):
         currently_used_bug_types.append(bug_type['type'])
    
     amount_of_bugs_per_feature_type_dict = Bugs.objects.annotate(type_of=F('type')).values('type').annotate(bug_count=Count('id'))
-    
     
     
     l = 0
@@ -142,8 +127,6 @@ def graph_data(request):
         k += 1
     
     
-    
-   
     """
     For new_users_chart
     Counts all users who joined in the past week and counts them. The second variable stores the number of users who joined before last week
@@ -162,11 +145,6 @@ def graph_data(request):
     data_for_bugs_week = bugs_per_day
     bugs_status = [bugs_todo, bugs_doing, bugs_fixed]
     new_users_data = [users_joined_in_last_week, users_joined_older_last_week]
-    
-    
-    
-   
-    
     
     data={
         "labels1": labels1,

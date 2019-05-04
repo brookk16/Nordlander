@@ -1,10 +1,4 @@
-{% extends 'base.html' %} {% block content %} {% block head_js %}
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('tooltip').tooltip();
-    });
-</script>
-{% endblock head_js %}
+{% extends 'base.html' %} {% block content %}
 
 <div class="col-md-1 col-lg-2 col-xl-2 columns hidden-xs hidden-sm"></div>
 
@@ -53,42 +47,24 @@
             <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-
-
                         <form method="post" action="{% url 'add_comment' bug.id %}" id="add_comment" name="add_comment">
                             {% csrf_token %}
-
-
                             <label for="new_comment" hidden>Add comment</label>
                             <textarea type="text" name="new-comment" id="new-comment"></textarea>
-
-
                             <button type="submit" class="btn btn-info">Save</button>
                         </form>
-
-
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-lg-offset-1 col-xl-10 col-xl-offset-1 row-for-comments">
-
-
 
             {% for comment in comments %}
 
             <div class="row panel-bugs">
                 <div class="panel-body">
                     <div class="row">
-
                         <h5 class="comments-username col-lg-5 pull-left">{{ comment.user_id }}</h5>
-
-
-
-
-
                         <p class="col-lg-3 comment-date pull-right">{{ comment.created_date }}</p>
                     </div>
 
@@ -101,19 +77,13 @@
                     </div>
                 </div>
             </div>
-
-
             {% empty %}
 
             <p class="no-comments">There are no comments at the momment</p>
 
             {% endfor %}
-
-
         </div>
-
     </div>
-
 </div>
 
 <div class="col-md-1 col-lg-2 col-xl-2 columns hidden-xs hidden-sm"></div>

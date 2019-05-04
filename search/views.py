@@ -20,9 +20,6 @@ def do_search(request):
     db_bugs = request.GET.get('Bugs', None)
     
     
-    
-  
-    
     if request.method == 'GET':
         
         """ 
@@ -97,7 +94,7 @@ def do_search(request):
 
 
     """
-    Returns users to correct page
+    Returns users to correct page 
     """
     
     if db_features != None and db_bugs == None:

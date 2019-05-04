@@ -20,14 +20,9 @@ def feature_info(request, pk):
     Or return a 404 error if the post is not found
     """
     feature = get_object_or_404(Features, pk=pk)
-    
-   
-    
     current_liked = feature.user_liked
     user = request.user
     
-    
-
     if request.GET.get('like') == 'like':
         
         if user not in current_liked.all():
@@ -39,6 +34,5 @@ def feature_info(request, pk):
         else:
             messages.success(request, 'You have already liked this')
             
-    
     return render(request, "featureInfo.html", {'feature': feature}) 
 

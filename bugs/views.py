@@ -13,7 +13,7 @@ from comments.models import Comments
 @login_required
 def all_bugs(request):
     """
-    Returns all the bugs in the database
+    Returns all the bugs in the database by created date. Also adds the form for adding bug comments.
     """
     bugs = Bugs.objects.all().order_by("-created_date")
     
@@ -31,7 +31,7 @@ def bug_info(request, pk):
     
     Also returns all the comments for that bug
     
-    And the form for adding new comments
+    Also lets users upvote bugs, if they haven't already liked it.
     """
     bug = get_object_or_404(Bugs, pk=pk)
     
@@ -39,8 +39,6 @@ def bug_info(request, pk):
     
     current_upvote = bug.user_upvoted
     user = request.user
-    
-    
     
     if request.GET.get('upvote') == 'upvote':
         
@@ -53,12 +51,14 @@ def bug_info(request, pk):
         else:
             messages.success(request, 'You have already upvoted this')
             
-    
     return render(request, "bugInfo.html", {'comments': comments, 'bug': bug}) 
 
 
 def add_bug(request): 
     
+    """
+    Allows user to add a bug comment.
+    """
     
     if request.method == 'POST':
         
