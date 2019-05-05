@@ -36,24 +36,3 @@ class TestViews(TestCase):
         
         self.assertEqual(cart, {'1': 1})
         
-    def test_delete_cart_item(self):
-        """
-        This tests if when a feature is in a cart than when the adjust view method is run, it deletes the so called feature from the cart
-        """
-        
-        feature = Features(name="test", description="test", status="To do")
-        feature.save()
-        
-        page1 = self.client.get("/cart/add/{0}".format(feature.id))
-        
-        
-        page2 = self.client.post("/cart/delete/{0}".format(feature.id))
-        
-        session = self.client.session
-        cart = session['cart']
-        
-        
-        
-        
-        
-        self.assertEqual(cart, {})

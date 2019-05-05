@@ -14,3 +14,13 @@ class TestViews(TestCase):
         page = self.client.get("/")
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "home.html")
+    
+    """
+    THIS TEST SHOULD FAIL" status code should not be 404 (should be 200)
+    """
+    def test_that_should_fail(self):
+        user = User.objects.create_user(username='username', password='password')
+        self.client.login(username='username', password='password')
+        page = self.client.get("/")
+        self.assertEqual(page.status_code, 404)
+        self.assertTemplateUsed(page, "home.html")
