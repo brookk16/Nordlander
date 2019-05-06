@@ -842,7 +842,11 @@ input#select {
 .btn-success {
     margin: 30px;
 }
+/* ------------Checkout------------------*/
 
+.checkout-complete-message {
+    color: #f5f5f5;
+}
 /* ------------Media Queries---------------*/
 
 /* Add margin to search type so that both the label and input sit on the same line*/
@@ -938,6 +942,9 @@ input#select {
     #id_new_password1 {
         margin: 20px;
         width: 170px;
+    }
+    .hide-padding-xs {
+        padding: 10px 0px 0px 0px;
     }
 }
 

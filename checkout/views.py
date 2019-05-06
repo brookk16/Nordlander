@@ -8,8 +8,12 @@ from django.utils import timezone
 from features.models import Features
 import stripe
 
+
+
 # Create your views here.
 stripe.api_key = settings.STRIPE_SECRET
+
+
 
 
 @login_required()
@@ -31,7 +35,7 @@ def checkout(request):
                 order_line_item = OrderLineItem(
                     order=order,
                     product=product,
-                    quantity=quantity
+                    quantity=quantity,
                 )
                 order_line_item.save()
             
@@ -48,7 +52,7 @@ def checkout(request):
             if customer.paid:
                 messages.error(request, "You have successfully paid")
                 request.session['cart'] = {}
-                return redirect(reverse('features'))
+                return render(request, "checkoutComplete.html")
             else:
                 messages.error(request, "Unable to take payment")
         else:
@@ -59,3 +63,6 @@ def checkout(request):
         order_form = OrderForm()
     
     return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+
+def checkout_complete(request):
+    return render(request, "checkoutComplete.html")

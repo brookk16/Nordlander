@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+
+
+<div class="col-lg-12 login-styling">
+
+    <div class="row login-container hide-padding-xs">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-5 col-md-offset-4 col-lg-4 col-lg-offset-4 col-xl-4 col-xl-offset-4">
+            <div class="checkout-complete-message">
+                <p>Thank you for buying additional features for Nordlander!</p>
+                <p>Soon you will recieve an email with the download links for your features. Follow the instructions in the email to start using your features
+                </p>
+
+                <p>Return to <a href="{% url 'features' %}">Features</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
