@@ -1,5 +1,8 @@
 from django.db import models
 from features.models import Features
+from django.contrib.auth.models import User
+
+
 
 
 
@@ -15,18 +18,21 @@ class Order(models.Model):
     county = models.CharField(max_length=40, blank=False)
     date = models.DateField()
     
+    
+    
 
     def __str__(self):
-        return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
+        return "{0} - {1} - {2}".format(self.id, self.date, self.full_name)
 
 
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False)
     product = models.ForeignKey(Features, null=False)
     quantity = models.IntegerField(blank=False)
+    user = models.CharField(max_length=40, blank=False)
     
 
     def __str__(self):
-        return "{0} {1} @ {2}".format(
-            self.quantity, self.product.name, self.product.price)
+        return "{0} {1} @ {2} - {3}".format(
+            self.quantity, self.product.name, self.product.price,  self.user)
 

@@ -29,4 +29,6 @@ class Features(models.Model):
     status = models.CharField(choices=STATUSES, default="To do", max_length=14)
     
     def __str__(self):
-        return self.name
+        return "{0} {1}".format(self.id, self.name)
+            
+          

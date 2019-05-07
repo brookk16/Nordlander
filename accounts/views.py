@@ -1,9 +1,12 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from .forms import UserLoginForm, UserRegistrationForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
+from checkout.models import OrderLineItem, Order
+
+from features.models import Features
 
 
 
@@ -69,3 +72,27 @@ def register(request):
 
     args = {'user_form': user_form}
     return render(request, 'register.html', args)
+
+
+
+def myFeatures(request):
+    """
+    Retrieves a list of purchased features by currently logged in user (retireves the feature id's from orders)
+    """
+    
+    myOrders = OrderLineItem.objects.filter(user=request.user.username).order_by('product').values('product').distinct()
+    
+    myProductIds = []
+    
+    for id in myOrders:
+        myProductIds.append(id['product'])
+    
+    myFeatures = []
+        
+    for id in myProductIds:
+        feature = get_object_or_404(Features, pk=id)
+        myFeatures.append(feature)
+    
+    
+    
+    return render(request, "myFeatures.html", {"myFeatures": myFeatures})

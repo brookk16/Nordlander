@@ -36,6 +36,7 @@ def checkout(request):
                     order=order,
                     product=product,
                     quantity=quantity,
+                    user = request.user.username,
                 )
                 order_line_item.save()
             
