@@ -54,7 +54,16 @@
     <div class="row cart-row">
         <h1 class="cart-total">Total</h1>
         <p class="cart-total-price"><span class="glyphicon glyphicon-gbp" aria-hidden="true"></span>{{ total }}</p>
+        
+        {% if cart_items %}
+        
         <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+    
+        {% else %}
+        
+        <a href="" class="btn btn-success" role="button" disabled><span class="glyphicon glyphicon-ok-sign" aria-hidden="true" disabled></span>Checkout</a>
+        
+        {% endif %}
     </div>
 </div>
 

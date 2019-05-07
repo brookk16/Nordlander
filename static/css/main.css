@@ -847,6 +847,10 @@ input#select {
 .checkout-complete-message {
     color: #f5f5f5;
 }
+
+.checkout-payment-details-title {
+    margin: 15px;
+}
 /* ------------Media Queries---------------*/
 
 /* Add margin to search type so that both the label and input sit on the same line*/
