@@ -11,7 +11,7 @@ def view_cart(request):
 
 def add_to_cart(request, id):
     """
-    Add a specified product to the cart, always only adds 1
+    Add a specified product to the cart, always only adds 1 (quantity kept for stipe payments)
     """
    
     quantity = 1
@@ -39,7 +39,5 @@ def delete_cart_item(request, id):
     else:
         cart.pop(id)
      
-    
-    
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))

@@ -1,22 +1,44 @@
-{% extends "base.html" %} {% load static from staticfiles %}   {% block content %}
+{% extends "base.html" %} {% load static from staticfiles %} {% block content %}
+
 <div class="col-lg-12">
-    <div class="row row-flex">
+    <div class="row profile-feature">
+        <h1 class="profile-features-title">{{user}}'s features</h1>
+    </div>
+
+    <div class="row row-flex min-height-for-profile">
         {% for feature in myFeatures %}
-        
-        <h1>{{ feature.name  }}</h1>
-        
-        {% empty %}
-        
-        <h1>EMPTY</h1>
-        
+        <div class="col-xs-11 col-sm-11 col-md-5 col-lg-5 col-xl-5 display panel panel-default">
+            <div class="panel-body row">
+
+                <div class="feature-image col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="background-image: url('{{ MEDIA_URL }}{{ feature.image }}')"></div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 feature-info">
+
+                    <div class="row">
+
+                        <h3 class="feature-name col-lg-12">{{ feature.name.capitalize }}</h3>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 10px;">
+
+                        <span class="feature-status col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 pull-left">Status: {{ feature.status }}</span>
+
+                        <p class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 feature-price">£{{ feature.price }}</p>
+
+                        <span class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 pull-left"><i class="fa fa-thumbs-up"></i>{{ feature.likes }}</span>
+
+                        <a href="{% url 'feature_info' feature.id  %}" class="btn custom-button col-xs-4 col-sm-4 col-md-5 col-lg-4 col-xl-4" role="button">See info</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         {% endfor %}
-        
     </div>
 </div>
 
 
-
-
-
 {% endblock %}
-

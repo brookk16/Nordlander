@@ -93,6 +93,4 @@ def myFeatures(request):
         feature = get_object_or_404(Features, pk=id)
         myFeatures.append(feature)
     
-    
-    
     return render(request, "myFeatures.html", {"myFeatures": myFeatures})

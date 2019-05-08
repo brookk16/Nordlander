@@ -24,3 +24,16 @@ class TestViews(TestCase):
         page = self.client.get("/")
         self.assertEqual(page.status_code, 404)
         self.assertTemplateUsed(page, "home.html")
+    
+    """
+    Test that ensures the correct page is displayed when users go to their profile (to see their purchased features)
+    """
+    
+    def test_correct_profile_page_is_loaded(self):
+        user = User.objects.create_user(username='username', password='password')
+        self.client.login(username='username', password='password')
+        page = self.client.get("/accounts/myFeatures/")
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed(page, "myFeatures.html")
+        self.assertEqual()
+        

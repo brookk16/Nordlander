@@ -5,11 +5,8 @@ from django.contrib import messages
 from bugs.forms import AddBugForm
 from comments.models import Comments
 
-
-
-
-
 # Create your views here.
+
 @login_required
 def all_bugs(request):
     """
@@ -55,7 +52,6 @@ def bug_info(request, pk):
 
 
 def add_bug(request): 
-    
     """
     Allows user to add a bug comment.
     """

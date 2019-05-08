@@ -14,7 +14,9 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET
 
 
-
+"""
+Allows users to purchase products 
+"""
 
 @login_required()
 def checkout(request):
@@ -49,35 +51,35 @@ def checkout(request):
                 )
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
-                print("TEST111")
-                return redirect(reverse('checkout'))
+                
             
             if customer.paid:
-                print("TEST222")
+                
                 messages.error(request, "You have successfully paid")
                 request.session['cart'] = {}
                 return redirect(reverse('checkout_complete'))
             else:
-                print("TEST333")
+                
                 messages.error(request, "Unable to take payment")
-                return redirect(reverse('checkout'))
+                
         
        
         else :
-            print("TEST444")
             print(payment_form.errors)
             messages.error(request, "We were unable to take a payment with that card!")
-            messages.error(request, "Error")
-            return redirect(reverse('checkout'))
+            
             
             
     else:
-        print("TEST000")
         payment_form = MakePaymentForm()
         order_form = OrderForm()
         
     
     return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
 
+
+"""
+Renders the checkout complete page to display a thank you message to users who have just purchased feature(s)
+"""
 def checkout_complete(request):
     return render(request, "checkoutComplete.html")

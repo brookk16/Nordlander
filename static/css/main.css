@@ -851,9 +851,43 @@ input#select {
 .checkout-payment-details-title {
     margin: 15px;
 }
+
+
+
+/* ------------Profile---------------- */
+
+.profile-features-title {
+    color: #ffff52e3;
+    margin: 20px;
+    padding: 10px;
+}
+
+.profile-feature {
+    background-color: black;
+}
+
+.min-height-for-profile {
+    min-height: 600px;
+}
+
 /* ------------Media Queries---------------*/
 
-/* Add margin to search type so that both the label and input sit on the same line*/
+
+@media (max-width: 1200px) {
+    .jumbotron {
+        margin: 0px !important;
+    }
+
+}
+
+@media (max-width: 1199px) {
+    #home-feature-cards-spacing {
+        margin: 0% 33.333%;
+    }
+    #md-margin-for-spacing {
+        margin: 0% 33.333%;
+    }
+}
 
 @media (max-width: 981px) and (min-width: 800px) {
     #search-select-types {
@@ -861,7 +895,11 @@ input#select {
     }
 }
 
-/* Changes padding around festure description */
+@media (max-width: 767px) {
+    .row-for-bug-info {
+        margin-top: 0px;
+    }
+}
 
 @media (max-width: 761px) and (min-width: 565px) {
     .features-info-description {
@@ -869,7 +907,12 @@ input#select {
     }
 }
 
-/* Removes features description padding for smaller screen sizes */
+@media (max-width: 680px) {
+    .panel-bugs {
+        margin: 0px;
+    }
+
+}
 
 @media (max-width: 564px) {
     .features-info-description {
@@ -877,7 +920,11 @@ input#select {
     }
 }
 
-/* Changes the position of the Nordlander welcome message */
+@media (max-width: 555px) {
+    .reset-container {
+        padding: 25px 0px;
+    }
+}
 
 @media (max-width: 455px) {
     .nordlander-welcome {
@@ -896,51 +943,6 @@ input#select {
     }
 }
 
-/* Add spacing to the feature cards (home.html) for smaller screens */
-
-@media (max-width: 1199px) {
-    #home-feature-cards-spacing {
-        margin: 0% 33.333%;
-    }
-
-}
-
-@media (max-width: 1199px) {
-    #md-margin-for-spacing {
-        margin: 0% 33.333%;
-    }
-
-}
-
-/* Removes margin for bugsinfo information on smaller screens */
-
-@media (max-width: 680px) {
-    .panel-bugs {
-        margin: 0px;
-    }
-
-}
-
-@media (max-width: 767px) {
-    .row-for-bug-info {
-        margin-top: 0px;
-    }
-    .jumbotron {
-        margin: 0px !important;
-    }
-
-}
-
-/* Removes the padding for the reset-container on smaller screen sizes, for the password reset templates */
-
-@media (max-width: 555px) {
-    .reset-container {
-        padding: 25px 0px;
-    }
-}
-
-/*Makes the input boxes smaller for smaller screen sizes on password_reset_confirm.html */
-
 @media (max-width: 355px) {
     #id_new_password2,
     #id_new_password1 {
@@ -952,10 +954,3 @@ input#select {
     }
 }
 
-@media (max-width: 1200px) {
-    
-    .jumbotron {
-        margin: 0px !important;
-    }
-
-}
