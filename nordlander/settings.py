@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'comments',
     'performance',
     'django_forms_bootstrap',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -168,5 +169,21 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587
 
+AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000'
+}
 
+AWS_STORAGE_BUCKET_NAME = 'nordlander-bucket'
+AWS_S3_REGION_NAME = 'eu-west-1'
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_SECRET_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_LOCATION = 'static'
+
+MEDIAFILES_LOCATION = 'media'
+
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
