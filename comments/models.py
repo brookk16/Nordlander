@@ -9,7 +9,7 @@ from bugs.models import Bugs
 
 class Comments(models.Model):
     
-    username = models.CharField(max_length=30,default=User )
+    username = models.CharField(max_length=50,default=User )
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     bug_id = models.ForeignKey(Bugs, on_delete=models.CASCADE, null=True)
     comment = models.TextField()

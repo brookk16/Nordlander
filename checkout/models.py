@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Order(models.Model):
-    full_name = models.CharField(max_length=50, blank=False)
+    full_name = models.CharField(max_length=254, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
     country = models.CharField(max_length=40, blank=False)
     postcode = models.CharField(max_length=20, blank=True)

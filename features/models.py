@@ -17,10 +17,10 @@ class Features(models.Model):
         ("Available", "Available"),
     }
     
-    name = models.CharField(max_length=254, default='')
+    name = models.CharField(max_length=255, default='')
     description = models.TextField()
-    type = models.CharField(choices=FEATURE_TYPES, max_length=6, default="Items")
-    price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    type = models.CharField(choices=FEATURE_TYPES, max_length=10, default="Items")
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     image = models.ImageField(upload_to='images')
     image_carousel2 = models.ImageField(upload_to='images', default="Photo not available")
     image_carousel3 = models.ImageField(upload_to='images', default="Photo not available")

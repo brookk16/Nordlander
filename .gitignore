@@ -6,3 +6,4 @@ env.py
 /static
 /media
 ROOT USER INFO (DELETE AT END)
+travis.yml
