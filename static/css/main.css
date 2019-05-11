@@ -760,7 +760,7 @@ input#select {
 /* -------------Performance------------ */
 
 .performance-panel1 {
-    min-height: 411px;
+    min-height: 411px;  
     background-image: -webkit-linear-gradient(#2B2525, #000000 10%, #49475B);
     text-align: center;
 }
@@ -781,7 +781,7 @@ input#select {
 
 }
 
-.performance-panel4 {
+.performance-panel4 { /* NEED TO CHANGE THIS TO A DARKER COLOR MAYBE CHANGE ONE ABOVE TOO  */
     min-height: 700px;
     background-image: -webkit-linear-gradient(#DDD8C4, #DDD8C4 5%, #8F9491);
     

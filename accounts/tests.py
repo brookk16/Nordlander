@@ -17,7 +17,11 @@ class TestViews(TestCase):
     
     """
     THIS TEST SHOULD FAIL" status code should not be 404 (should be 200)
+    
+    Uncomment the code below to show failing code
     """
+    """
+    
     def test_that_should_fail(self):
         user = User.objects.create_user(username='username', password='password')
         self.client.login(username='username', password='password')
@@ -25,6 +29,7 @@ class TestViews(TestCase):
         self.assertEqual(page.status_code, 404)
         self.assertTemplateUsed(page, "home.html")
     
+    """
     """
     Test that ensures the correct page is displayed when users go to their profile (to see their purchased features)
     """
