@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='bugs',
             name='type',
-            field=models.CharField(choices=[('World', 'World'), ('Item', 'Item'), ('Base game', 'Base game'), ('Quests', 'Quests'), ('Skills', 'Skills')], default='Base game', max_length=6),
+            field=models.CharField(choices=[('World', 'World'), ('Item', 'Item'), ('Base game', 'Base game'), ('Quests', 'Quests'), ('Skills', 'Skills')], default='Base game', max_length=255),
         ),
         migrations.AlterField(
             model_name='bugs',

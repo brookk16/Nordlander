@@ -20,12 +20,12 @@ class Bugs(models.Model):
         ("Base game", "Base game")
     }
     
-    name = models.CharField(max_length=254, default='')
+    name = models.CharField(max_length=255, default='')
     description = models.TextField()
     created_date = models.DateField(default=datetime.now)
     upvotes = models.IntegerField(default=0)
-    status = models.CharField(choices=STATUSES, default="To do", max_length=6)
-    type = models.CharField(choices=BUG_TYPES, max_length=10, default="Base game")
+    status = models.CharField(choices=STATUSES, default="To do", max_length=255)
+    type = models.CharField(choices=BUG_TYPES, max_length=255, default="Base game")
     user_upvoted = models.ManyToManyField(User)
     
     
