@@ -40,5 +40,5 @@ class TestViews(TestCase):
         page = self.client.get("/accounts/myFeatures/")
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "myFeatures.html")
-        self.assertEqual()
+        
         
