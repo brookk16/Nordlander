@@ -31,19 +31,19 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="url(../img/weapons-image.jpg)" alt="Character creation screen">  
+                    <img src="{% static 'img/weapons-image.jpg' %}" alt="Character creation screen">  
                     <div class="carousel-caption">
                         Fight using swords, bows, spells and more
                     </div>
                 </div>
                 <div class="item">
-                    <img src="url(../img/character-creation.jpg)" alt="Fully customisable characters">
+                    <img src="{{ STATIC_URL }}character-creation.jpg" alt="Fully customisable characters">
                     <div class="carousel-caption">
                         Create fully customisable characters
                     </div>
                 </div>
                 <div class="item">
-                    <img src="url(../img/quests-image.jpg)" alt="Hours of quests and dungeons">
+                    <img src="{{ STATIC_URL }}quests-image.jpg" alt="Hours of quests and dungeons">
                     <div class="carousel-caption">
                         Spend hours on quests and in dungeons
                     </div>
@@ -88,7 +88,7 @@
 
             <div class="col-md-6 col-md-offset-4 col-lg-3 col-xl-3 col-lg-offset-1 hidden-xs hidden-sm">
                 <div class="thumbnail">
-                    <img src="url(../img/worlds-feature.png)" alt="Travel to new worlds">
+                    <img src="static/img/worlds-feature.png" alt="Travel to new worlds">
                     <div class="caption">
                         <h3>Travel to new worlds</h3>
 
@@ -99,7 +99,7 @@
             
             <div class="col-md-6 col-md-offset-4 col-lg-3 col-xl-3 hidden-xs hidden-sm" id="home-feature-cards-spacing">
                 <div class="thumbnail">
-                    <img src="url(../img/weapons-feature.jpg)" alt="Gain new weapons and abilites">
+                    <img src="static/img/weapons-feature.jpg" alt="Gain new weapons and abilites">
                     <div class="caption">
                         <h3>Gain new weapons and skills</h3>
 
@@ -110,7 +110,7 @@
             
             <div id="md-margin-for-spacing" class="col-md-6 col-lg-3 col-xl-3 hidden-xs hidden-sm">
                 <div class="thumbnail">
-                    <img src="url(../img/quests-feature.jpg)" alt="Complete new quests">
+                    <img src="static/img/quests-feature.jpg" alt="Complete new quests">
                     <div class="caption">
                         <h3>Complete new quests</h3>
 
