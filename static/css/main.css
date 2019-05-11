@@ -777,13 +777,13 @@ input#select {
 
 .performance-panel3 {
     min-height: 700px;
-    background-image: -webkit-linear-gradient(#799496, #799496 5%, #DDD8C4);
+    background-image: -webkit-linear-gradient(#799496, #799496 5%, #a9603d);
 
 }
 
-.performance-panel4 { /* NEED TO CHANGE THIS TO A DARKER COLOR MAYBE CHANGE ONE ABOVE TOO  */
+.performance-panel4 { 
     min-height: 700px;
-    background-image: -webkit-linear-gradient(#DDD8C4, #DDD8C4 5%, #8F9491);
+    background-image: -webkit-linear-gradient(#a9603d, #a9603d 5%, black)
     
 }
 

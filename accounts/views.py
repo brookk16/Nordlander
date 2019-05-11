@@ -5,8 +5,8 @@ from .forms import UserLoginForm, UserRegistrationForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from checkout.models import OrderLineItem, Order
-
 from features.models import Features
+
 
 
 
@@ -14,7 +14,7 @@ def index(request):
     """A view that displays the index page"""
     return render(request, "index.html")
 
-
+@login_required() 
 def logout(request):
     """A view that logs the user out and redirects back to the index page"""
     
@@ -74,7 +74,7 @@ def register(request):
     return render(request, 'register.html', args)
 
 
-
+@login_required() 
 def myFeatures(request):
     """
     Retrieves a list of purchased features by currently logged in user (retireves the feature id's from orders)
@@ -94,3 +94,4 @@ def myFeatures(request):
         myFeatures.append(feature)
     
     return render(request, "myFeatures.html", {"myFeatures": myFeatures})
+

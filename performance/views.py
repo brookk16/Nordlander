@@ -1,13 +1,11 @@
 from django.shortcuts import render
 from features.models import Features
 from bugs.models import Bugs
-
 from django.contrib.auth import get_user_model
 from django.db.models import Max
 from django.db import connections
 from django.db.models import Count, Sum, F
 from django.http import JsonResponse
-
 from datetime import timedelta, datetime
 from django.utils import timezone
 

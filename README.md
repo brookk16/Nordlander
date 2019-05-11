@@ -4,6 +4,7 @@
 One or two paragraphs providing an overview of your project.
 Essentially, this part is your sales pitch.
 
+The deployed site can be seen [here](https://nordlander.herokuapp.com/)
 
 
 ## UX
