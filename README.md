@@ -144,6 +144,8 @@ CONTENT
 
 **2. Features:**
 
+> Note: as features are paid items, users are not able to create them. To create a new feature product, use the Django admin panel. For more information clikc [here](https://docs.djangoproject.com/en/2.2/ref/contrib/admin/ )
+
 <details> 
 <summary>Search for features</summary> 
 <br> 
@@ -319,35 +321,95 @@ python3 manage.py run test
 - When a user clicks on "username's features" they are shown a list of the features that they have bought, or an error message if they haven't yet bought any features.
 
 2. Features:
-- Users can search for features using any combination of the 3 inputs (using one, two or all inputs at once). Users can search by: "name of feature" (using text input), type (dropdown choices) or current status (dropdown choices). If no results are found, an error message is displayed.
 - When users hover over the "thumbs up" icon on the feature's information page (featuresInfo.html) the icon becomes green. Clicking on the icon will then increment the like counter by 1. Users who have clicked are saved in a list, so that if they click it again, an error message appears.
 - Once the user has items in their cart the "checkout" button on checkout.html becomes available and users can go to the checkout page. Leaving any form input empty will prompt a "Field required" message. Using the correct information (user and credit card) will redirect the user to a "payment complete" page and a message will be displayed at the top (with a correct payment message).
 
 > note: The stripe payment processing is set to test currently, therefore only the test card information will allow a purchase. In addition, the error messages will not display whilst in test mode, therefore no error messages are displayed if incorrect data is put into the form, the form just won't be submitted until correct info is used. To learn more see the [stripe documents](https://stripe.com/docs).
 
+3. Support:
+- Hovering over the 'bug' symbol changes the colour to green, and clicking on this symbol will then increment the upvote number by one. If a user who has already upvoted that bug tries to upvote again, it will not work and an error message is displayed. 
+- Clicking the 'add a comment' button displays the correct modal window, and the submit button then saves the comment. The comment is then correctly displayed (with the correct username and time of posting). Adding new comments pushes the older ones down the page. 
+- CLicking the "add a bug" button correctly displays the modal window, with all required inputs. Once submitted, the new bug correctly displays on the bugs page, with new bugs offsetting older bugs down the page. The correct information for the bug is also displayed (i.e: the status, date of creation, type of bug and number of upvotes).
 
+ > Note: As the performance and search apps are separate from bugs and features, their tests are described below.
 
+4. Other:
+- Users are able to search for any bug/feature using the search bar, using any combination of the 3 search inputs. The correct results are displayed, from the correct database (i.e: if searching from bugs page, only bugs are displayed). The correct search information messages are also displayed when a search is made. 
 
-
+- The performance page results were then checked manually to ensure that the data displayed reflects the actual databse values. The hover messages and numerical values were also checked, and are displaying correctly.
 
 </details>
 
 ## Deployment
-The code is stored in [this Github repository](link)
+
 The code is deployed on [this Heroku site](link)
-To deploy the code onto Heroku: 
-To run the code locally you will need a virtualenv with a django app set up. Import the code and then install the requirements from the file. To then run the code you will need to:
+
+**To deploy the code onto Heroku:**
+
+Deploying to Heroku consisted of X stages:
+
+<details>
+<summary>1. Set-up of the deployed database:</summary> 
+<br> 
+- Heroku's SQL Postgres database was set up on Heroku
+- dj-database-url and psycopg2 was installed to facilitate communication bewteen our django app and the Heroku database
+- The code was updated in "settings.py" as to change between the deployed and local databases (depending on whether the environmental varibales come from a local env.py file or the deployed environment)
+- The database was then migrated over to the deployed database.
+
+</details>
+
+<details>
+<summary>2. Set-up and use of S3 bucket:</summary> 
+<br>
+> Note: requires set up of free AWS developper account
+
+- Created an S3 bucket (for complete instructions, click [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html))
+    - set to "static website hosting"
+    - Added a [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html) and [CORS configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html)
+    - Then created a user (with a "AmazonS3FullAccess" policy attatched)
+    - Downloaded the 'credentials.csv' file and input the keys into the code.
+
+- Integrated S3 and Django (for complete instructions, click [here](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html))
+     - updated "settings.py" by adding "storages" to INSTALLED_APPS.
+     - And added variables required (descirbed in [instructions](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html))
+- Also hosted our "media" files (images uploaded for use in 'features'):
+    - A 'custom_storages.py' file was created (code [here](https://github.com/brookk16/Nordlander/blob/master/custom_storages.py))
+    - Following variables were added to 'settings.py': STATICFILES_STORAGE = "custom_storages.StaticStorage" and STATICFILES_LOCATION = 'static'
+    
+</details>
+
+<details>
+<summary>3. Final set up of Heroku:</summary> 
+<br>
+- Linked up the Github repository to the Heroku (follow these [instructions](https://devcenter.heroku.com/articles/github-integration))
+- Created a requirements.txt file:
+~~~
+sudo pip3 freeze --local > requirements.txt 
+~~~
+- Installed gunicorn (to allow us to connect to Heroku)
+
+- Created a Procfile:
+~~~
+echo web: gunicorn nordlander.wsgi:application > Procfile
+~~~
+
+- Following varibales set in Heroku: AWS_SECRET_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, EMAIL_ADDRESS, EMAIL_PASSWORD, SECRET_KEY, STRIPE_PUBLISHABLE, STRIPE_SECRET and DISABLE_COLLECTSTATIC = 1 (this stops Heroku from trying to re-upload the static files)
+
+- 'import env' in 'settings.py' was then commented out
+- The code was then added, commited and pushed to Github
+
+> Note: There will be an error until you add the site to ALLOWED_HOSTS in 'settings.py'.
+
+</details>
+
+**To run the code locally:**
+
+You will need a django app set up. Copy the code from this repository and then install the requirements from the file. 
+
+To then run the code you will need to:
 1.	Uncomment “import env.py” in Nordlander > settings.py
-2.	Add your own “env.py” to the top level directory. Add the following environmental variables: AWS_SECRET_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, EMAIL_ADDRESS, EMAIL_PASSWORD, SECRET_KEY, STRIPE_PUBLISHABLE, STRIPE_SECRET
+2.	Add your own “env.py” to the top level directory. Add the following environmental variables: AWS_SECRET_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, EMAIL_ADDRESS, EMAIL_PASSWORD, SECRET_KEY, STRIPE_PUBLISHABLE and STRIPE_SECRET
 3.	Type “run” into the console and hit enter
-
-
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-•	Different values for environment variables (Heroku Config Vars)?
-•	Different configuration files?
-•	Separate git branch?
-In addition, if it is not obvious, you should also describe how to run your code locally.
 
 
 ## Credits
