@@ -493,12 +493,12 @@ The Images used in the project were taken from the following sources:
 
 -[Background image for features page]( https://www.wallpaperup.com/212136/TERA_ONLINE_fantasy_adventure_game_(72).html)
 
--	The [collumns]( : https://jooinn.com/castle-column.html) used on featuresInfo.html, bugs.html and bugsInfo.html
--[Performance]( https://stmed.net/fantasy/dark-fantasy-wallpapers) background image
+-	The [collumns](https://jooinn.com/castle-column.html) used on featuresInfo.html, bugs.html and bugsInfo.html
+-[Performance](https://stmed.net/fantasy/dark-fantasy-wallpapers) background image
 
 
 The fonts used in this project come from the following sources (and may be found within the fonts folder of the static directory): 
 
 -	[Stempel Garmon](http://legionfonts.com/fonts/stempelgaramondltstd-bold)
--	[Nordlander]( https://www.fontspace.com/joel-carrouche/norse) (normal and bold)
+-	[Nordlander](https://www.fontspace.com/joel-carrouche/norse) (normal and bold)
 
