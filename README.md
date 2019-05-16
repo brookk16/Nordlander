@@ -289,7 +289,6 @@ All following bug component explanations begin on the "bugs.html" page. Which is
 1. Expand on the options available for users in their profile page. In keeping with ux design, this would involve hearing from users to ask for what features they would want the most. 
 
 
-<a> name="leftToImplement2"></a>
 2. Write more thorough automated tests for the app, to facilitate development at a later date. This was not implemented to the fullest due to the developer’s lack of knowledge in this area.
 
 3. Add functionality to allow users to download the game. As making an app/game was not required as part of this project, no accompanying code was written to allow users to download the app/game. Therefore nothing happens when users click the download links in the home.html template.
@@ -368,7 +367,7 @@ python3 manage.py run test
 </details>
 
 <details> 
-<summary> ** Click below to see details of these manual tests ** </summary> 
+<summary>**Click below to see details of these manual tests**</summary> 
 <br> 
 
 #### Manual tests
