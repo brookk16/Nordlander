@@ -20,26 +20,27 @@ Nordlander is a free to play solo action rpg where the users can purchase dlc to
 ## UX
 
 This website is designed for new and current users of the Nordlander game to: 
+
 - download the game 
 - purchase features
 - get support for their game. 
 
 The site is designed to not only facilitate these requirements, but also to help influence the creation of future features. 
-To ensure that users have access to any feature they may want we have a dedicated performance page, which alongside your social media posts, guides us in our design of future features. 
+To ensure that users have access to any feature they may want,  we have a dedicated performance page which alongside your social media posts, influences the design of future features. 
 
-To maintain transparency, users have access to this data in the performance page. Users do this by purchasing features they want and/or liking features. 
+To maintain transparency, users have access to this data in the performance page. Users inlfuence future features by purchasing features they want and/or liking the features. 
 
 We try to develop and release new features as soon as we can, therefore to help solve any bugs we have a support page. Users can search for bugs, see and add comments and also add their own bugs too. These results can also be seen on the performance page. 
 
-These main purposes for the website were guided by user requirements, a sample of which can be seen below: 
+The decision to implement these primary features on the website were guided by user requirements, a sample of which can be seen below: 
 
 - **User A**: I want to be able to be able to find and purchase features that interest me.
 
-- **User B**: I want adequate support for if anything goes wrong with the game or my account.
+- **User B**: I want adequate support if anything goes wrong with the game or my account.
 
-- **User C**:  I want to be able to see how stable the game is before I buy, and how what features there are.
+- **User C**: I want to be able to see how stable the game is before I buy, and how many features there are.
 
-Click below to see the wireframe for this project 
+Click below to see the wireframes for this project 
 
 <details> 
 <summary>Wireframes</summary> 
@@ -133,9 +134,9 @@ Each are described below:
 2. This will redirect you to another page, where you must supply your user email
 3. An email will then be sent to the supplied email, with details on how to reset your password, and a link to reset your password
 4. Clicking on the link redirects the user to another page, where you must supply a new password (must be supplied twice for authentication)
-5. If successful the user is redirected to another page where this message is displayed: "Your password has been set. You may go ahead and log in now." and link to log in.
+5. If successful the user is redirected to another page where this message is displayed: "Your password has been set. You may go ahead and log in now." and click to log in.
 
-- If the link did not work another message will be displayed instead of the password reset from, i.e: "The password reset link was invalid, <br /> possibly because it has already been used. Please request a new password reset.""
+- If the link did not work another message will be displayed instead of the password reset from, i.e: "The password reset link was invalid, possibly because it has already been used. Please request a new password reset.""
 
 </details>
 
@@ -156,7 +157,7 @@ Each are described below:
 
 > Note: as features are paid items, users are not able to create them. To create a new feature product, use the Django admin panel. For more information click [here](https://docs.djangoproject.com/en/2.2/ref/contrib/admin/ )
 
-All following feature component explanations begin on the "features.html" page. Which is accessed by clicking on the "Features" link the top nav.
+All following feature component explanations begin on the "features.html" page. Which is accessed by clicking on the "Features" link in the top nav.
 
 <details> 
 <summary>Search for features</summary> 
@@ -242,7 +243,7 @@ All following bug component explanations begin on the "bugs.html" page. Which is
 3. Click on the icon to upvote the bug
 4. The upvote counter will then increment by one, showing the upvote
 
-- If the user has already upvoted the bug, the upvote will not eb counted and the page will refreash and a message will appear ("You have already upvoted this")
+- If the user has already upvoted the bug, the upvote will not be counted and the page will refreash and a message will appear ("You have already upvoted this").
 
 </details>
 
@@ -346,7 +347,7 @@ A mix of automated and manual testing was conducted on the website:
 4.  Final user tests to ensure all website functionality is satisfactory and provides a positive user experience.
 
 <details> 
-<summary> **Click below to see automated tests and how to run** </summary> 
+<summary>**Click below to see automated tests and how to run** </summary> 
 <br> 
 
 #### Automated-tests
