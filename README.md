@@ -2,6 +2,8 @@
 
 # Nordlander 
 
+See the deployed site [here](https://nordlander.herokuapp.com)
+
 Nordlander is a free to play solo action rpg where the users can purchase dlc to enhance and personalise their game. This is the 5th milietone project required as part of the Code Institute’s full stack web developer course, showcasing skills in: e-commerce, django, full stack development, e.t.c
 
 > Note: The Nordlander game and any bugs or features do not exist, in addition the stripe payment features of this app are set to test and therefore only work with the test card (please see stripe for more info)
@@ -366,8 +368,9 @@ python3 manage.py run test
 </details>
 
 <details> 
-<summary>**Click below to see details of these manual tests**</summary> 
+<summary> **Click below to see details of these manual tests** </summary> 
 <br> 
+
 #### Manual tests
 
 - Manual tests were conducted on all the components (descirbed in [components](#Components)) and on the JQuery code for the site. All manual tests for the comppnents follow the instructions given in [components](#Components), and thus these test descriptions will only provide the results of each test.
@@ -401,7 +404,7 @@ python3 manage.py run test
 
 ## Deployment
 
-The code is deployed on [this Heroku site](https://nordlander.herokuapp.com)
+The code is deployed on [here](https://nordlander.herokuapp.com)
 
 **To deploy the code onto Heroku:**
 
