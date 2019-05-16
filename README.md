@@ -9,7 +9,7 @@ Nordlander is a free to play solo action rpg where the users can purchase dlc to
 **Index:**
 1. [UX](#UX)
 2. [Components](#Components )
-3. [Technologies Used](#technologies)
+3. [Technologies](#Technologies)
 4. [Testing](#testing)
 5. [Deployment](#deployment)
 6. [Credits](#credits)
@@ -235,7 +235,7 @@ CONTENT
 
 
 
-## Technologies Used
+## Technologies 
 
 [Font awesome](https://fontawesome.com):
 * Provided the icons for the project 
