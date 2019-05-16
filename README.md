@@ -445,7 +445,8 @@ Deploying to Heroku consisted of X stages:
 <details>
 <summary>3. Final set up of Heroku:</summary> 
 <br>
-- Linked up the Github repository to the Heroku (follow these [instructions](https://devcenter.heroku.com/articles/github-integration) )
+
+- Linked up the Github repository to the Heroku (follow these [instructions](https://devcenter.heroku.com/articles/github-integration))
 
 - Created a requirements.txt file:
 
