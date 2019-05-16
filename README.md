@@ -347,7 +347,7 @@ A mix of automated and manual testing was conducted on the website:
 4.  Final user tests to ensure all website functionality is satisfactory and provides a positive user experience.
 
 <details> 
-<summary>**Click below to see automated tests and how to run**</summary> 
+<summary> **Click below to see automated tests and how to run** </summary> 
 <br> 
 
 #### Automated-tests
@@ -368,7 +368,7 @@ python3 manage.py run test
 </details>
 
 <details> 
-<summary> **Click below to see details of these manual tests** </summary> 
+<summary> ** Click below to see details of these manual tests ** </summary> 
 <br> 
 
 #### Manual tests
