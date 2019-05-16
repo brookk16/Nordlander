@@ -484,21 +484,23 @@ To then run the code you will need to:
 
 ## Credits
 The Images used in the project were taken from the following sources: 
--	[Home page background image]( https://www.deviantart.com/janphilippeckert/art/Darksouls-Fanart-Wallpaper-451273547) 
--Home page carousel images: [character creation]( http://expeditionsseries.com), [quests]( https://www.reddit.com/r/ImaginaryLandscapes/comments/as9ahc/fantasy_landscape_by_viktor_mukhin/) and [weapons]( https://society6.com/danielnyari)
+- [Home page background image](https://www.deviantart.com/janphilippeckert/art/Darksouls-Fanart-Wallpaper-451273547) 
 
--	Home page features section: [new worlds]( http://mentalfloss.com/article/64152/gorgeous-and-extensive-video-game-map), [new weapons](http://sf.co.ua/id63667) and [new quests]( https://www.videogamesartwork.com/games/elder-scrolls-online/dungeon)
+-Home page carousel images: [character creation](http://expeditionsseries.com), [quests](https://www.reddit.com/r/ImaginaryLandscapes/comments/as9ahc/fantasy_landscape_by_viktor_mukhin/) and [weapons](https://society6.com/danielnyari)
 
--[Backgound image for home page features section and cart background image]( https://the-world-of-nyrondie.fandom.com/wiki/The_Scalelands)
+- Home page features section: [new worlds](http://mentalfloss.com/article/64152/gorgeous-and-extensive-video-game-map), [new weapons](http://sf.co.ua/id63667) and [new quests](https://www.videogamesartwork.com/games/elder-scrolls-online/dungeon)
 
--[Background image for features page]( https://www.wallpaperup.com/212136/TERA_ONLINE_fantasy_adventure_game_(72).html)
+-[Backgound image for home page features section and cart background image](https://the-world-of-nyrondie.fandom.com/wiki/The_Scalelands)
+
+-[Background image for features page](https://www.wallpaperup.com/212136/TERA_ONLINE_fantasy_adventure_game_(72).html)
 
 -	The [collumns](https://jooinn.com/castle-column.html) used on featuresInfo.html, bugs.html and bugsInfo.html
+
 -[Performance](https://stmed.net/fantasy/dark-fantasy-wallpapers) background image
 
 
 The fonts used in this project come from the following sources (and may be found within the fonts folder of the static directory): 
 
--	[Stempel Garmon](http://legionfonts.com/fonts/stempelgaramondltstd-bold)
--	[Nordlander](https://www.fontspace.com/joel-carrouche/norse) (normal and bold)
+- [Stempel Garmon](http://legionfonts.com/fonts/stempelgaramondltstd-bold)
+- [Nordlander](https://www.fontspace.com/joel-carrouche/norse) (normal and bold)
 
