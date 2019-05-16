@@ -6,7 +6,7 @@ See the deployed site [here](https://nordlander.herokuapp.com)
 
 Nordlander is a free to play solo action rpg where the users can purchase dlc to enhance and personalise their game. This is the 5th milietone project required as part of the Code Institute’s full stack web developer course, showcasing skills in: e-commerce, django, full stack development, e.t.c
 
-> Note: The Nordlander game and any bugs or features do not exist, in addition the stripe payment features of this app are set to test and therefore only work with the test card (please see stripe for more info)
+> Note: The Nordlander game and any bugs or features do not exist, in addition the stripe payment features of this app are set to test and therefore only work with the test card (please see [stripe](https://stripe.com) for more info)
 
 **Index:**
 1. [UX](#UX)
