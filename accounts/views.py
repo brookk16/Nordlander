@@ -9,11 +9,6 @@ from features.models import Features
 
 
 
-
-def index(request):
-    """A view that displays the index page"""
-    return render(request, "index.html")
-
 @login_required() 
 def logout(request):
     """A view that logs the user out and redirects back to the index page"""

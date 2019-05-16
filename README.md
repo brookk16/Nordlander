@@ -43,37 +43,37 @@ Click below to see the wireframe for this project
 <summary>Wireframes</summary> 
 <br> 
 
-![index/welcome page1]()
+![index/welcome page1](https://github.com/brookk16/Nordlander/blob/master/wireframes/home-1.png)
 
-![index/welcome page2]()
+![index/welcome page2](https://github.com/brookk16/Nordlander/blob/master/wireframes/home-2.png)
 
-![index/welcome page3]()
+![index/welcome page3](https://github.com/brookk16/Nordlander/blob/master/wireframes/home-3.png)
 
-![index/welcome page4]()
+![index/welcome page4](https://github.com/brookk16/Nordlander/blob/master/wireframes/home-4.png)
 
-![bugs]()
+![bugs](https://github.com/brookk16/Nordlander/blob/master/wireframes/bugs.png)
 
-![bugsInfo]()
+![bugsInfo](https://github.com/brookk16/Nordlander/blob/master/wireframes/bugs-info.png)
 
-![features]()
+![features](https://github.com/brookk16/Nordlander/blob/master/wireframes/features.png)
 
-![featuresInfo]()
+![featuresInfo](https://github.com/brookk16/Nordlander/blob/master/wireframes/features-info.png)
 
-![cart]()
+![cart](https://github.com/brookk16/Nordlander/blob/master/wireframes/cart.png)
 
-![checkout]()
+![checkout](https://github.com/brookk16/Nordlander/blob/master/wireframes/checkout.png)
 
-![performance page1]()
+![performance page1](https://github.com/brookk16/Nordlander/blob/master/wireframes/performance-1.png)
 
-![performance page2]()
+![performance page2](https://github.com/brookk16/Nordlander/blob/master/wireframes/performance-2.png)
 
-![performance page3]()
+![performance page3](https://github.com/brookk16/Nordlander/blob/master/wireframes/performance-3.png)
 
-![performance page4]()
+![performance page4](https://github.com/brookk16/Nordlander/blob/master/wireframes/performance-4.png)
 
-![users features]()
+![users features](https://github.com/brookk16/Nordlander/blob/master/wireframes/users-features.png)
 
-![login etc]()
+![login etc](https://github.com/brookk16/Nordlander/blob/master/wireframes/login-etc.png)
 
 </details>
 
@@ -87,10 +87,11 @@ New arrivals to the Nordlander site can only have access to the  features page w
 <summary>**Instructions on how to make a free account**</summary> 
 <br> 
 
+> Note: Before logging in, the only options available in the top nav are: "Register", "Log in", "Features" and "Cart". After logging in, users have access to: "Profile", "Support", "Features" and "Cart".
 
 1.	Click on “Register” in the top navbar
 2.	Fill out all the fields in the form
-3.	Click on the NAME OF BUTTON
+3.	Click on the 'Create account' button
 4.	You will now be taken back to the home page, logged in to your free account
 
 </details>
@@ -101,19 +102,14 @@ Each are described below:
 
 **1.	Account**:
 
-<details> 
-<summary>Register for an account</summary> 
-<br> 
-
-CONTENT
-
-</details>
-
-<details> 
+<details>
 <summary>Log in</summary> 
 <br> 
 
-CONTENT
+1. Click on the "Log in" button in the top nav
+2. Enter your username and password
+3. Click the "Log in" button
+4. The user will then be redirected back to the homepage, with the message "You have successfully logged in, welcome 'user'"
 
 </details>
 
@@ -121,7 +117,9 @@ CONTENT
 <summary>Log out</summary> 
 <br> 
 
-CONTENT
+1. Click on the "Profile" dropdown menu in the top nav
+2. Click on the "Log out" option
+3. The user will then be redirected back to the homepage, with the message "You have successfully logged out, goodbye 'user'"
 
 </details>
 
@@ -129,7 +127,13 @@ CONTENT
 <summary>Password retrieval</summary> 
 <br> 
 
-CONTENT
+1. Click on the "forgot my password" link in the login page
+2. This will redirect you to another page, where you must supply your user email
+3. An email will then be sent to the supplied email, with details on how to reset your password, and a link to reset your password
+4. Clicking on the link redirects the user to another page, where you must supply a new password (must be supplied twice for authentication)
+5. If successful the user is redirected to another page where this message is displayed: "Your password has been set. You may go ahead and log in now." and link to log in.
+
+- If the link did not work another message will be displayed instead of the password reset from, i,e: "The password reset link was invalid, <br /> possibly because it has already been used. Please request a new password reset.""
 
 </details>
 
@@ -137,7 +141,11 @@ CONTENT
 <summary>See user’s purchased features</summary> 
 <br> 
 
-CONTENT
+1. Click on the "Profile" dropdown menu in the top nav
+2. Click on the "'users' features" option
+3. This will redirect the user to another page, displaying a list of all the features that the logged in user has purchased (with links to the features full information)
+
+- If the user hesn't yet purchased any features, this message will be displayed: "You haven't bought any features yet".
 
 </details>
 
@@ -146,11 +154,17 @@ CONTENT
 
 > Note: as features are paid items, users are not able to create them. To create a new feature product, use the Django admin panel. For more information click [here](https://docs.djangoproject.com/en/2.2/ref/contrib/admin/ )
 
+All following feature component explanations begin on the "features.html" page. Which is accessed by clikcing on the "Features" link the top nav.
+
 <details> 
 <summary>Search for features</summary> 
 <br> 
 
-CONTENT
+1. Search options are available in the search bar, just below the "Features welcome message"
+2. Users may search using any combination of the three search inputs: search by name, search by feature type and search by feature's current status. 
+    - Ex: A user could search for a feature where the name contains "sword", the type is "Item" and the status is "Available", then click the "search" button. The search would still function if the user removed any one or two of the inputs.
+
+3. Users can reset the search items by clicking on the "reset" button.
 
 </details>
 
@@ -158,7 +172,12 @@ CONTENT
 <summary>Like features</summary> 
 <br> 
 
-CONTENT
+1. Click on a feature's "See more" button
+2. Scroll down to the "thumbs up" icon
+3. Click on the icon to like the feature
+4. The like counter will then increment by one, showing the like
+
+- If the user has already liked the feature, the like will not be counted and the page will refreash and a message will appear ("You have already liked this")
 
 </details>
 
@@ -166,7 +185,18 @@ CONTENT
 <summary>Purchase features</summary> 
 <br> 
 
-CONTENT
+1. Click on a feature's "See more" button
+2. Scroll down to the "add to cart" button (this will only be accessible if the features current status is "Available")
+3. Click to add the item to your cart, the 'Cart' icon in the top nav will then increment by one (or will show a "1" if it was previously empty)
+4. Click on the "Cart" icon to be taken into the user's cart
+5. The user's cart items will then be displayed, along with the total amount due and a checkout button (this option will only be accessible if the cart is not empty)
+6. Click on the "checkout" button
+7. This will redirect users to the checkout page, containing two forms: one for the users information and the other for payment information.
+8. Fill in all the fields in each form (a prompt will arise if left empty)
+9. Click on the "Submit Payment" button.
+10. If the payment is sucessful, the user is redirected to another page, displaying a success message and a link to go back to the "features" page.
+
+> Note: Please be aware that the stripe payment processing is only currently set up to process payments using the test card. Therefore, error messages will not be displayed for incorrect information in the "payment form". If incorrect information is input and the "Submit payment" button is clicked, nothing will appear to happen.
 
 </details>
 
@@ -174,18 +204,30 @@ CONTENT
 <summary>See current statuses of features</summary> 
 <br> 
 
-CONTENT
+1. Click on the "Support" dropdown in the top nav.
+2. Click on the "Performance" option.
+3. The user will then be redirected to the "Performance" page, where all the charts are displayed.
+4. There are 4 charts for features: Top 5 features by user likes, Current feature types, Amount of bugs per features and the popularity of each types of feature. 
+
+- You can see more information about the chart by hovering over the "?" icon by the chart title
+- In addition to the numerical values displayed in the charts, hovering over each bar/point/segment will show additional information.
 
 </details>
 
 
 **3. Support:**
 
+All following bug component explanations begin on the "bugs.html" page. Which is accessed by clicking on the "Support" dropdown in the top nav, then click on the "Bugs" option.
+
 <details> 
 <summary>Search for bugs</summary> 
 <br> 
 
-CONTENT
+1. Search options are available in the search bar, just below the "Bugs welcome message"
+2. Users may search using any combination of the three search inputs: search by name, search by bug type and search by bug's current status. 
+    - Ex: A user could search for a bug where the name contains "Base game", the type is "Base game" and the status is "Fixed", then click the "search" button. The search would still function if the user removed any one or two of the inputs.
+
+3. Users can reset the search items by clicking on the "reset" button.
 
 </details>
 
@@ -193,7 +235,12 @@ CONTENT
 <summary>Upvote a bug</summary> 
 <br> 
 
-CONTENT
+1. Click on a bug's "See more" button
+2. Scroll down to the "bug" icon
+3. Click on the icon to upvote the bug
+4. The upvote counter will then increment by one, showing the upvote
+
+- If the user has already upvoted the bug, the upvote will not eb counted and the page will refreash and a message will appear ("You have already upvoted this")
 
 </details>
 
@@ -201,7 +248,12 @@ CONTENT
 <summary>Comment on a bug</summary> 
 <br> 
 
-CONTENT
+1. Click on a bug's "See more" button
+2. Scroll down to the comments section
+3. Click on the "Add comment"
+4. A modal window will appear with an area to input the comment and a "Save" button
+5. Add your comment and click the "Save" button
+6. The modal window will disappear and the comment will be displayed at the top of the comments section (including the user's name and date posted) 
 
 </details>
 
@@ -209,7 +261,9 @@ CONTENT
 <summary>Add a bug</summary> 
 <br> 
 
-CONTENT
+1. Click on the "Add bug" button
+2. A modal window will appear with a form for inputting the bugs information
+3. Once the "Add bug" button is clicked, the modal window disappears and the users bug is displayed at the top of the bugs section.
 
 </details>
 
@@ -217,11 +271,16 @@ CONTENT
 <summary>See current status of bugs and user activity</summary> 
 <br> 
 
-CONTENT
+1. Click on the "Support" dropdown in the top nav.
+2. Click on the "Performance" option.
+3. The user will then be redirected to the "Performance" page, where all the charts are displayed.
+4. There are 3 charts for features: Top 5 bugs by user upvotes, new bugs uploaded in the past week and current bug statuses (no. of bugs To do, Doing and fixed)  
+
+
+- You can see more information about the chart by hovering over the "?" icon by the chart title
+- In addition to the numerical values displayed in the charts, hovering over each bar/point/segment will show additional information.
 
 </details>
-
-
 
 ### Components Left to Implement
 
@@ -342,7 +401,7 @@ python3 manage.py run test
 
 ## Deployment
 
-The code is deployed on [this Heroku site](link)
+The code is deployed on [this Heroku site](https://nordlander.herokuapp.com)
 
 **To deploy the code onto Heroku:**
 
