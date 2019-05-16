@@ -135,7 +135,7 @@ Each are described below:
 4. Clicking on the link redirects the user to another page, where you must supply a new password (must be supplied twice for authentication)
 5. If successful the user is redirected to another page where this message is displayed: "Your password has been set. You may go ahead and log in now." and link to log in.
 
-- If the link did not work another message will be displayed instead of the password reset from, i,e: "The password reset link was invalid, <br /> possibly because it has already been used. Please request a new password reset.""
+- If the link did not work another message will be displayed instead of the password reset from, i.e: "The password reset link was invalid, <br /> possibly because it has already been used. Please request a new password reset.""
 
 </details>
 
@@ -156,7 +156,7 @@ Each are described below:
 
 > Note: as features are paid items, users are not able to create them. To create a new feature product, use the Django admin panel. For more information click [here](https://docs.djangoproject.com/en/2.2/ref/contrib/admin/ )
 
-All following feature component explanations begin on the "features.html" page. Which is accessed by clikcing on the "Features" link the top nav.
+All following feature component explanations begin on the "features.html" page. Which is accessed by clicking on the "Features" link the top nav.
 
 <details> 
 <summary>Search for features</summary> 
@@ -385,7 +385,7 @@ python3 manage.py run test
 - When users hover over the "thumbs up" icon on the feature's information page (featuresInfo.html) the icon becomes green. Clicking on the icon will then increment the like counter by 1. Users who have clicked are saved in a list, so that if they click it again, an error message appears.
 - Once the user has items in their cart the "checkout" button on checkout.html becomes available and users can go to the checkout page. Leaving any form input empty will prompt a "Field required" message. Using the correct information (user and credit card) will redirect the user to a "payment complete" page and a message will be displayed at the top (with a correct payment message).
 
-> note: The stripe payment processing is set to test currently, therefore only the test card information will allow a purchase. In addition, the error messages will not display whilst in test mode, therefore no error messages are displayed if incorrect data is put into the form, the form just won't be submitted until correct info is used. To learn more see the [stripe documents](https://stripe.com/docs).
+> Note: The stripe payment processing is set to test currently, therefore only the test card information will allow a purchase. In addition, the error messages will not display whilst in test mode, therefore no error messages are displayed if incorrect data is put into the form, the form just won't be submitted until correct info is used. To learn more see the [stripe documents](https://stripe.com/docs).
 
 3. Support:
 - Hovering over the 'bug' symbol changes the colour to green, and clicking on this symbol will then increment the upvote number by one. If a user who has already upvoted that bug tries to upvote again, it will not work and an error message is displayed. 
@@ -413,8 +413,11 @@ Deploying to Heroku consisted of X stages:
 <summary>1. Set-up of the deployed database:</summary> 
 <br> 
 - Heroku's SQL Postgres database was set up on Heroku
+
 - dj-database-url and psycopg2 was installed to facilitate communication bewteen our django app and the Heroku database
+
 - The code was updated in "settings.py" as to change between the deployed and local databases (depending on whether the environmental varibales come from a local env.py file or the deployed environment)
+
 - The database was then migrated over to the deployed database.
 
 </details>
@@ -443,13 +446,17 @@ Deploying to Heroku consisted of X stages:
 <summary>3. Final set up of Heroku:</summary> 
 <br>
 - Linked up the Github repository to the Heroku (follow these [instructions](https://devcenter.heroku.com/articles/github-integration))
+
 - Created a requirements.txt file:
+
 ~~~
 sudo pip3 freeze --local > requirements.txt 
 ~~~
+
 - Installed gunicorn (to allow us to connect to Heroku)
 
 - Created a Procfile:
+
 ~~~
 echo web: gunicorn nordlander.wsgi:application > Procfile
 ~~~
