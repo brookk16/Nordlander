@@ -2,8 +2,6 @@
 __pycache__
 .~c9*
 env.py
-*.png
 /static
 /media
-ROOT USER INFO (DELETE AT END)
-travis.yml
+.travis.yml

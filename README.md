@@ -144,7 +144,7 @@ CONTENT
 
 **2. Features:**
 
-> Note: as features are paid items, users are not able to create them. To create a new feature product, use the Django admin panel. For more information clikc [here](https://docs.djangoproject.com/en/2.2/ref/contrib/admin/ )
+> Note: as features are paid items, users are not able to create them. To create a new feature product, use the Django admin panel. For more information click [here](https://docs.djangoproject.com/en/2.2/ref/contrib/admin/ )
 
 <details> 
 <summary>Search for features</summary> 
