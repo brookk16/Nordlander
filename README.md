@@ -268,6 +268,8 @@ All following bug component explanations begin on the "bugs.html" page. Which is
 2. A modal window will appear with a form for inputting the bugs information
 3. Once the "Add bug" button is clicked, the modal window disappears and the users bug is displayed at the top of the bugs section.
 
+> Note: The status of new bugs is always "To do" and is to be changed by the admin the user panel.
+
 </details>
 
 <details> 
