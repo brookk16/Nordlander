@@ -329,14 +329,11 @@ input {
 .download-links {
     height: 200px;
     margin: 50px 0px;
-
-
 }
 
 .download-link {
     text-decoration: none;
     font-size: 35px;
-
 }
 
 /* ----------------------footer---------------------- */
@@ -376,7 +373,7 @@ footer {
     color: #f5f5f5;
 }
 
-/* Reset */
+/*----------- Reset--------------- */
 
 .reset-styling {
     background-color: black;
@@ -431,16 +428,14 @@ footer {
     -o-background-size: cover;
     background-size: cover;
     padding-left: 0px;
+    color: white;
 }
 
 .jumbotron {
-    background-color: #eeeeee8f;
+    background-color: transparent;
     margin: 30px;
     text-align: center;
     font-family: 'NorseBold', sans-serif;
-    color: black;
-    text-shadow: 1px 1px #f5f5f5;
-
 }
 
 #features-small-text {
@@ -643,6 +638,9 @@ input#select {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-color: rgb(144, 142, 142);
+    background-blend-mode: screen;
+    color: black;
 }
 
 .jumbotron p a {
@@ -811,6 +809,10 @@ input#select {
     -o-background-size: cover;
     background-size: cover;
     font-size: 22px;
+    background-color: rgb(100, 100, 100);
+    background-blend-mode: screen;
+    color: black;
+    text-shadow: 1px 1px white;
 }
 
 .table-styling {
@@ -892,7 +894,7 @@ input#select {
     .features-info-description {
         padding: 61px 200px;
     }
-    
+
     .typePrice-styling {
         margin-top: 0px;
         padding: 0px 139px;
