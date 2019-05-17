@@ -1,4 +1,10 @@
-{% extends 'base.html' %} {% load static from staticfiles %} {% block content %}
+{% extends 'base.html' %} {% load static from staticfiles %} 
+
+{% block head_js %} 
+<script type="text/javascript" src="{% static 'js/animation.js' %}"></script>
+{% endblock head_js %}
+
+{% block content %}
 <div class="home-background-image col-xs-12">
 
     <div class="row">
@@ -79,7 +85,9 @@
                     <li>Travel to new worlds</li>
                     <li>Gain new weapons and skills</li>
                     <li>Complete new quests</li>
-                    <button onclick="window.location.href = '{% url 'features' %}';" class="custom-button" role="button" style="margin-top: 20px;">See more</button>
+                    <li>
+                        <button onclick="window.location.href = '{% url 'features' %}';" class="custom-button" role="button" style="margin-top: 20px;">See more</button>
+                    </li>
 
                 </ul>
 

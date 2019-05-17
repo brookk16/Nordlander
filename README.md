@@ -337,7 +337,7 @@ For the additional tools and libraries needed to run the app, please refer to [r
 The website conforms with user focused design by adhering to the user requirements, set out in the user experience section.
 A mix of automated and manual testing was conducted on the website:
 
-1.	Initial testing involving: checking all code and validating code using online html and css validators.
+1.	Initial testing involving: checking all code, validating code using online html and css validators and running Google chrome audits.
 
 2.	Automated tests were written to test the basic rendering of each of the html templates, when a certain url is requested
 
@@ -401,6 +401,8 @@ python3 manage.py run test
 - The performance page results were then checked manually to ensure that the data displayed reflects the actual databse values. The hover messages and numerical values were also checked, and are displaying correctly.
 
 </details>
+
+
 
 ## Deployment
 
