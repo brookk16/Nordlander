@@ -168,6 +168,15 @@ input {
     color: #691212;
 }
 
+.fa-bars {
+    color: #f5f5f5;
+}
+
+.fa-bars:hover {
+    color: #691212;
+}
+
+
 /* ----------------------Home---------------------- */
 
 #remove-float {
@@ -915,6 +924,9 @@ input#select {
 @media (max-width: 767px) {
     .row-for-bug-info {
         margin-top: 0px;
+    }
+    .navbar-collapse {
+        background-color: #000000cf;
     }
 }
 
