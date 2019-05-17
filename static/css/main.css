@@ -36,7 +36,8 @@ a:hover {
     color: #691212;
 }
 
-.fab, .fa {
+.fab,
+.fa {
     font-size: 25px;
     padding: 0px 10px;
     margin: -4px 0px 0px 0px;
@@ -69,8 +70,8 @@ input {
     font-family: 'Stempel', sans-serif;
     color: #f5f5f5;
     text-shadow: none;
-    
-    
+
+
 }
 
 
@@ -416,6 +417,10 @@ footer {
 .features-message {
     height: 100%;
     background: url('../img/features-home-background.jpg') no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     padding-left: 0px;
 }
 
@@ -583,7 +588,9 @@ footer {
     margin: -14px 0px 10px 15px;
 }
 
-
+.typePrice-styling {
+    margin-top: 35px;
+}
 
 /* Search bar */
 
@@ -616,7 +623,7 @@ input#select {
 
 .redo-styling {
     margin: 0px 0px 0px 20px;
-    
+
 }
 
 /* ----------------------Bugs---------------------- */
@@ -760,14 +767,14 @@ input#select {
 /* -------------Performance------------ */
 
 .performance-panel1 {
-    min-height: 411px;  
+    min-height: 411px;
     background-image: -webkit-linear-gradient(#2B2525, #000000 10%, #49475B);
     text-align: center;
 }
 
 .performance-panel1>h1 {
     color: #ffff52e3;
-    
+
 }
 
 .performance-panel2 {
@@ -781,10 +788,9 @@ input#select {
 
 }
 
-.performance-panel4 { 
+.performance-panel4 {
     min-height: 700px;
     background-image: -webkit-linear-gradient(#a9603d, #a9603d 5%, black)
-    
 }
 
 
@@ -810,8 +816,8 @@ input#select {
     text-align: center;
     text-decoration: underline;
     text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
-    
-    
+
+
 }
 
 .performace-well {
@@ -842,6 +848,7 @@ input#select {
 .btn-success {
     margin: 30px;
 }
+
 /* ------------Checkout------------------*/
 
 .checkout-complete-message {
@@ -872,14 +879,16 @@ input#select {
 
 /* ------------Media Queries---------------*/
 
-@media (min-width: 1600px) {
-    .feature-info-information {
-        padding: 0px 157px;
-        width: 75%;
+@media (min-width: 1487px) {
+    .features-info-description {
+        padding: 61px 200px;
     }
-
+    
+    .typePrice-styling {
+        margin-top: 0px;
+        padding: 0px 139px;
+    }
 }
-
 
 @media (max-width: 1200px) {
     .jumbotron {
@@ -961,4 +970,3 @@ input#select {
         padding: 10px 0px 0px 0px;
     }
 }
-

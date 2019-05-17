@@ -48,10 +48,13 @@
         </div>
     </div>
 
-    <div class="feature-info-information col-xs-12 col-sm-12 col-md-12 col-lg-11 col-lg-offset-1 col-xl-10 col-xl-offset-1">
+    <div class="feature-info-information col-xs-12 col-sm-12 col-md-12 col-lg-11 col-lg-offset-1">
 
-        <p class="features-info-description">{{feature.description}}</p>
-        <div class="row" style="margin-top: 35px;">
+        <div class="row">
+            <p class="features-info-description col-xs-12 col-sm-12 col-md-12 col-lg-12">{{feature.description}}</p>
+        </div>
+
+        <div class="row typePrice-styling">
             <p class="col-xs-6 col-sm-5 col-md-5 col-lg-5 col-xl-5">Type: {{feature.type}}</p>
             <p class="col-xs-6 col-sm-5 col-md-5 col-lg-5 col-xl-5">£ {{feature.price}}</p>
 
@@ -64,25 +67,26 @@
             <p class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5" style="margin: 26px 0px;">Status: {{feature.status}}</p>
         </div>
 
-        {% if feature.status == "Available" %}
-        <form method="post" action="{% url 'add_to_cart' feature.id %}" class="add-button col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 pull-right">
-            {% csrf_token %}
-            <div class="input-group">
-                <button class="btn custom-button add-button-spacing" type="submit">Add to cart</button>
-            </div>
-        </form>
+        <div class="row">
+            {% if feature.status == "Available" %}
+            <form method="post" action="{% url 'add_to_cart' feature.id %}" class="add-button col-xs-6 col-sm-4 col-md-4 col-lg-4 col-xl-4 pull-right">
+                {% csrf_token %}
+                <div class="input-group">
+                    <button class="btn custom-button add-button-spacing" type="submit">Add to cart</button>
+                </div>
+            </form>
 
-        {% else %}
-        <form method="post" action="{% url 'add_to_cart' feature.id %}" class="add-button col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 pull-right">
-            {% csrf_token %}
-            <div class="input-group">
-                <button class="btn custom-button add-button-spacing" type="submit" disabled>Add to cart</button>
-            </div>
-        </form>
+            {% else %}
+            <form method="post" action="{% url 'add_to_cart' feature.id %}" class="add-button col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 pull-right">
+                {% csrf_token %}
+                <div class="input-group">
+                    <button class="btn custom-button add-button-spacing" type="submit" disabled>Add to cart</button>
+                </div>
+            </form>
 
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
-
 </div>
 
 <div class="col-md-1 col-lg-2 col-xl-2 columns hidden-xs hidden-sm"></div>
