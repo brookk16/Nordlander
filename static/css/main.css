@@ -977,7 +977,7 @@ input#select {
 @media (max-width: 400px) {
     .carousel-inner>.item>img {
         height: 300px;
-        margin: 68px 0px;
+        margin: 0px;
     }
 }
 
