@@ -229,7 +229,7 @@ input {
 }
 
 .carousel-inner>.item>img {
-    height: 500px;
+    min-height: 445px;
     width: 98%;
 }
 
@@ -566,7 +566,7 @@ footer {
     font-size: 16px;
     margin: 10px;
     min-height: 250px;
-    padding: 61px 96px 0px 96px;
+    padding: 40px 56px 0px 49px;
 }
 
 .like-button {
@@ -971,6 +971,13 @@ input#select {
 
         padding: 19px 0px 0px 0px;
 
+    }
+}
+
+@media (max-width: 400px) {
+    .carousel {
+        height: 300px;
+        margin: 68px 0px;
     }
 }
 
